@@ -1,10 +1,11 @@
-import SearchInd from "./components/SearchInd";
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import SearchInd from "./components/SearchInd";
+import Ranking from "./components/Ranking";
 function App() {
     return (
         <div className="App">
-            <SearchInd />
+            {/* <SearchInd /> */}
+            <Ranking />
         </div>
     );
 }
