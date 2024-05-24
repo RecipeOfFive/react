@@ -6,10 +6,12 @@ import { useState } from "react";
 
 import { useSelector, useDispatch } from "react-redux";
 import {
+    //예시
+    increaseCounter
   //action1,
   //action2,
   //action3,
-} from "~/store/reducers/searchElem";
+} from "../store/reducers/searchElem.jsx";
 
 export default function SearchInd() {
     const [checked, setChecked] = useState(false);
@@ -31,13 +33,11 @@ export default function SearchInd() {
           }}
         >
           증가
-        </button>
-    * 
-    */
+            </button>
+        * 
+        */
 
-
-
-    
+          
     const radios = [
         { name: "Active", value: "1" },
         { name: "Radio", value: "2" },

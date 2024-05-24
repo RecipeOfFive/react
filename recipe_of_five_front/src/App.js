@@ -1,12 +1,14 @@
 import logo from "./logo.svg";
-import SearchInd from "./components/SearchInd";
+import {Provider} from 'react-redux';
+import store from './store';
 import "bootstrap/dist/css/bootstrap.min.css";
+import SearchInd from "./components/SearchInd";
 
 function App() {
     return (
-        <div className="App">
-            <SearchInd />
-        </div>
+            <Provider store={store} >
+                <SearchInd />
+            </Provider>
     );
 }
 

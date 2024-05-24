@@ -5,11 +5,11 @@ import { createSlice } from "@reduxjs/toolkit";
 // initial state
 const initialState = {
   counter: 0,
-  color: "black",
+  color1: "black",
 };
 
 const searchElemSlice = createSlice({
-  name: "counter",
+  name: "searchElem", 
   initialState: initialState,
   reducers: {
     increaseCounter: (state) => {
@@ -19,10 +19,10 @@ const searchElemSlice = createSlice({
       state.counter -= 1;
     },
     setColor: (state, action) => {
-      state.color = action.payload.color;
+      state.color1 = action.payload.color1;
     },
   },
 });
-export const { increaseCounter, decreaseCounter, setColor } = counterSlice.actions; //변수명 바꿔주기
+export const { increaseCounter, decreaseCounter, setColor } = searchElemSlice.actions; //변수명 바꿔주기
 
 export default searchElemSlice.reducer;
