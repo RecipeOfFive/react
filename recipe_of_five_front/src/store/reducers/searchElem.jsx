@@ -5,11 +5,11 @@ import { createSlice } from "@reduxjs/toolkit";
 // initial state
 const initialState = {
   counter: 0,
-  color1: "black",
+  color: "black",
 };
 
 const searchElemSlice = createSlice({
-  name: "searchElem", 
+  name: "searchElem",
   initialState: initialState,
   reducers: {
     increaseCounter: (state) => {
@@ -19,7 +19,7 @@ const searchElemSlice = createSlice({
       state.counter -= 1;
     },
     setColor: (state, action) => {
-      state.color1 = action.payload.color1;
+      state.color = action.payload.color;
     },
   },
 });
