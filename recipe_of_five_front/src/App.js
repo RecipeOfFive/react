@@ -1,7 +1,8 @@
 import React, { createContext } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+
 import SearchInd from "./components/SearchInd";
 import FilterMethod from "./components/FilterMethod";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 export const AppContext = createContext();
 
