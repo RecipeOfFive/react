@@ -1,6 +1,5 @@
 import React, { createContext, useCallback, useEffect } from "react";
 import { useState } from "react";
-import axios from "axios";
 
 export const RecipeFilterContext = createContext();
 
@@ -11,6 +10,8 @@ export default function SearchProvider({ children }) {
         method: [],
     });
     const [filterMethod, setFilterMethod] = useState([]);
+    const [include, setInclude] = useState([]);
+    const [exclude, setExclude] = useState([]);
     // const [searchResult, setSearchResult] = [];
 
     // const filterRecipe = () => {
@@ -31,6 +32,10 @@ export default function SearchProvider({ children }) {
                 setSearchOptions,
                 filterMethod,
                 setFilterMethod,
+                include,
+                setInclude,
+                exclude,
+                setExclude,
             }}
         >
             {children}

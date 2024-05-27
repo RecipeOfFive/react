@@ -41,12 +41,6 @@ export default function FilterBtn() {
                     ALL
                 </ToggleButton>
             </ToggleButtonGroup>
-
-            <ul>
-                {filterMethod.map((v, idx) => (
-                    <li key={idx}>{v}</li>
-                ))}
-            </ul>
         </div>
     );
 }

@@ -1,19 +1,20 @@
 import React, { useContext, useState, useEffect } from "react";
-import { AppContext } from "../App";
+import { RecipeFilterContext } from "../context/SearchProvider";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import ToggleButton from "react-bootstrap/ToggleButton";
 import { Button, InputGroup, Form } from "react-bootstrap";
 
 export default function SearchInd() {
+    const { setExclude, setInclude } = useContext(RecipeFilterContext);
+
     const [input, setInput] = useState("");
     const [radioValue, setRadioValue] = useState("1");
-    const [include, setInclude] = useState(true);
+    const [isInclude, setIsInclude] = useState(true);
     const radios = [
         { name: "포함", value: "1" },
         { name: "제외", value: "2" },
     ];
 
-    const searchOtions = useContext(AppContext);
     return (
         <div>
             <ButtonGroup>
@@ -27,9 +28,8 @@ export default function SearchInd() {
                         value={radio.value}
                         checked={radioValue === radio.value}
                         onChange={(e) => {
-                            console.log(include);
                             setRadioValue(e.currentTarget.value);
-                            setInclude(!include);
+                            setIsInclude(!isInclude);
                         }}
                     >
                         {radio.name}
@@ -44,19 +44,20 @@ export default function SearchInd() {
                     aria-describedby="basic-addon2"
                     onChange={(e) => setInput(e.target.value)}
                 />
+                {"   "}
                 <Button
                     variant="outline-secondary"
                     id="button-addon2"
                     onClick={() => {
-                        if (include) {
-                            searchOtions.include.push(input);
+                        if (isInclude) {
+                            setInclude((prev) => [...prev, input]);
                         } else {
-                            searchOtions.exclude.push(input);
+                            setExclude((prev) => [...prev, input]);
                         }
                         setInput("");
                     }}
                 >
-                    Button
+                    적용
                 </Button>
             </InputGroup>
         </div>
