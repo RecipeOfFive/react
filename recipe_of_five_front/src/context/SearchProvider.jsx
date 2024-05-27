@@ -12,6 +12,8 @@ export default function SearchProvider({ children }) {
     const [filterMethod, setFilterMethod] = useState([]);
     const [include, setInclude] = useState([]);
     const [exclude, setExclude] = useState([]);
+    const [order, setOrder] = useState("VIEWCOUNT");
+
     // const [searchResult, setSearchResult] = [];
 
     // const filterRecipe = () => {
