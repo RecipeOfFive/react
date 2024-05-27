@@ -6,19 +6,40 @@ export default function SearchInd() {
         useContext(RecipeFilterContext);
 
     return (
-        <div style={{ display: "grid" }}>
-            <div>
+        <div style={{ display: "flex" }}>
+            <div style={{ wigth: "80vw" }}>
                 <h1>포함</h1>
-                <ul>
+                <div
+                    style={{
+                        width: "30vw",
+                        display: "grid",
+                        gridTemplateColumns: "1fr 1fr",
+                        gap: "10px",
+                    }}
+                >
                     {include.map((item, idx) => (
-                        <li key={idx}>{item}</li>
+                        <span
+                            style={{
+                                margin: "10px",
+                                border: "solid 1px",
+                            }}
+                            key={idx}
+                        >
+                            {item} X
+                        </span>
                     ))}
-                </ul>
+                </div>
             </div>
 
-            <div>
+            <div style={{ width: "30vw" }}>
                 <h1>제외</h1>
-                <ul>
+                <ul
+                    style={{
+                        display: "grid",
+                        gridTemplateColumns: "1fr 1fr",
+                        gap: "10px",
+                    }}
+                >
                     {exclude.map((item, idx) => (
                         <li key={idx}>{item}</li>
                     ))}
