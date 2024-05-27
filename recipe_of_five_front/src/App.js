@@ -8,10 +8,11 @@ function App() {
         <div >
             {/* <div className="App">
                 <SearchInd />
-                <Ranking />
+                
             </div> */}
             <div className="App">
-                <RecipeDescrip />
+                <Ranking />
+                {/* <RecipeDescrip /> */}
             </div>
         </div>
     );

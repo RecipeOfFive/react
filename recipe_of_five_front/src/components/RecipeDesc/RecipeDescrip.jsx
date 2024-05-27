@@ -1,6 +1,7 @@
 import React from "react";
 import testImg from "../../images/test.jpeg";
 import { Card, Button, Image } from "react-bootstrap";
+// import { RecipeFilterContext } from "../context/SearchProvider";
 import "./style.css";
 import { useState } from "react";
 
@@ -46,9 +47,9 @@ export default function RecipeDescrip() {
 
         <div className="view2">
           <div>재료</div>
-          <Button variant="outline-warning">재료1</Button>{" "}
-          <Button variant="outline-danger">재료2</Button>{" "}
-          <Button variant="outline-success">재료3</Button>{" "}
+          <Button variant="outline-warning">재료1</Button>
+          <Button variant="outline-danger">재료2</Button>
+          <Button variant="outline-success">재료3</Button>
           <Button variant="outline-dark">재료4</Button>
         </div>
 
