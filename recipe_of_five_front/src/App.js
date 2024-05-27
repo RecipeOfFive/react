@@ -1,14 +1,25 @@
-import logo from "./logo.svg";
-import {Provider} from 'react-redux';
-import store from './store';
-import "bootstrap/dist/css/bootstrap.min.css";
+import React, { createContext } from "react";
 import SearchInd from "./components/SearchInd";
+import FilterMethod from "./components/FilterMethod";
+import "bootstrap/dist/css/bootstrap.min.css";
+
+export const AppContext = createContext();
 
 function App() {
+    const searchOptions = {
+        include: [],
+        exclude: [],
+        method: "",
+    };
     return (
-            <Provider store={store} >
-                <SearchInd />
-            </Provider>
+        <>
+            <AppContext.Provider value={searchOptions}>
+                <div className="App">
+                    <SearchInd />
+                    <FilterMethod />
+                </div>
+            </AppContext.Provider>
+        </>
     );
 }
 

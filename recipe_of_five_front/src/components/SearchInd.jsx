@@ -1,48 +1,19 @@
-import React from "react";
+import React, { useContext, useState, useEffect } from "react";
+import { AppContext } from "../App";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import ToggleButton from "react-bootstrap/ToggleButton";
 import { Button, InputGroup, Form } from "react-bootstrap";
-import { useState } from "react";
-
-import { useSelector, useDispatch } from "react-redux";
-import {
-  //action1,
-  //action2,
-  //action3,
-} from "../store/reducers/searchElem";
 
 export default function SearchInd() {
     const [checked, setChecked] = useState(false);
-    const [radioValue, setRadioValue] = useState("1"); // useState -> redux 관리로 변경 예정
-
-    const searchElem = useSelector((state) => state.searchElem);// 검색요소 리덕스
-    const dispatch = useDispatch();
-
-    //redux 사용예시
-    /*
-    *
-    <div style={{ display: "flex", flexDirection: "row" }}>
-        <button
-          onClick={(e) => {
-            const action = increaseCounter(); // action 생성 == 주문서 생성
-            // dispatch: action을 dispatch하는 함수
-            // = 주문서를 제출하는 함수
-            dispatch(action);
-          }}
-        >
-          증가
-        </button>
-    * 
-    */
-
-
-
-    
+    const [radioValue, setRadioValue] = useState("1");
+    const [include, setInclude] = useState(false);
     const radios = [
-        { name: "Active", value: "1" },
-        { name: "Radio", value: "2" },
-        { name: "Radio", value: "3" },
+        { name: "포함", value: "1" },
+        { name: "제외", value: "2" },
     ];
+
+    const searchOtions = useContext(AppContext);
     return (
         <div>
             <ButtonGroup>
@@ -55,7 +26,11 @@ export default function SearchInd() {
                         name="radio"
                         value={radio.value}
                         checked={radioValue === radio.value}
-                        onChange={(e) => setRadioValue(e.currentTarget.value)}
+                        onChange={(e) => {
+                            console.log(include);
+                            setRadioValue(e.currentTarget.value);
+                            setInclude(!include);
+                        }}
                     >
                         {radio.name}
                     </ToggleButton>
