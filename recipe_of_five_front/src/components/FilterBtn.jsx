@@ -1,29 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
 import ToggleButton from "react-bootstrap/ToggleButton";
+import { RecipeFilterContext } from "../context/SearchProvider";
 
 export default function FilterBtn() {
-    const [value, setValue] = useState([]);
+    const { filterMethod, setFilterMethod } = useContext(RecipeFilterContext);
 
     const options = ["끓이기", "삶기", "찌기", "굽기", "볶기", "튀기기"];
 
     const handleChange = (val) => {
         if (val.includes("전체")) {
             if (val.length === 7) {
-                setValue([]);
+                setFilterMethod([]);
             } else {
-                setValue([...options]); // 전체 선택
+                setFilterMethod([...options]); // 전체 선택
             }
         } else {
-            setValue(val);
+            setFilterMethod(val);
         }
+        //setSearchOptions(value);
     };
 
     return (
         <div>
             <ToggleButtonGroup
                 type="checkbox"
-                value={value}
+                value={filterMethod}
                 onChange={handleChange}
             >
                 {options.map((option, index) => (
@@ -41,7 +43,7 @@ export default function FilterBtn() {
             </ToggleButtonGroup>
 
             <ul>
-                {value.map((v, idx) => (
+                {filterMethod.map((v, idx) => (
                     <li key={idx}>{v}</li>
                 ))}
             </ul>
