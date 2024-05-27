@@ -5,6 +5,7 @@ import SearchInd from "./components/SearchInd";
 import FilterBtn from "./components/FilterBtn";
 import SearchProvider from "./context/SearchProvider";
 import Ingredients from "./components/Ingredients";
+import SendSearch from "./components/SendSearch";
 
 export const AppContext = createContext();
 
@@ -16,6 +17,7 @@ function App() {
                     <SearchInd />
                     <FilterBtn />
                     <Ingredients />
+                    <SendSearch />
                 </div>
             </SearchProvider>
         </>
