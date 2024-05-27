@@ -5,7 +5,8 @@ import ToggleButton from "react-bootstrap/ToggleButton";
 import { Button, InputGroup, Form } from "react-bootstrap";
 
 export default function SearchInd() {
-    const { setExclude, setInclude } = useContext(RecipeFilterContext);
+    const { include, exclude, setExclude, setInclude } =
+        useContext(RecipeFilterContext);
 
     const [input, setInput] = useState("");
     const [radioValue, setRadioValue] = useState("1");
@@ -49,7 +50,13 @@ export default function SearchInd() {
                     variant="outline-secondary"
                     id="button-addon2"
                     onClick={() => {
-                        if (isInclude) {
+                        if (include.includes(input)) {
+                            alert("이미 포함된 재료입니다.");
+                            return;
+                        } else if (exclude.includes(input)) {
+                            alert("이미 제외된 재료입니다.");
+                            return;
+                        } else if (isInclude) {
                             setInclude((prev) => [...prev, input]);
                         } else {
                             setExclude((prev) => [...prev, input]);
