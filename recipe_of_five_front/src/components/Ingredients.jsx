@@ -24,8 +24,13 @@ export default function SearchInd() {
                                 border: "solid 1px",
                             }}
                             key={idx}
+                            onClick={() => {
+                                setInclude((prev) =>
+                                    prev.filter((el) => el !== item)
+                                );
+                            }}
                         >
-                            {item} X
+                            {item}
                         </span>
                     ))}
                 </div>
@@ -33,7 +38,7 @@ export default function SearchInd() {
 
             <div style={{ width: "30vw" }}>
                 <h1>제외</h1>
-                <ul
+                <div
                     style={{
                         display: "grid",
                         gridTemplateColumns: "1fr 1fr",
@@ -41,9 +46,23 @@ export default function SearchInd() {
                     }}
                 >
                     {exclude.map((item, idx) => (
-                        <li key={idx}>{item}</li>
+                        <span
+                            style={{
+                                margin: "10px",
+                                border: "solid 1px",
+                            }}
+                            key={idx}
+                            onClick={() => {
+                                setExclude((prev) =>
+                                    prev.filter((el) => el !== item)
+                                );
+                            }}
+                            //이 부분이 무한루프, 클릭하면 삭제하는 로직
+                        >
+                            {item}
+                        </span>
                     ))}
-                </ul>
+                </div>
             </div>
         </div>
     );
