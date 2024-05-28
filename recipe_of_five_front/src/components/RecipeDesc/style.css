@@ -1,5 +1,5 @@
 .container {
-  max-width: 860px;
+  max-width: 1200px;
   margin: 0 auto;
   background-color: white;
 }
@@ -13,6 +13,11 @@
   font-weight: bold;
   line-height: 1.3;
   letter-spacing: -0.05em;
+  padding-bottom: 30px;
+}
+
+.Descrip-down {
+  padding-bottom: 30px;
 }
 .Descrip-info {
   font-size: 16px;
@@ -22,8 +27,22 @@
 
 .first-img {
   width: 100%;
+  height: 600px;
 }
 
 .Descript-link {
   display: flex;
+}
+
+.another-recipe {
+  text-align: center;
+}
+
+.view2 div {
+  font-size: 20px;
+  font-weight: bold;
+}
+.hr {
+  border: 1px solid black;
+  /* height: 3px; 원하는 두께로 설정 */
 }

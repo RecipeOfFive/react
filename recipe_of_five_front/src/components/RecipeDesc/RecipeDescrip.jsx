@@ -3,9 +3,12 @@ import testImg from "../../images/test.jpeg";
 import { Card, Button, Image } from "react-bootstrap";
 // import { RecipeFilterContext } from "../context/SearchProvider";
 import "./style.css";
-import { useState } from "react";
+import { useState, useEffect, useContext } from "react";
+
+import { RecipeFilterContext } from "../../context/SearchProvider";
 
 import test1 from "../../images/test1.jpeg";
+import axios from "axios";
 
 export default function RecipeDescrip() {
   const [img, setImg] = useState();
@@ -17,14 +20,28 @@ export default function RecipeDescrip() {
   const [hash, setHash] = useState();
 
   const [anotherlink, setanotherLink] = useState();
+  const [calorie, setCalorie] = useState([]);
+
+  const { searchOptions, setSearchOptions, include, exclude, ranking } =
+    useContext(RecipeFilterContext);
+  // const colors = [
+  //   "outline-warning",
+  //   "outline-danger",
+  //   "outline-success",
+  //   "outline-dark",
+  // ];
+
+  // useEffect(()=>){
+  //   axios
+  //   .post(        "http://ec2-3-38-45-40.ap-northeast-2.compute.amazonaws.com:3000/api/food/nutirent/"
+  //   )
+  // }
 
   return (
     <div className="container">
       <div className="view1">
         <div className="Descrip-top">
-          <div className="first-img">
-            <Image src={testImg} fluid="true" />
-          </div>
+          <img className="first-img" src4={testImg} />
         </div>
         <div className="Descrip-down">
           <div className="Descrip-tit">{title}</div>
@@ -32,11 +49,11 @@ export default function RecipeDescrip() {
             {/* 레시피 정보 기입 */}
             {info}
           </div>
-          <div className="Descript-link">
+          {/* <div className="Descript-link">
             <span>{link}</span>
             <span>30분 이내</span>
             <span>공유 링크</span>
-          </div>
+          </div> */}
         </div>
 
         <div>
@@ -47,10 +64,29 @@ export default function RecipeDescrip() {
 
         <div className="view2">
           <div>재료</div>
-          <Button variant="outline-warning">재료1</Button>
-          <Button variant="outline-danger">재료2</Button>
-          <Button variant="outline-success">재료3</Button>
-          <Button variant="outline-dark">재료4</Button>
+          <hr className="hr" />
+
+          {/* 여기다가 재료 하나씩 입력 */}
+          {/* <ul> */}
+          {/* {배열.map(ingredient, index) => ( */}
+          {/* <li key={index}> */}
+          {/* <Button varient={colors[index%colors.length]}> */}
+          {/* {ingredient} */}
+          {/* </Button> */}
+          {/* </li> */}
+          {/* ))} */}
+
+          {/* </ul> */}
+
+          <div>열량</div>
+          <hr className="hr" />
+
+          {/* 
+            <hr />
+            <ul>{ {calorie.map(ingredient,index) => (
+              <li key={index}>
+                {}
+            )} }</ul> */}
         </div>
 
         <div className="view3">
