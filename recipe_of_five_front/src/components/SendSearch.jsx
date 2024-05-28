@@ -16,17 +16,24 @@ export default function SendSearch() {
 
   const handleSearch = () => {
     setSearchOptions({
+      order: "like_count",
       include: include,
       exclude: exclude,
-      method: filterMethod,
+      type: filterMethod,
     });
   };
 
   // 최초 랭킹 화면 get 요청
   useEffect(() => {
-    axios.get("url", searchOptions).then((resp) => {
-      setRanking(resp.data);
-    });
+    axios
+      .post(
+        // 임시 url
+        "http://ec2-3-38-45-40.ap-northeast-2.compute.amazonaws.com:3000/api/food/",
+        searchOptions
+      )
+      .then((resp) => {
+        setRanking(resp.data);
+      });
   }, []);
 
   useEffect(() => {
