@@ -9,22 +9,26 @@ export default function SearchProvider({ children }) {
         exclude: [],
         method: [],
     });
+
+    //초기 ranking
+    const [ranking, setRanking] = useState([]);
+
     const [filterMethod, setFilterMethod] = useState([]);
     const [include, setInclude] = useState([]);
     const [exclude, setExclude] = useState([]);
-    const [order, setOrder] = useState("VIEWCOUNT");
+    const [order, setOrder] = useState("LIKECOUNT");
 
-    // const [searchResult, setSearchResult] = [];
+    const [searchResult, setSearchResult] = [];
 
-    // const filterRecipe = () => {
-    //     axios
-    //         .get("url", {
-    //             params: searchOptions,
-    //         })
-    //         .then((resp) => {
-    //             setSearchResult(resp.data);
-    //         });
-    // };
+    const filterRecipe = () => {
+        axios
+            .get("url", {
+                params: searchOptions,
+            })
+            .then((resp) => {
+                setSearchResult(resp.data);
+            });
+    };
 
     //value에 추후 state 추가
     return (
@@ -38,6 +42,8 @@ export default function SearchProvider({ children }) {
                 setInclude,
                 exclude,
                 setExclude,
+                ranking,
+                setRanking,
             }}
         >
             {children}

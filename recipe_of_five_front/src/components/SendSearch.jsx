@@ -4,8 +4,15 @@ import { RecipeFilterContext } from "../context/SearchProvider";
 import axios from "axios";
 
 export default function SendSearch() {
-    const { searchOptions, setSearchOptions, filterMethod, include, exclude } =
-        useContext(RecipeFilterContext);
+    const {
+        searchOptions,
+        setSearchOptions,
+        filterMethod,
+        include,
+        exclude,
+        ranking,
+        setRanking,
+    } = useContext(RecipeFilterContext);
 
     const handleSearch = () => {
         setSearchOptions({
@@ -14,6 +21,13 @@ export default function SendSearch() {
             method: filterMethod,
         });
     };
+
+    // 최초 랭킹 화면 get 요청
+    useEffect(() => {
+        axios.get("url", searchOptions).then((resp) => {
+            setRanking(resp.data);
+        });
+    }, []);
 
     useEffect(() => {
         // 서버에 원하는 레시피를 전송
