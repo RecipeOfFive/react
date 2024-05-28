@@ -1,9 +1,11 @@
 import React, { useContext, useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { RecipeFilterContext } from "../context/SearchProvider";
+import { Navigate, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export default function SendSearch() {
+    const navigate = useNavigate();
     const {
         searchOptions,
         setSearchOptions,
@@ -20,6 +22,7 @@ export default function SendSearch() {
             exclude: exclude,
             method: filterMethod,
         });
+        navigate("/detail");
     };
 
     // 최초 랭킹 화면 get 요청
