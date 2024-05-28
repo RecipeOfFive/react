@@ -1,17 +1,21 @@
-import React from "react";
+import React, { useContext, useState, useEffect } from "react";
+import { RecipeFilterContext } from "../../context/SearchProvider";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import ToggleButton from "react-bootstrap/ToggleButton";
 import { Button, InputGroup, Form } from "react-bootstrap";
-import { useState } from "react";
 
 export default function SearchInd() {
-  const [checked, setChecked] = useState(false);
+  const { include, exclude, setExclude, setInclude } =
+    useContext(RecipeFilterContext);
+
+  const [input, setInput] = useState("");
   const [radioValue, setRadioValue] = useState("1");
+  const [isInclude, setIsInclude] = useState(true);
   const radios = [
-    { name: "Active", value: "1" },
-    { name: "Radio", value: "2" },
-    { name: "Radio", value: "3" },
+    { name: "포함", value: "1" },
+    { name: "제외", value: "2" },
   ];
+
   return (
     <div>
       <ButtonGroup>
@@ -24,7 +28,10 @@ export default function SearchInd() {
             name="radio"
             value={radio.value}
             checked={radioValue === radio.value}
-            onChange={(e) => setRadioValue(e.currentTarget.value)}
+            onChange={(e) => {
+              setRadioValue(e.currentTarget.value);
+              setIsInclude(!isInclude);
+            }}
           >
             {radio.name}
           </ToggleButton>
@@ -32,11 +39,31 @@ export default function SearchInd() {
       </ButtonGroup>
       <InputGroup className="mb-3">
         <Form.Control
-          placeholder="Recipient's username"
+          value={input}
+          placeholder="검색할 재료를 입력하세요"
           aria-label="Recipient's username"
           aria-describedby="basic-addon2"
+          onChange={(e) => setInput(e.target.value)}
         />
-        <Button variant="outline-secondary" id="button-addon2">
+        {"   "}
+        <Button
+          variant="outline-secondary"
+          id="button-addon2"
+          onClick={() => {
+            if (include.includes(input)) {
+              alert("이미 포함된 재료입니다.");
+              return;
+            } else if (exclude.includes(input)) {
+              alert("이미 제외된 재료입니다.");
+              return;
+            } else if (isInclude) {
+              setInclude((prev) => [...prev, input]);
+            } else {
+              setExclude((prev) => [...prev, input]);
+            }
+            setInput("");
+          }}
+        >
           적용
         </Button>
       </InputGroup>
