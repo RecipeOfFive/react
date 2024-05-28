@@ -33,4 +33,4 @@ jobs:
             npm -v
             npm i --force
             npm run build
-            sudo serve -l 3001 -s build
+            npx serve - s build
