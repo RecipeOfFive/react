@@ -23,9 +23,13 @@ export default function SearchProvider({ children }) {
 
   const filterRecipe = () => {
     axios
-      .get("url", {
-        params: searchOptions,
-      })
+      .get(
+        // 임시 url
+        "http://ec2-3-38-45-40.ap-northeast-2.compute.amazonaws.com:3000/api/food/ingredient/28",
+        {
+          params: searchOptions,
+        }
+      )
       .then((resp) => {
         setSearchResult(resp.data);
       });
