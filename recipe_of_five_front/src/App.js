@@ -9,6 +9,8 @@ import FilterBtn from "./components/FilterBtn";
 import SearchProvider from "./context/SearchProvider";
 import Ingredients from "./components/Ingredients";
 import SendSearch from "./components/SendSearch";
+import RecipeResult from "./components/RecipeResult/RecipeResult";
+
 
 export const AppContext = createContext();
 
@@ -21,7 +23,11 @@ function App() {
                     <SearchInd />
                     <FilterBtn />
                     <Ingredients />
+
+                    <RecipeResult />
                     <SendSearch />
+
+
                     <Ranking />
                 </div>
             </SearchProvider>
