@@ -8,7 +8,6 @@ export default function Ranking() {
   // 4개를 띄우는데 map 사용해서 4개 띄우기.
   const { ranking } = useContext(RecipeFilterContext);
 
-  console.log(ranking);
   // searchOptions = 검색한 레시피 데이터들 저장
 
   return (

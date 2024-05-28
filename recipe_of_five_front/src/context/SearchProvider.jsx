@@ -22,6 +22,10 @@ export default function SearchProvider({ children }) {
 
   const [searchResult, setSearchResult] = [];
 
+  // 유부초밥의 다른 레시피
+
+  const [searchRecipe, setSearchRecipe] = useState([]);
+
   const filterRecipe = () => {
     axios
       .post(
@@ -50,6 +54,8 @@ export default function SearchProvider({ children }) {
         setExclude,
         ranking,
         setRanking,
+        searchResult,
+        setSearchRecipe,
       }}
     >
       {children}
