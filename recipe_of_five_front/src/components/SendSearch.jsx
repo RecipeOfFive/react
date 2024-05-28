@@ -1,26 +1,30 @@
 import React, { useContext, useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { RecipeFilterContext } from "../context/SearchProvider";
+import { Navigate, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export default function SendSearch() {
-  const {
-    searchOptions,
-    setSearchOptions,
-    filterMethod,
-    include,
-    exclude,
-    ranking,
-    setRanking,
-  } = useContext(RecipeFilterContext);
+    const navigate = useNavigate();
+    const {
+        searchOptions,
+        setSearchOptions,
+        filterMethod,
+        include,
+        exclude,
+        ranking,
+        setRanking,
+    } = useContext(RecipeFilterContext);
 
-  const handleSearch = () => {
-    setSearchOptions({
-      include: include,
-      exclude: exclude,
-      method: filterMethod,
-    });
-  };
+    const handleSearch = () => {
+        setSearchOptions({
+            include: include,
+            exclude: exclude,
+            method: filterMethod,
+        });
+        //버튼 클릭시 세부 홈페이지로 이동 예정
+        //navigate("/detail");
+    };
 
   // 최초 랭킹 화면 get 요청
   useEffect(() => {
