@@ -11,6 +11,7 @@ import Ingredients from "./components/Ingredients";
 import SendSearch from "./components/SendSearch";
 import RecipeResult from "./components/RecipeResult/RecipeResult";
 
+
 export const AppContext = createContext();
 
 function App() {
