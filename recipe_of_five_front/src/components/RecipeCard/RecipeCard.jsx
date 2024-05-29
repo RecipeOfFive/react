@@ -6,13 +6,8 @@ import "./style.css";
 import axios from "axios";
 
 export default function RecipeCard() {
-    const {
-        searchResult,
-        searchOptions,
-        setSearchOptions,
-        filterRecipe,
-        setSearchResult,
-    } = useContext(RecipeFilterContext);
+    const { searchResult, searchOptions, setSearchOptions } =
+        useContext(RecipeFilterContext);
     const navigate = useNavigate();
 
     const [currBtn, setCurrBtn] = useState("좋아요");
@@ -53,28 +48,7 @@ export default function RecipeCard() {
                             </Card.Text>
                         </ListGroup>
                         <Card.Body className="text-align">
-                            <Button
-                                variant="primary"
-                                onClick={async (e) => {
-                                    e.preventDefault();
-                                    e.stopPropagation();
-                                    const resp = await axios.get(
-                                        `http://ec2-3-38-45-40.ap-northeast-2.compute.amazonaws.com:3000/api/food/like/${el.id}`
-                                    );
-                                    if (resp.status !== 204) {
-                                        // error 처리
-                                    } else {
-                                        setSearchResult((prev) => {
-                                            const newResult = [...prev];
-                                            newResult[index].like_count += 1;
-                                            return newResult;
-                                        });
-                                    }
-                                }}
-                            >
-                                좋아요
-                            </Button>
-                            {el.like_count}
+                            <p>좋아요: {el.like_count}</p>
                             <br />
                             <p>조회수 : {el.view_count}</p>
                         </Card.Body>
