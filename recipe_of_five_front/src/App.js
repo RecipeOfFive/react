@@ -3,13 +3,15 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import SearchInd from "./components/SearchInd/SearchInd";
 import Ranking from "./components/Ranking/Ranking";
-import RecipeDescrip from "./components/RecipeDesc/RecipeDescrip";
+
 import FilterBtn from "./components/SearchInd/FilterBtn";
 import SearchProvider from "./context/SearchProvider";
 import Ingredients from "./components/SearchInd/Ingredients";
 import SendSearch from "./components/SearchInd/SendSearch";
 import RecipeResult from "./components/RecipeResult/RecipeResult";
 import RecipeCard from "./components/RecipeCard/RecipeCard";
+import RecipeDescrip from "./components/RecipeDesc/RecipeDescrip"
+
 
 export const AppContext = createContext();
 
@@ -28,6 +30,11 @@ function App() {
                     <Ranking />
 
                     <RecipeCard />
+
+                    <RecipeCard />
+
+
+                    <RecipeDescrip />
                 </div>
             </SearchProvider>
         </>
