@@ -6,7 +6,8 @@ import "./style.css";
 import RecipeResult from "../RecipeResult/RecipeResult";
 
 export default function RecipeCard() {
-  const { searchResult, searchOptions, setSearchOptions } =
+  const { setSearchResult, searchResult, searchOptions, setSearchOptions } =
+
     useContext(RecipeFilterContext);
   const navigate = useNavigate();
 

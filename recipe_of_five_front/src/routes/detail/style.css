@@ -16,6 +16,16 @@
   padding-bottom: 30px;
 }
 
+.link-align {
+  display: flex;
+  justify-content: space-around;
+}
+
+.Descript-link1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 수직 가운데 정렬 */
+}
 .Descrip-down {
   padding-bottom: 30px;
 }
