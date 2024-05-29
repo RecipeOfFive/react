@@ -65,11 +65,23 @@ const RecipeDescrip = () => {
     }
   };
 
+  const fetchItem = async () => {
+    try {
+      const resp = await axios.post(
+        `http://ec2-3-38-45-40.ap-northeast-2.compute.amazonaws.com:3000/api/recipe/${id}`
+      );
+      setCooking(resp.data);
+    } catch (error) {
+      console.log("에러 발생4");
+    }
+  };
+
   useEffect(() => {
     fetchRecipe();
     fetchIngredient();
     fetchNutrient();
     fetchCooking();
+    fetchItem();
   }, [id]);
 
   const changeid = (id) => {
@@ -89,10 +101,20 @@ const RecipeDescrip = () => {
         <div className="Descrip-down">
           <div className="Descrip-tit">{recipe.name}</div>
           <div className="Descrip-info">{recipe.description}</div>
-          <div className="Descript-link">
-            <span></span>
-            {/* <span>30분 이내</span> */}
-            <a href={`/${id}`}>공유</a>
+          <div className="link-align">
+            <div className="Descript-link1">
+              <span>조리방법</span>
+              <span>{recipe.type}</span>{" "}
+            </div>
+            <div className="Descript-link1">
+              <span>요리종류</span>
+              <span>{recipe.kind}</span>{" "}
+            </div>
+
+            <div className="Descript-link1">
+              <span>해쉬태그</span>
+              <span>{recipe.hashtag}</span>{" "}
+            </div>
           </div>
         </div>
 
