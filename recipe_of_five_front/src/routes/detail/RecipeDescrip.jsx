@@ -1,5 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { Card, ListGroup, Button } from "react-bootstrap";
+import { Card, ListGroup, Button, Row, Col } from "react-bootstrap";
 import "./style.css";
 import React, { useState, useEffect, useContext } from "react";
 import { RecipeFilterContext } from "../../context/SearchProvider";
@@ -11,6 +11,7 @@ const RecipeDescrip = () => {
   const [ingredient, setIngredient] = useState([]);
   const [calorie, setCalorie] = useState([]);
   const [cooking, setCooking] = useState([]);
+  const [selectedIndex, setSelectedIndex] = useState(1);
 
   const { searchResult } = useContext(RecipeFilterContext);
   const navigate = useNavigate();
@@ -20,6 +21,7 @@ const RecipeDescrip = () => {
       const resp = await axios.get(
         `http://ec2-3-38-45-40.ap-northeast-2.compute.amazonaws.com:3000/api/food/${id}`
       );
+      console.log(resp.data);
       setRecipe(resp.data);
     } catch (error) {
       console.log("에러 발생1");
@@ -87,6 +89,9 @@ const RecipeDescrip = () => {
   };
 
   let count = 0;
+
+  // console.log(cooking);
+  // console.log(selectedIndex);
   return (
     <div className="container">
       <div className="view1">
@@ -111,50 +116,45 @@ const RecipeDescrip = () => {
               <span>해쉬태그</span>
               <span>{recipe.hashtag}</span>{" "}
             </div>
+
+          <div className="Descript-link">
+            <span></span>
+            {/* <span>30분 이내</span> */}
+            <a href={`/${id}`}>공유</a>
           </div>
         </div>
 
         <div>
-          <div className="another-recipe">다른 레시피</div>
+          <h3>다른 레시피</h3>
+          <div className="another-recipe">
+            {searchResult.map((el, index) => {
+              if (String(el.id) !== String(id) && count < 3) {
+                count += 1;
+                return (
+                  <Card
+                    key={index}
+                    onClick={() => navigate(`/${el.id}`)}
+                    className="item-card"
+                  >
+                    <img src={el.main_image}></img>
 
-          {searchResult.map((el, index) => {
-            if (String(el.id) !== String(id) && count < 3) {
-              count += 1;
-              return (
-                <Card key={index} style={{ width: "18rem" }}>
-                  <img
-                    src={el.main_image}
-                    onClick={() => changeid(el.id)}
-                  ></img>
-                  <ListGroup className="list-group-flush">
-                    <Card.Title>{el.name}</Card.Title>
-                    <Card.Text onClick={() => navigate(`/${el.id}`)}>
-                      {el.description}
-                    </Card.Text>
-                  </ListGroup>
-                  <Card.Body className="text-align">
-                    <Button
-                      variant="primary"
-                      onClick={() => {
-                        axios.get(
-                          `http://ec2-3-38-45-40.ap-northeast-2.compute.amazonaws.com:3000/api/food/like/${el.id}`
-                        );
-                      }}
-                    >
-                      좋아요
-                    </Button>
-                    {el.like_count}
-                    <br />
-                    <p>조회수 : {el.view_count}</p>
-                  </Card.Body>
-                </Card>
-              );
-            }
-          })}
+                    <Card.Title className="item-title">{el.name}</Card.Title>
+
+                    <Card.Body className="text-align">
+                      <p>❤️좋아요 {el.like_count}</p>
+                      <p>👀조회수 {el.view_count}</p>
+                    </Card.Body>
+                  </Card>
+                );
+              }
+            })}
+          </div>
         </div>
 
         <div className="view2">
-          <div>재료</div>
+          <div>
+            <h3>재료</h3>
+          </div>
           <hr className="hr" />
 
           {/* 여기다가 재료 하나씩 입력 */}
@@ -176,8 +176,30 @@ const RecipeDescrip = () => {
         </div>
 
         <div className="view3">
-          <div className="view3-tit">조리순서</div>
-          <ul className="no-bullets">
+          <h3>조리순서</h3>
+          <div className="cooking-desc-img-div">
+            <div className="cooking-desc-div">
+              <ul className="no-bullets">
+                {cooking.map((step, index) => (
+                  <li>
+                    <div onClick={() => setSelectedIndex(index)}>
+                      {step.description.replace(/.$/, "")}
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            {cooking.length > 0 && (
+              <div className="cooking-img-div">
+                <img
+                  src={cooking[selectedIndex].image}
+                  alt={`Step ${cooking[selectedIndex].recipeOrder}`}
+                  className="full-width-image"
+                />
+              </div>
+            )}
+          </div>
+          {/* <ul className="no-bullets">
             {cooking.map((step, index) => (
               <li key={index}>
                 <div>{step.description.replace(/.$/, "")}</div>
@@ -186,7 +208,7 @@ const RecipeDescrip = () => {
                 </div>
               </li>
             ))}
-          </ul>
+          </ul> */}
         </div>
       </div>
     </div>
