@@ -1,19 +1,13 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Card, ListGroup, Button } from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
 import { RecipeFilterContext } from "../../context/SearchProvider";
 import "./style.css";
-import axios from "axios";
 import RecipeResult from "../RecipeResult/RecipeResult";
 
 export default function RecipeCard() {
-  const {
-    searchResult,
-    searchOptions,
-    setSearchOptions,
-    filterRecipe,
-    setSearchResult,
-  } = useContext(RecipeFilterContext);
+  const { searchResult, searchOptions, setSearchOptions } =
+    useContext(RecipeFilterContext);
   const navigate = useNavigate();
 
   const [currBtn, setCurrBtn] = useState("좋아요");
@@ -24,6 +18,7 @@ export default function RecipeCard() {
     } else {
       setCurrBtn("좋아요");
     }
+
     setSearchOptions((prevOptions) => {
       return {
         ...prevOptions,
@@ -43,11 +38,7 @@ export default function RecipeCard() {
         {searchResult.map((el, index) => {
           if (index === 10) return;
           return (
-            <Card
-              key={index}
-              style={{ width: "18rem" }}
-              onClick={() => navigate(`/${el.id}`)}
-            >
+            <Card key={index} onClick={() => navigate(`/${el.id}`)}>
               <img src={el.main_image}></img>
 
               <Card.Title className="item-title">{el.name}</Card.Title>

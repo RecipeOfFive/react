@@ -45,6 +45,7 @@ export default function SendSearch() {
         filterRecipe();
     }, [searchOptions]);
 
+
     return (
         <div>
             <Button variant="danger" onClick={handleSearch}>
@@ -52,4 +53,5 @@ export default function SendSearch() {
             </Button>
         </div>
     );
+
 }
