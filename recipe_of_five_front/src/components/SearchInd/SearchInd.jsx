@@ -92,7 +92,8 @@ export default function SearchInd() {
 
   return (
     <div className="main-div-SearchInd">
-      <h1>Recipe of Five</h1>
+      {/* <h1>Recipe of Five</h1> */}
+      <h1>5조의 레시피</h1>
       <div className="searchInd-btn">
         <ButtonGroup className="main-div-SearchInd-buttongroup">
           {radios.map((radio, idx) => (
