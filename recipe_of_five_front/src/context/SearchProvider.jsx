@@ -26,9 +26,7 @@ export default function SearchProvider({ children }) {
         return axios
             .post(
                 "http://ec2-3-38-45-40.ap-northeast-2.compute.amazonaws.com:3000/api/food/",
-                {
-                    params: searchOptions,
-                }
+                searchOptions
             )
             .then((resp) => {
                 setSearchResult(resp.data);

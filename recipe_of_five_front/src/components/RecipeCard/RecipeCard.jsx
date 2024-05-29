@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Card, ListGroup } from "react-bootstrap";
+import { Card, ListGroup, Button } from "react-bootstrap";
 import { RecipeFilterContext } from "../../context/SearchProvider";
 import "./style.css";
 
@@ -36,8 +36,10 @@ export default function RecipeCard() {
                             <Card.Text>{el.description}</Card.Text>
                         </ListGroup>
                         <Card.Body className="text-align">
-                            <Card.Link>Like : {el.likeCount}</Card.Link>
-                            <Card.Link>ViewCount : {el.view_count}</Card.Link>
+                            <Button variant="primary">좋아요</Button>
+                            {el.like_count}
+                            <br />
+                            <p>조회수 : {el.view_count}</p>
                         </Card.Body>
                     </Card>
                 );
