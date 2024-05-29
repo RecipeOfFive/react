@@ -42,7 +42,16 @@
   font-size: 20px;
   font-weight: bold;
 }
+
+.view2 li {
+  list-style-type: none;
+}
+
 .hr {
   border: 1px solid black;
   /* height: 3px; 원하는 두께로 설정 */
+}
+
+.no-bullets {
+  list-style-type: none;
 }

@@ -45,8 +45,8 @@ export default function SendSearch() {
     filterRecipe();
   }, [searchOptions]);
 
-  console.log("요청 :", searchOptions);
-  console.log("결과 :", searchResult);
+  // console.log("요청 :", searchOptions);
+  // console.log("결과 :", searchResult);
 
   return (
     <div>
