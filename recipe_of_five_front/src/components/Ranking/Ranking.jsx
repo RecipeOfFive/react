@@ -28,12 +28,12 @@ export default function Ranking() {
                 <Card.Text className="item-description">
                   {recipe.description}
                 </Card.Text>
-                <Card.Text>
+                <div className="like-view-div">
                   <span className="like-view">Like </span>
                   <span className="like-view-count">{recipe.like_count} </span>
                   <span className="like-view">View </span>
                   <span className="like-view-count">{recipe.view_count} </span>
-                </Card.Text>
+                </div>
               </div>
               <div>
                 <Card.Img
