@@ -14,6 +14,7 @@ export default function SendSearch() {
     setRanking,
     searchResult,
     filterRecipe,
+    setIsFirst,
   } = useContext(RecipeFilterContext);
 
   const handleSearch = () => {
@@ -24,7 +25,6 @@ export default function SendSearch() {
       type: filterMethod,
     });
     //버튼 클릭시 세부 홈페이지로 이동 예정
-    //navigate("/detail");
   };
 
   // 최초 랭킹 화면 get 요청
@@ -45,8 +45,8 @@ export default function SendSearch() {
     filterRecipe();
   }, [searchOptions]);
 
-  // console.log("요청 :", searchOptions);
-  // console.log("결과 :", searchResult);
+  console.log("요청 :", searchOptions);
+  console.log("결과 :", searchResult);
 
   return (
     <div>

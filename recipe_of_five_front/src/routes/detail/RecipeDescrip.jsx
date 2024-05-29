@@ -1,3 +1,4 @@
+import { useParams } from "react-router-dom";
 import testImg from "../../images/test.jpeg";
 import { Card, ListGroup } from "react-bootstrap";
 import "./style.css";
@@ -5,8 +6,9 @@ import React, { useState, useEffect, useContext } from "react";
 import { RecipeFilterContext } from "../../context/SearchProvider";
 import test1 from "../../images/test1.jpeg";
 import axios from "axios";
+const RecipeDescrip = () => {
+  const { id } = useParams();
 
-export default function RecipeDescrip() {
   const [title, setTitle] = useState("시금치 계란 볶음 레시피 다이어트 반찬");
   const [info, setInfo] = useState(
     " 계란은 단백질이 풍부하고 칼로리가 낮아 다이어트에 좋은 식품! 또 계란노른자에는 루테인 성분이 풍부하여 눈 건강에도 도움이 되며 탈모예방에도 효과적이라고 해요. 이렇게 몸에 좋은 두 가지 재료를 함께 볶아낸다면 얼마나 맛있게요? 시금치 계란 볶음 레시피 바로 시작할게요."
@@ -98,10 +100,10 @@ export default function RecipeDescrip() {
             {info}
           </div>
           {/* <div className="Descript-link">
-            <span>{link}</span>
-            <span>30분 이내</span>
-            <span>공유 링크</span>
-          </div> */}
+        <span>{link}</span>
+        <span>30분 이내</span>
+        <span>공유 링크</span>
+      </div> */}
         </div>
 
         <div>
@@ -147,11 +149,11 @@ export default function RecipeDescrip() {
           <hr className="hr" />
 
           {/* 
-            <hr />
-            <ul>{ {calorie.map(ingredient,index) => (
-              <li key={index}>
-                {}
-            )} }</ul> */}
+        <hr />
+        <ul>{ {calorie.map(ingredient,index) => (
+          <li key={index}>
+            {}
+        )} }</ul> */}
         </div>
 
         <div className="view3">
@@ -170,4 +172,6 @@ export default function RecipeDescrip() {
       </div>
     </div>
   );
-}
+};
+
+export default RecipeDescrip;

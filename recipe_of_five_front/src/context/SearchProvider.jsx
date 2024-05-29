@@ -19,10 +19,9 @@ export default function SearchProvider({ children }) {
   const [include, setInclude] = useState([]);
   const [exclude, setExclude] = useState([]);
   const [order, setOrder] = useState("LIKECOUNT");
+  const [isFirst, setIsFirst] = useState(true);
 
   const [searchResult, setSearchResult] = useState([]);
-  const [selectCard, setSelectCard] = useState(null);
-  const [iddata, setIddata] = useState();
 
   const filterRecipe = () => {
     return axios
@@ -32,6 +31,8 @@ export default function SearchProvider({ children }) {
       )
       .then((resp) => {
         setSearchResult(resp.data);
+        //랭킹 페이지 제거
+        setIsFirst(false);
       });
   };
 
@@ -51,10 +52,6 @@ export default function SearchProvider({ children }) {
         setRanking,
         searchResult,
         filterRecipe,
-        selectCard,
-        setSelectCard,
-        iddata,
-        setIddata,
       }}
     >
       {children}
