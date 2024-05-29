@@ -13,7 +13,7 @@ import { Row, Col, Container } from "react-bootstrap";
 
 const Main = () => {
   const navigate = useNavigate();
-  const { isFirtst, setIsFirst } = useContext(RecipeFilterContext);
+  const { isFirst } = useContext(RecipeFilterContext);
 
   return (
     <div className="main">
@@ -30,9 +30,7 @@ const Main = () => {
           {/* // right-side */}
 
           <Col className="rightSide" xs={6}>
-            {/* <RecipeResult /> */}
-            <Ranking />
-            {/* s */}
+            {isFirst ? <Ranking /> : <RecipeCard />}
           </Col>
         </Row>
       </Container>
