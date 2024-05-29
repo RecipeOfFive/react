@@ -11,8 +11,9 @@ export default function SendSearch() {
     filterMethod,
     include,
     exclude,
-    ranking,
     setRanking,
+    searchResult,
+    filterRecipe,
   } = useContext(RecipeFilterContext);
 
   const handleSearch = () => {
@@ -39,15 +40,13 @@ export default function SendSearch() {
       });
   }, []);
 
-  // useEffect(() => {
-  //   // 서버에 원하는 레시피를 전송
-  //   axios
-  //     .get(
-  //       "http://ec2-3-38-45-40.ap-northeast-2.compute.amazonaws.com:3000/api/food/",
-  //       searchOptions
-  //     )
-  //     .then((resp) => {});
-  // }, [searchOptions]);
+  useEffect(() => {
+    //searchResult 결과
+    filterRecipe();
+  }, [searchOptions]);
+
+  console.log("요청 :", searchOptions);
+  console.log("결과 :", searchResult);
 
   return (
     <div>

@@ -5,8 +5,6 @@ import Button from "react-bootstrap/Button";
 export default function RecipeResult() {
   const { exclude, include } = useContext(RecipeFilterContext);
   const colors = ["success", "warning", "danger", "secondary"];
-
-  console.log(include);
   return (
     <div>
       <div className="include-ingred">

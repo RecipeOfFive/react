@@ -1,4 +1,3 @@
-
 import React, { createContext } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -13,6 +12,7 @@ import RecipeResult from "./components/RecipeResult/RecipeResult";
 import RecipeCard from "./components/RecipeCard/RecipeCard";
 import RecipeDescrip from "./components/RecipeDesc/RecipeDescrip"
 
+
 export const AppContext = createContext();
 
 function App() {
@@ -20,7 +20,6 @@ function App() {
         <>
             <SearchProvider>
                 <div className="App">
-
                     <SearchInd />
                     <FilterBtn />
                     <Ingredients />
@@ -28,8 +27,9 @@ function App() {
                     <RecipeResult />
                     <SendSearch />
 
-
                     <Ranking />
+
+                    <RecipeCard />
 
                     <RecipeCard />
 
@@ -38,7 +38,6 @@ function App() {
                 </div>
             </SearchProvider>
         </>
-
     );
 }
 

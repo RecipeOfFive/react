@@ -20,16 +20,11 @@ export default function SearchProvider({ children }) {
   const [exclude, setExclude] = useState([]);
   const [order, setOrder] = useState("LIKECOUNT");
 
-  const [searchResult, setSearchResult] = [];
-
-  // 유부초밥의 다른 레시피
-
-  const [searchRecipe, setSearchRecipe] = useState([]);
+  const [searchResult, setSearchResult] = useState([]);
 
   const filterRecipe = () => {
-    axios
+    return axios
       .post(
-        // 임시 url
         "http://ec2-3-38-45-40.ap-northeast-2.compute.amazonaws.com:3000/api/food/",
         {
           params: searchOptions,
@@ -55,7 +50,7 @@ export default function SearchProvider({ children }) {
         ranking,
         setRanking,
         searchResult,
-        setSearchRecipe,
+        filterRecipe,
       }}
     >
       {children}

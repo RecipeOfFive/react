@@ -7,7 +7,6 @@ export default function Ranking() {
   //
   // 4개를 띄우는데 map 사용해서 4개 띄우기.
   const { ranking } = useContext(RecipeFilterContext);
-
   // searchOptions = 검색한 레시피 데이터들 저장
 
   return (
@@ -18,7 +17,7 @@ export default function Ranking() {
 
       <div className="rank-image">
         {ranking.map((recipe, index) => (
-          <Card style={{ width: "80rem" }}>
+          <Card key={index} style={{ width: "80rem" }}>
             <Card.Body className="Rank-location">
               <div>
                 <Card.Subtitle className="mb-2 text-muted">
