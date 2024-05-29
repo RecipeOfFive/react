@@ -1,5 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { Card, ListGroup, Button } from "react-bootstrap";
+import { Card, ListGroup, Button, Row, Col } from "react-bootstrap";
 import "./style.css";
 import React, { useState, useEffect, useContext } from "react";
 import { RecipeFilterContext } from "../../context/SearchProvider";
@@ -11,6 +11,7 @@ const RecipeDescrip = () => {
   const [ingredient, setIngredient] = useState([]);
   const [calorie, setCalorie] = useState([]);
   const [cooking, setCooking] = useState([]);
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
   const { searchResult } = useContext(RecipeFilterContext);
   const navigate = useNavigate();
@@ -143,17 +144,27 @@ const RecipeDescrip = () => {
         </div>
 
         <div className="view3">
-          <div className="view3-tit">조리순서</div>
-          <ul className="no-bullets">
-            {cooking.map((step, index) => (
-              <li key={index}>
-                <div>{step.description.replace(/.$/, "")}</div>
-                <div>
-                  <img src={step.image} alt={`Step ${step.recipeOrder}`} />
-                </div>
-              </li>
-            ))}
-          </ul>
+          <h3>조리순서</h3>
+          <div className="cooking-desc-img-div">
+            <div className="cooking-desc-div">
+              <ul className="no-bullets">
+                {cooking.map((step, index) => (
+                  <li>
+                    <div onClick={() => setSelectedIndex(index)}>
+                      {step.description.replace(/.$/, "")}
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="cooking-img-div">
+              <img
+                src={cooking[selectedIndex].image}
+                alt={`Step ${cooking[selectedIndex].recipeOrder}`}
+                className="full-width-image"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>
