@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
-import { Card, ListGroup } from "react-bootstrap";
+import { Card, ListGroup, Button } from "react-bootstrap";
 import { RecipeFilterContext } from "../../context/SearchProvider";
 import "./style.css";
+import axios from "axios";
 
 export default function RecipeCard() {
   const { searchResult } = useContext(RecipeFilterContext);
@@ -17,8 +18,19 @@ export default function RecipeCard() {
               <Card.Text>{el.description}</Card.Text>
             </ListGroup>
             <Card.Body className="text-align">
-              <Card.Link>Like : {el.likeCount}</Card.Link>
-              <Card.Link>ViewCount : {el.view_count}</Card.Link>
+              <Button
+                variant="primary"
+                onClick={() => {
+                  axios.get(
+                    `http://ec2-3-38-45-40.ap-northeast-2.compute.amazonaws.com:3000/api/food/like/${el.id}`
+                  );
+                }}
+              >
+                좋아요
+              </Button>
+              {el.like_count}
+              <br />
+              <p>조회수 : {el.view_count}</p>
             </Card.Body>
           </Card>
         );
