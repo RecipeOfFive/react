@@ -1,3 +1,4 @@
+import { useParams } from "react-router-dom";
 import testImg from "../../images/test.jpeg";
 import { Card, ListGroup } from "react-bootstrap";
 import "./style.css";
@@ -5,8 +6,9 @@ import React, { useState, useEffect, useContext } from "react";
 import { RecipeFilterContext } from "../../context/SearchProvider";
 import test1 from "../../images/test1.jpeg";
 import axios from "axios";
+const RecipeDescrip = () => {
+  const { id } = useParams();
 
-export default function RecipeDescrip() {
   const [title, setTitle] = useState("시금치 계란 볶음 레시피 다이어트 반찬");
   const [info, setInfo] = useState(
     " 계란은 단백질이 풍부하고 칼로리가 낮아 다이어트에 좋은 식품! 또 계란노른자에는 루테인 성분이 풍부하여 눈 건강에도 도움이 되며 탈모예방에도 효과적이라고 해요. 이렇게 몸에 좋은 두 가지 재료를 함께 볶아낸다면 얼마나 맛있게요? 시금치 계란 볶음 레시피 바로 시작할게요."
@@ -15,7 +17,13 @@ export default function RecipeDescrip() {
   const [hash, setHash] = useState();
 
   const [anotherlink, setanotherLink] = useState();
+  // 위에 내용 지울 데이터들
+
+  const [recipe, setRecipe] = useState([]);
+  const [ingredient, setIngredient] = useState([]);
   const [calorie, setCalorie] = useState([]);
+
+  //
 
   const {
     searchOptions,
@@ -24,36 +32,82 @@ export default function RecipeDescrip() {
     exclude,
     ranking,
     searchResult,
+    selectCard,
+    setSelectCard,
+    iddata,
+    setIddata,
   } = useContext(RecipeFilterContext);
 
   // useEffect(()=>){
   //   axios
-  //   .post(        "http://ec2-3-38-45-40.ap-northeast-2.compute.amazonaws.com:3000/api/food/nutirent/"
-  //   )
+  //   .post("http://ec2-3-38-45-40.ap-northeast-2.compute.amazonaws.com:3000/api/food/nutirent/"
+  //   ).then((resp)=>{
+
+  //   })
   // }
 
-  console.log(searchResult[0]);
+  // 레시피 상세 정보 가져오기
+  // useEffect(() => {
+  //   axios
+  //     .post(
+  //       `http://ec2-3-38-45-40.ap-northeast-2.compute.amazonaws.com:3000/api/food/${id}`
+  //     )
+  //     .then((resp) => {
+  //       setCalorie(resp.data);
+  //     });
+  // });
+
+  // 재료 정보 가져오기
+  // useEffect(() => {
+  //   axios
+  //     .post(
+  //       `http://ec2-3-38-45-40.ap-northeast-2.compute.amazonaws.com:3000/api/food/ingredient/${id}`
+  //     )
+  //     .then((resp) => {
+  //       setIngredient(resp.data);
+  //     });
+  // });
+
+  // 영양소 정보 가져오기
+  // useEffect(() => {
+  //   axios
+  //     .post(
+  //       `http://ec2-3-38-45-40.ap-northeast-2.compute.amazonaws.com:3000/api/food/nutirent/${id}`
+  //     )
+  //     .then((resp) => {
+  //       setCalorie(resp.data);
+  //     });
+  // });
+
+  // console.log(searchResult);
+  // console.log(searchResult[0]);
+  console.log(iddata);
+
   return (
     <div className="container">
       <div className="view1">
         <div className="Descrip-top">
-          <img className="first-img" src4={testImg} />
+          <img
+            className="first-img"
+            // src={searchResult[0].main_image}
+            alt="대체 이미지"
+          />
         </div>
         <div className="Descrip-down">
-          <div className="Descrip-tit">{title}</div>
+          {/* <div className="Descrip-tit">{searchResult[0].name}</div> */}
           <div className="Descrip-info">
             {/* 레시피 정보 기입 */}
             {info}
           </div>
           {/* <div className="Descript-link">
-            <span>{link}</span>
-            <span>30분 이내</span>
-            <span>공유 링크</span>
-          </div> */}
+        <span>{link}</span>
+        <span>30분 이내</span>
+        <span>공유 링크</span>
+      </div> */}
         </div>
 
         <div>
-          <div className="another-recipe">시금치 계란 볶음의 다른 레시피</div>
+          <div className="another-recipe">다른 레시피</div>
 
           {/* 이부분에 레시피 카드형식 넣기 */}
 
@@ -95,11 +149,11 @@ export default function RecipeDescrip() {
           <hr className="hr" />
 
           {/* 
-            <hr />
-            <ul>{ {calorie.map(ingredient,index) => (
-              <li key={index}>
-                {}
-            )} }</ul> */}
+        <hr />
+        <ul>{ {calorie.map(ingredient,index) => (
+          <li key={index}>
+            {}
+        )} }</ul> */}
         </div>
 
         <div className="view3">
@@ -118,4 +172,6 @@ export default function RecipeDescrip() {
       </div>
     </div>
   );
-}
+};
+
+export default RecipeDescrip;

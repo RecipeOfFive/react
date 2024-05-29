@@ -2,17 +2,17 @@ import { createBrowserRouter } from "react-router-dom";
 import React, { createContext } from "react";
 
 import MainPage from "./routes/main/mainPage";
-import DetailPage from "./routes/detail/detailPage";
+import RecipeDescrip from "./routes/detail/RecipeDescrip";
 
 const Router = createBrowserRouter([
-    {
-        path: "/",
-        element: <MainPage />,
-    },
-    {
-        path: ":id",
-        element: <DetailPage />,
-    },
+  {
+    path: "/",
+    element: <MainPage />,
+  },
+  {
+    path: ":id",
+    element: <RecipeDescrip />,
+  },
 ]);
 
 export default Router;
