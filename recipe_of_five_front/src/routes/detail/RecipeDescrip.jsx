@@ -92,7 +92,8 @@ const RecipeDescrip = () => {
 
   // console.log(cooking);
   // console.log(selectedIndex);
-  return (
+
+  return(
     <div className="container">
       <div className="view1">
         <div className="Descrip-top">
@@ -116,7 +117,6 @@ const RecipeDescrip = () => {
               <span>해쉬태그</span>
               <span>{recipe.hashtag}</span>{" "}
             </div>
-
           <div className="Descript-link">
             <span></span>
             {/* <span>30분 이내</span> */}
@@ -212,7 +212,7 @@ const RecipeDescrip = () => {
         </div>
       </div>
     </div>
-  );
+  )
 };
 
 export default RecipeDescrip;
