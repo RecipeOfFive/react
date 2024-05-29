@@ -1,15 +1,20 @@
-import logo from "./logo.svg";
-import {Provider} from 'react-redux';
-import store from './store';
+import React, { createContext } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import SearchInd from "./components/SearchInd";
+import "./App.css";
+import SearchProvider from "./context/SearchProvider";
+import { RouterProvider } from "react-router-dom";
+import mainRouter from "./mainRouter";
+
+export const AppContext = createContext();
 
 function App() {
-    return (
-            <Provider store={store} >
-                <SearchInd />
-            </Provider>
-    );
+  return (
+    <>
+      <SearchProvider>
+        <RouterProvider router={mainRouter} />
+      </SearchProvider>
+    </>
+  );
 }
 
 export default App;

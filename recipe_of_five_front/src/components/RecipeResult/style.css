@@ -1,0 +1,22 @@
+.recipe-result {
+    padding-top: 30px;
+}
+
+.ingredient-list {
+    display: flex;
+    gap: 10px;
+}
+
+.ingredient-list-value {
+    list-style-type: none;
+    list-style: none;
+}
+
+.ingredient-list-value-button {
+    border: 2px solid black !important;
+}
+
+.ingredient-list-typo-style {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
