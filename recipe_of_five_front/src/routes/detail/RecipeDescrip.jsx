@@ -11,7 +11,7 @@ const RecipeDescrip = () => {
   const [ingredient, setIngredient] = useState([]);
   const [calorie, setCalorie] = useState([]);
   const [cooking, setCooking] = useState([]);
-  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [selectedIndex, setSelectedIndex] = useState(1);
 
   const { searchResult } = useContext(RecipeFilterContext);
   const navigate = useNavigate();
@@ -21,6 +21,7 @@ const RecipeDescrip = () => {
       const resp = await axios.get(
         `http://ec2-3-38-45-40.ap-northeast-2.compute.amazonaws.com:3000/api/food/${id}`
       );
+      console.log(resp.data);
       setRecipe(resp.data);
     } catch (error) {
       console.log("에러 발생1");
@@ -76,6 +77,9 @@ const RecipeDescrip = () => {
   };
 
   let count = 0;
+
+  // console.log(cooking);
+  // console.log(selectedIndex);
   return (
     <div className="container">
       <div className="view1">
@@ -157,14 +161,26 @@ const RecipeDescrip = () => {
                 ))}
               </ul>
             </div>
-            <div className="cooking-img-div">
-              <img
-                src={cooking[selectedIndex].image}
-                alt={`Step ${cooking[selectedIndex].recipeOrder}`}
-                className="full-width-image"
-              />
-            </div>
+            {cooking.length > 0 && (
+              <div className="cooking-img-div">
+                <img
+                  src={cooking[selectedIndex].image}
+                  alt={`Step ${cooking[selectedIndex].recipeOrder}`}
+                  className="full-width-image"
+                />
+              </div>
+            )}
           </div>
+          {/* <ul className="no-bullets">
+            {cooking.map((step, index) => (
+              <li key={index}>
+                <div>{step.description.replace(/.$/, "")}</div>
+                <div>
+                  <img src={step.image} alt={`Step ${step.recipeOrder}`} />
+                </div>
+              </li>
+            ))}
+          </ul> */}
         </div>
       </div>
     </div>
