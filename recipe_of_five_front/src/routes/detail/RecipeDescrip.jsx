@@ -92,42 +92,30 @@ const RecipeDescrip = () => {
         </div>
 
         <div>
-          <div className="another-recipe">다른 레시피</div>
+          <h1>다른 레시피</h1>
+          <div className="another-recipe">
+            {searchResult.map((el, index) => {
+              if (String(el.id) !== String(id) && count < 3) {
+                count += 1;
+                return (
+                  <Card
+                    key={index}
+                    onClick={() => navigate(`/${el.id}`)}
+                    className="item-card"
+                  >
+                    <img src={el.main_image}></img>
 
-          {searchResult.map((el, index) => {
-            if (String(el.id) !== String(id) && count < 3) {
-              count += 1;
-              return (
-                <Card key={index} style={{ width: "18rem" }}>
-                  <img
-                    src={el.main_image}
-                    onClick={() => changeid(el.id)}
-                  ></img>
-                  <ListGroup className="list-group-flush">
-                    <Card.Title>{el.name}</Card.Title>
-                    <Card.Text onClick={() => navigate(`/${el.id}`)}>
-                      {el.description}
-                    </Card.Text>
-                  </ListGroup>
-                  <Card.Body className="text-align">
-                    <Button
-                      variant="primary"
-                      onClick={() => {
-                        axios.get(
-                          `http://ec2-3-38-45-40.ap-northeast-2.compute.amazonaws.com:3000/api/food/like/${el.id}`
-                        );
-                      }}
-                    >
-                      좋아요
-                    </Button>
-                    {el.like_count}
-                    <br />
-                    <p>조회수 : {el.view_count}</p>
-                  </Card.Body>
-                </Card>
-              );
-            }
-          })}
+                    <Card.Title className="item-title">{el.name}</Card.Title>
+
+                    <Card.Body className="text-align">
+                      <p>❤️좋아요 {el.like_count}</p>
+                      <p>👀조회수 {el.view_count}</p>
+                    </Card.Body>
+                  </Card>
+                );
+              }
+            })}
+          </div>
         </div>
 
         <div className="view2">

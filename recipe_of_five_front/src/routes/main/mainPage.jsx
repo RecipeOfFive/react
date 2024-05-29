@@ -20,7 +20,7 @@ const Main = () => {
       {/* right-side */}
 
       <SearchInd />
-      <Ingredients />
+      {/* <Ingredients /> */}
       <FilterBtn />
       <SendSearch />
 
