@@ -18,12 +18,11 @@ export default function SearchProvider({ children }) {
     const [filterMethod, setFilterMethod] = useState([]);
     const [include, setInclude] = useState([]);
     const [exclude, setExclude] = useState([]);
-    const [order, setOrder] = useState("LIKECOUNT");
     const [isFirst, setIsFirst] = useState(true);
 
     const [searchResult, setSearchResult] = useState([]);
 
-    const filterRecipe = () => {
+    const filterRecipe = useCallback(() => {
         return axios
             .post(
                 "http://ec2-3-38-45-40.ap-northeast-2.compute.amazonaws.com:3000/api/food/",
@@ -32,7 +31,10 @@ export default function SearchProvider({ children }) {
             .then((resp) => {
                 setSearchResult(resp.data);
             });
-    };
+    }, [searchOptions]);
+    useEffect(() => {
+        filterRecipe();
+    }, [searchOptions]);
 
     //value에 추후 state 추가
     return (
