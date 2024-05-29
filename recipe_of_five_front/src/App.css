@@ -6,7 +6,8 @@
 .main-div-SearchInd {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
+  align-items: center;
   text-align: center;
   gap: 30px;
 }
@@ -18,7 +19,8 @@
 
 /* SearchInd 컴포넌트 - 버튼 그룹 - 토글(포함/제외) */
 .main-div-SearchInd-buttongroup {
-  justify-content: flex-start; /* Align buttons to the left */
+  /* justify-content: left; Align buttons to the left */
+  align-items: left;
 }
 
 .btn-group {
@@ -50,13 +52,19 @@
   border-color: #cb8203 !important; /* 활성화된 버튼의 테두리색 */
 }
 
-/* SearchInd 컴포넌트 - input 검색 필드 */
-
-.mb-3 {
-  width: 600px;
+.searchInd-btn {
+  width: 450px;
   display: flex;
-  justify-content: center !important;
-  align-items: center !important;
+  justify-content: left;
+}
+
+/* SearchInd 컴포넌트 - input 검색 필드 */
+.searchInd-input {
+  display: flex;
+  justify-content: center;
+}
+.mb-3 {
+  width: 450px;
 }
 
 /* ingredient컴포넌트 - 포함/제외 */
