@@ -1,6 +1,5 @@
 import React, { useContext, useEffect } from "react";
 import { Button } from "react-bootstrap";
-
 import { RecipeFilterContext } from "../../context/SearchProvider";
 import axios from "axios";
 
@@ -50,8 +49,8 @@ export default function SendSearch() {
 
   return (
     <div>
-      <Button variant="danger" onClick={handleSearch}>
-        검색
+      <Button className="custom-search-button" onClick={handleSearch}>
+        맛있는 레시피 찾기
       </Button>
     </div>
   );
