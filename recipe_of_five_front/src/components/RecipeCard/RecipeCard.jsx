@@ -4,12 +4,14 @@ import { Card, ListGroup, Button } from "react-bootstrap";
 import { RecipeFilterContext } from "../../context/SearchProvider";
 import "./style.css";
 import axios from "axios";
+import RecipeResult from "../RecipeResult/RecipeResult";
 
 export default function RecipeCard() {
   const { searchResult } = useContext(RecipeFilterContext);
   const navigate = useNavigate();
   return (
     <div>
+      <RecipeResult />
       {searchResult.map((el, index) => {
         if (index === 10) return;
         return (

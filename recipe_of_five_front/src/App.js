@@ -14,17 +14,6 @@ function App() {
         <RouterProvider router={mainRouter} />
       </SearchProvider>
     </>
-    // <>
-    //     <SearchProvider>
-    //         <div className="App">
-    //             <
-
-    //             <RecipeCard />
-
-    //             <RecipeDescrip />
-    //         </div>
-    //     </SearchProvider>
-    // </>
   );
 }
 

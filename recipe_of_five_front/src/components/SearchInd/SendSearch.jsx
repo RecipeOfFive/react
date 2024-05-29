@@ -23,7 +23,7 @@ export default function SendSearch() {
       exclude: exclude,
       type: filterMethod,
     });
-    //버튼 클릭시 세부 홈페이지로 이동 예정
+    setIsFirst(false);
   };
 
   // 최초 랭킹 화면 get 요청

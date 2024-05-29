@@ -1,5 +1,56 @@
-.Rank-location {
+.ranking {
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
   align-items: center;
+}
+
+.ranking-title {
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 20px 0 20px 0;
+}
+
+.rank-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.item-location {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.item-description {
+  min-width: 400px;
+  max-width: 700px;
+  font-size: 1.2rem;
+}
+
+.item-image {
+  /* 이미지 크기 동적으로 변경 필요 */
+  width: 177px; 
+  height: 177px ;  
+}
+
+.item-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.like-view {
+  font-size: 1.2rem;
+  color: #BDBDBD;
+}
+
+.like-view-count {
+  font-weight: bold;
 }

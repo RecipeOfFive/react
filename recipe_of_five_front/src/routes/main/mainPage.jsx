@@ -9,24 +9,31 @@ import RecipeResult from "../../components/RecipeResult/RecipeResult";
 import Ranking from "../../components/Ranking/Ranking";
 import RecipeCard from "../../components/RecipeCard/RecipeCard";
 import { RecipeFilterContext } from "../../context/SearchProvider";
+import { Row, Col, Container } from "react-bootstrap";
 
 const Main = () => {
   const navigate = useNavigate();
-  const { isFirtst, setIsFirst } = useContext(RecipeFilterContext);
+  const { isFirst } = useContext(RecipeFilterContext);
 
   return (
-    <div>
-      <SearchInd />
-      <Ingredients />
-      <FilterBtn />
-      <SendSearch />
+    <div className="main">
+      {/* right-side */}
 
-      <RecipeResult />
+      <Container fluid>
+        <Row>
+          <Col className="leftSide" xs={6}>
+            <SearchInd />
+            <FilterBtn />
+            <Ingredients />
+            <SendSearch />
+          </Col>
+          {/* // right-side */}
 
-      {/* Ranking -> 검색시 display: none으로 바꾸기 */}
-      {/* {isFirtst ? <Ranking /> : <RecipeCard />} */}
-      <Ranking />
-      <RecipeCard />
+          <Col className="rightSide" xs={6}>
+            {isFirst ? <Ranking /> : <RecipeCard />}
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 };
