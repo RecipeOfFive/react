@@ -15,7 +15,13 @@ export default function RecipeDescrip() {
   const [hash, setHash] = useState();
 
   const [anotherlink, setanotherLink] = useState();
+  // 위에 내용 지울 데이터들
+
+  const [recipe, setRecipe] = useState([]);
+  const [ingredient, setIngredient] = useState([]);
   const [calorie, setCalorie] = useState([]);
+
+  //
 
   const {
     searchOptions,
@@ -24,23 +30,69 @@ export default function RecipeDescrip() {
     exclude,
     ranking,
     searchResult,
+    selectCard,
+    setSelectCard,
+    iddata,
+    setIddata,
   } = useContext(RecipeFilterContext);
 
   // useEffect(()=>){
   //   axios
-  //   .post(        "http://ec2-3-38-45-40.ap-northeast-2.compute.amazonaws.com:3000/api/food/nutirent/"
-  //   )
+  //   .post("http://ec2-3-38-45-40.ap-northeast-2.compute.amazonaws.com:3000/api/food/nutirent/"
+  //   ).then((resp)=>{
+
+  //   })
   // }
 
-  console.log(searchResult[0]);
+  // 레시피 상세 정보 가져오기
+  // useEffect(() => {
+  //   axios
+  //     .post(
+  //       `http://ec2-3-38-45-40.ap-northeast-2.compute.amazonaws.com:3000/api/food/${id}`
+  //     )
+  //     .then((resp) => {
+  //       setCalorie(resp.data);
+  //     });
+  // });
+
+  // 재료 정보 가져오기
+  // useEffect(() => {
+  //   axios
+  //     .post(
+  //       `http://ec2-3-38-45-40.ap-northeast-2.compute.amazonaws.com:3000/api/food/ingredient/${id}`
+  //     )
+  //     .then((resp) => {
+  //       setIngredient(resp.data);
+  //     });
+  // });
+
+  // 영양소 정보 가져오기
+  // useEffect(() => {
+  //   axios
+  //     .post(
+  //       `http://ec2-3-38-45-40.ap-northeast-2.compute.amazonaws.com:3000/api/food/nutirent/${id}`
+  //     )
+  //     .then((resp) => {
+  //       setCalorie(resp.data);
+  //     });
+  // });
+
+  // console.log(searchResult);
+  // console.log(searchResult[0]);
+  console.log(iddata);
+
   return (
     <div className="container">
       <div className="view1">
         <div className="Descrip-top">
-          <img className="first-img" src4={testImg} />
+          <img
+            className="first-img"
+            // src={searchResult[0].main_image}
+            alt="대체 이미지"
+          />
         </div>
         <div className="Descrip-down">
-          <div className="Descrip-tit">{title}</div>
+          {/* <div className="Descrip-tit">{searchResult[0].name}</div> */}
           <div className="Descrip-info">
             {/* 레시피 정보 기입 */}
             {info}
@@ -53,7 +105,7 @@ export default function RecipeDescrip() {
         </div>
 
         <div>
-          <div className="another-recipe">시금치 계란 볶음의 다른 레시피</div>
+          <div className="another-recipe">다른 레시피</div>
 
           {/* 이부분에 레시피 카드형식 넣기 */}
 

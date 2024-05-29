@@ -5,13 +5,30 @@ import "./style.css";
 import axios from "axios";
 
 export default function RecipeCard() {
-  const { searchResult } = useContext(RecipeFilterContext);
+  const { searchResult, setSelectCard, setIddata } =
+    useContext(RecipeFilterContext);
+
+  const handleLikeButtonClick = (id) => {
+    axios.get(
+      `http://ec2-3-38-45-40.ap-northeast-2.compute.amazonaws.com:3000/api/food/like/${id}`
+    );
+  };
+
+  const handleCardClick = (cardId) => {
+    setIddata(cardId);
+    setSelectCard(true);
+  };
+
   return (
     <div>
       {searchResult.map((el, index) => {
         if (index === 10) return;
         return (
-          <Card key={index} style={{ width: "18rem" }}>
+          <Card
+            key={index}
+            style={{ width: "18rem" }}
+            onClick={() => handleCardClick(el.id)}
+          >
             <img src={el.main_image}></img>
             <ListGroup className="list-group-flush">
               <Card.Title>{el.name}</Card.Title>
@@ -21,9 +38,7 @@ export default function RecipeCard() {
               <Button
                 variant="primary"
                 onClick={() => {
-                  axios.get(
-                    `http://ec2-3-38-45-40.ap-northeast-2.compute.amazonaws.com:3000/api/food/like/${el.id}`
-                  );
+                  handleLikeButtonClick(el.id);
                 }}
               >
                 좋아요

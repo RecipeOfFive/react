@@ -21,6 +21,8 @@ export default function SearchProvider({ children }) {
   const [order, setOrder] = useState("LIKECOUNT");
 
   const [searchResult, setSearchResult] = useState([]);
+  const [selectCard, setSelectCard] = useState(null);
+  const [iddata, setIddata] = useState();
 
   const filterRecipe = () => {
     return axios
@@ -49,6 +51,10 @@ export default function SearchProvider({ children }) {
         setRanking,
         searchResult,
         filterRecipe,
+        selectCard,
+        setSelectCard,
+        iddata,
+        setIddata,
       }}
     >
       {children}
