@@ -38,14 +38,18 @@ export default function RecipeCard() {
         {searchResult.map((el, index) => {
           if (index === 10) return;
           return (
-            <Card key={index} onClick={() => navigate(`/${el.id}`)}>
+            <Card
+              key={index}
+              onClick={() => navigate(`/${el.id}`)}
+              className="item-card"
+            >
               <img src={el.main_image}></img>
 
               <Card.Title className="item-title">{el.name}</Card.Title>
 
               <Card.Body className="text-align">
-                <p>Like {el.like_count}</p>
-                <p>View {el.view_count}</p>
+                <p>❤️좋아요 {el.like_count}</p>
+                <p>👀조회수 {el.view_count}</p>
               </Card.Body>
             </Card>
           );

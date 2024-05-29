@@ -1,11 +1,10 @@
-import { useParams } from "react-router-dom";
-import testImg from "../../images/test.jpeg";
-import { Card, ListGroup } from "react-bootstrap";
+import { useParams, useNavigate } from "react-router-dom";
+import { Card, ListGroup, Button } from "react-bootstrap";
 import "./style.css";
 import React, { useState, useEffect, useContext } from "react";
 import { RecipeFilterContext } from "../../context/SearchProvider";
-import test1 from "../../images/test1.jpeg";
 import axios from "axios";
+
 const RecipeDescrip = () => {
   const { id } = useParams();
   const [recipe, setRecipe] = useState([]);
@@ -14,101 +13,82 @@ const RecipeDescrip = () => {
   const [cooking, setCooking] = useState([]);
 
   const { searchResult } = useContext(RecipeFilterContext);
+  const navigate = useNavigate();
 
-  // 레시피 상세 정보 가져오기
-  useEffect(() => {
-    const fetchRecipe = async () => {
-      try {
-        const resp = await axios.get(
-          `http://ec2-3-38-45-40.ap-northeast-2.compute.amazonaws.com:3000/api/food/${id}`
-        );
-        console.log(resp);
-        setRecipe(resp.data);
-        console.log(recipe);
-      } catch (error) {
-        console.log("에러 발생1");
+  const fetchRecipe = async () => {
+    try {
+      const resp = await axios.get(
+        `http://ec2-3-38-45-40.ap-northeast-2.compute.amazonaws.com:3000/api/food/${id}`
+      );
+      setRecipe(resp.data);
+    } catch (error) {
+      console.log("에러 발생1");
+    }
+  };
+
+  const fetchIngredient = async () => {
+    try {
+      const resp = await axios.get(
+        `http://ec2-3-38-45-40.ap-northeast-2.compute.amazonaws.com:3000/api/food/ingredient/${id}`
+      );
+
+      if (resp.data && resp.data["ingredient"]) {
+        const ingredients = resp.data["ingredient"].split("\n");
+        setIngredient(ingredients);
       }
-    };
+    } catch (error) {
+      console.log("에러 발생2");
+    }
+  };
 
+  const fetchNutrient = async () => {
+    try {
+      const resp = await axios.get(
+        `http://ec2-3-38-45-40.ap-northeast-2.compute.amazonaws.com:3000/api/food/nutrient/${id}`
+      );
+      setCalorie(resp.data);
+    } catch (error) {
+      console.log("에러 발생3");
+    }
+  };
+
+  const fetchCooking = async () => {
+    try {
+      const resp = await axios.get(
+        `http://ec2-3-38-45-40.ap-northeast-2.compute.amazonaws.com:3000/api/recipe/${id}`
+      );
+      setCooking(resp.data);
+    } catch (error) {
+      console.log("에러 발생4");
+    }
+  };
+
+  useEffect(() => {
     fetchRecipe();
-  }, []);
-
-  // // 재료 정보 가져오기
-  useEffect(() => {
-    const fetchIngredient = async () => {
-      try {
-        const resp = await axios.get(
-          `http://ec2-3-38-45-40.ap-northeast-2.compute.amazonaws.com:3000/api/food/ingredient/${id}`
-        );
-
-        if (resp.data && resp.data["ingredient"]) {
-          const ingredients = resp.data["ingredient"].split("\n");
-          setIngredient(ingredients);
-        }
-      } catch (error) {
-        console.log("에러 발생2");
-      }
-    };
     fetchIngredient();
-  }, []);
-
-  // // 영양소 정보 가져오기
-  useEffect(() => {
-    const fetchNutrient = async () => {
-      try {
-        const resp = await axios.get(
-          `http://ec2-3-38-45-40.ap-northeast-2.compute.amazonaws.com:3000/api/food/nutrient/${id}`
-        );
-
-        setCalorie(resp.data);
-      } catch (error) {
-        console.log("에러 발생3");
-      }
-    };
-
     fetchNutrient();
-  }, []);
+    fetchCooking();
+  }, [id]);
 
-  // 요리 레시피 반환
-  useEffect(() => {
-    const fetchRecipe = async () => {
-      try {
-        const resp = await axios.get(
-          `http://ec2-3-38-45-40.ap-northeast-2.compute.amazonaws.com:3000/api/recipe/${id}`
-        );
-
-        setCooking(resp.data);
-      } catch (error) {
-        console.log("에러 발생4");
-      }
-    };
-
-    fetchRecipe();
-  }, []);
+  const changeid = (id) => {
+    navigate(`/${id}`);
+  };
 
   let count = 0;
-  console.log(cooking);
   return (
     <div className="container">
       <div className="view1">
         <div className="Descrip-top">
-          <img
-            className="first-img"
-            src={recipe.main_image}
-            alt="대체 이미지"
-          />
+          <img className="first-img" src={recipe.main_image} />
         </div>
         <div className="Descrip-down">
           <div className="Descrip-tit">{recipe.name}</div>
-          <div className="Descrip-info">
-            {/* 레시피 정보 기입 */}
-            {recipe.description}
+          <div className="Descrip-info">{recipe.description}</div>
+          <div className="Descript-link">
+            <span></span>
+            <span>30분 이내</span>
+            <span>공유 링크</span>
           </div>
-          {/* <div className="Descript-link">
-        <span>{link}</span>
-        <span>30분 이내</span>
-        <span>공유 링크</span>
-      </div> */}
         </div>
 
         <div>
@@ -116,21 +96,33 @@ const RecipeDescrip = () => {
 
           {searchResult.map((el, index) => {
             if (String(el.id) !== String(id) && count < 3) {
-              console.log(typeof el.id);
-              console.log(typeof id);
-              console.log("el.id값은", el.id);
-              console.log("id값은", id);
               count += 1;
               return (
                 <Card key={index} style={{ width: "18rem" }}>
-                  <img src={el.main_image} alt={el.name}></img>
+                  <img
+                    src={el.main_image}
+                    onClick={() => changeid(el.id)}
+                  ></img>
                   <ListGroup className="list-group-flush">
                     <Card.Title>{el.name}</Card.Title>
-                    <Card.Text>{el.description}</Card.Text>
+                    <Card.Text onClick={() => navigate(`/${el.id}`)}>
+                      {el.description}
+                    </Card.Text>
                   </ListGroup>
                   <Card.Body className="text-align">
-                    <Card.Link>Like : {el.likeCount}</Card.Link>
-                    <Card.Link>ViewCount : {el.view_count}</Card.Link>
+                    <Button
+                      variant="primary"
+                      onClick={() => {
+                        axios.get(
+                          `http://ec2-3-38-45-40.ap-northeast-2.compute.amazonaws.com:3000/api/food/like/${el.id}`
+                        );
+                      }}
+                    >
+                      좋아요
+                    </Button>
+                    {el.like_count}
+                    <br />
+                    <p>조회수 : {el.view_count}</p>
                   </Card.Body>
                 </Card>
               );

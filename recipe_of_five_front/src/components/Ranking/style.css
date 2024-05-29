@@ -46,11 +46,17 @@
   font-weight: bold;
 }
 
+.like-view-div {
+  display: flex;
+}
+
 .like-view {
   font-size: 1.2rem;
   color: #BDBDBD;
+  white-space: pre-wrap;
 }
 
 .like-view-count {
   font-weight: bold;
+  white-space: pre-wrap;
 }

@@ -16,24 +16,17 @@ const Main = () => {
   const { isFirst } = useContext(RecipeFilterContext);
 
   return (
-    <div className="main">
+    <div>
       {/* right-side */}
 
-      <Container fluid>
-        <Row>
-          <Col className="leftSide" xs={6}>
-            <SearchInd />
-            <Ingredients />
-            <FilterBtn />
-            <SendSearch />
-          </Col>
-          {/* // right-side */}
+      <SearchInd />
+      <Ingredients />
+      <FilterBtn />
+      <SendSearch />
 
-          <Col className="rightSide" xs={6}>
-            {isFirst ? <Ranking /> : <RecipeCard />}
-          </Col>
-        </Row>
-      </Container>
+      {/* // right-side */}
+
+      {isFirst ? <Ranking /> : <RecipeCard />}
     </div>
   );
 };
