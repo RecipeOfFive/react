@@ -5,23 +5,12 @@ export default function SearchInd() {
     useContext(RecipeFilterContext);
 
   return (
-    <div style={{ display: "flex" }}>
-      <div style={{ wigth: "80vw" }}>
+    <div className="ingredients-div" style={{ display: "flex" }}>
+      <div>
         <h1>포함</h1>
-        <div
-          style={{
-            width: "30vw",
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: "10px",
-          }}
-        >
+        <div className="item-div">
           {include.map((item, idx) => (
             <span
-              style={{
-                margin: "10px",
-                border: "solid 1px",
-              }}
               key={idx}
               onClick={() => {
                 setInclude((prev) => prev.filter((el) => el !== item));
@@ -33,21 +22,11 @@ export default function SearchInd() {
         </div>
       </div>
 
-      <div style={{ width: "30vw" }}>
+      <div>
         <h1>제외</h1>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: "10px",
-          }}
-        >
+        <div className="item-div">
           {exclude.map((item, idx) => (
             <span
-              style={{
-                margin: "10px",
-                border: "solid 1px",
-              }}
               key={idx}
               onClick={() => {
                 setExclude((prev) => prev.filter((el) => el !== item));

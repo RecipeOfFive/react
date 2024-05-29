@@ -1,36 +1,47 @@
 import React, { useContext } from "react";
 import { RecipeFilterContext } from "../../context/SearchProvider";
 import Button from "react-bootstrap/Button";
+import "./style.css";
 
 export default function RecipeResult() {
   const { exclude, include } = useContext(RecipeFilterContext);
   const colors = ["success", "warning", "danger", "secondary"];
   return (
-    <div>
+    <div className="recipe-result">
       <div className="include-ingred">
-        <ul>
+        <ul className="ingredient-list">
           {include.map((ingredient, index) => (
-            <li key={index}>
-              <Button variant={colors[index % colors.length]}>
+            <li key={index} className="ingredient-list-value">
+              <Button
+                variant={"warning"}
+                disabled
+                className="ingredient-list-value-button"
+              >
                 {ingredient}
               </Button>
             </li>
           ))}
         </ul>
-        <span>는 포함된,</span>
+        <span className="ingredient-list-typo-style">는 포함된,</span>
       </div>
 
       <div className="exclude-ingred">
-        <ul>
+        <ul className="ingredient-list">
           {exclude.map((ingredient, index) => (
-            <li key={index}>
-              <Button variant={colors[index % colors.length]}>
+            <li key={index} className="ingredient-list-value">
+              <Button
+                variant={"warning"}
+                disabled
+                className="ingredient-list-value-button"
+              >
                 {ingredient}
               </Button>
             </li>
           ))}
         </ul>
-        <span>는 제외된 레시피입니다.</span>
+        <span className="ingredient-list-typo-style">
+          는 제외된 레시피입니다.
+        </span>
       </div>
     </div>
   );
