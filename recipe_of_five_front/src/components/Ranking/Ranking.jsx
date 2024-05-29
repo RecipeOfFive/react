@@ -7,10 +7,9 @@ export default function Ranking() {
     // const 값 가져오기
     //
     // 4개를 띄우는데 map 사용해서 4개 띄우기.
-    const { ranking, isFirst } = useContext(RecipeFilterContext);
+    const { ranking } = useContext(RecipeFilterContext);
     // searchOptions = 검색한 레시피 데이터들 저장
     const navigate = useNavigate();
-    console.log(isFirst);
     return (
         <div>
             <div>
