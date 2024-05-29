@@ -1,5 +1,27 @@
 .text-align {
   display: flex;
-  justify-content: space-between;
-  align-content: center;
+  justify-content: end;
+  gap: 10px;
+}
+
+.item-card {
+  -webkit-box-shadow: 8px 8px 16px -2px rgba(178, 178, 178, 1);
+  -moz-box-shadow: 8px 8px 16px -2px rgba(178, 178, 178, 1);  
+  box-shadow: 8px 8px 16px -2px rgba(178, 178, 178, 1);
+  border: none;
+  border-radius: 10px;
+}
+
+.item-card img {
+  border-radius: 10px 10px 0 0;
+}
+
+.food-list-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 30px;
+}
+
+.item-title {
+  margin: 5px 0 0 5px;
 }
