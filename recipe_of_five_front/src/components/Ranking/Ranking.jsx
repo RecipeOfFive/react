@@ -13,28 +13,29 @@ export default function Ranking() {
   console.log(isFirst);
   return (
     <div className="ranking">
-      <h1> 랭킹 </h1>
+      <h1 className="ranking-title"> 랭킹 </h1>
 
       <div className="rank-list">
         {ranking.map((recipe, index) => (
-          <Card key={index}>
+          <Card
+            border="warning"
+            key={index}
+            onClick={() => navigate(`/${recipe.id}`)}
+          >
             <Card.Body className="item-location">
               <div className="item-content">
-                <Card.Subtitle
-                  className="mb-2 text-muted"
-                  onClick={() => navigate(`/${recipe.id}`)}
-                >
+                <Card.Subtitle className="item-title">
                   {recipe.name}
                 </Card.Subtitle>
-                <Card.Text
-                  onClick={() => navigate(`/${recipe.id}`)}
-                  className="item-description"
-                >
+                <Card.Text className="item-description">
                   {recipe.description}
                 </Card.Text>
-                <Card.Link href="#">
-                  Like{recipe.like_count} / view {recipe.view_count}
-                </Card.Link>
+                <Card.Text>
+                  <span className="like-view">Like </span>
+                  <span className="like-view-count">{recipe.like_count} </span>
+                  <span className="like-view">View </span>
+                  <span className="like-view-count">{recipe.view_count} </span>
+                </Card.Text>
               </div>
               <div>
                 <Card.Img

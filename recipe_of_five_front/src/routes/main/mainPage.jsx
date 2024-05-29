@@ -32,7 +32,7 @@ const Main = () => {
           <Col className="rightSide" xs={6}>
             {/* <RecipeResult /> */}
             <Ranking />
-            <RecipeCard />
+            {/* s */}
           </Col>
         </Row>
       </Container>
