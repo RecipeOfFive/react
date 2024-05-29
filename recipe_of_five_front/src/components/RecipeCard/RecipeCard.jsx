@@ -6,14 +6,11 @@ import "./style.css";
 import axios from "axios";
 
 export default function RecipeCard() {
-  const {
-    searchResult,
-    searchOptions,
-    setSearchOptions,
-    filterRecipe,
-    setSearchResult,
-  } = useContext(RecipeFilterContext);
-  const navigate = useNavigate();
+
+    const { searchResult, searchOptions, setSearchOptions } =
+        useContext(RecipeFilterContext);
+    const navigate = useNavigate();
+
 
   const [currBtn, setCurrBtn] = useState("좋아요");
 
@@ -23,6 +20,7 @@ export default function RecipeCard() {
     } else {
       setCurrBtn("좋아요");
     }
+
     setSearchOptions((prevOptions) => {
       return {
         ...prevOptions,
@@ -81,4 +79,5 @@ export default function RecipeCard() {
       })}
     </div>
   );
+
 }
