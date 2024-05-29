@@ -23,8 +23,8 @@ const Main = () => {
         <Row>
           <Col className="leftSide" xs={6}>
             <SearchInd />
-            <FilterBtn />
             <Ingredients />
+            <FilterBtn />
             <SendSearch />
           </Col>
           {/* // right-side */}

@@ -48,7 +48,7 @@ export default function SendSearch() {
   console.log("결과 :", searchResult);
 
   return (
-    <div>
+    <div className="search-btn-div">
       <Button className="custom-search-button" onClick={handleSearch}>
         맛있는 레시피 찾기
       </Button>

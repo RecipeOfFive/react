@@ -24,8 +24,9 @@ export default function FilterBtn() {
   const isSelected = (option) => filterMethod.includes(option);
 
   return (
-    <div>
+    <div className="filter-btn">
       <ToggleButtonGroup
+        className="filter-btn-group"
         type="checkbox"
         value={filterMethod}
         onChange={handleChange}
