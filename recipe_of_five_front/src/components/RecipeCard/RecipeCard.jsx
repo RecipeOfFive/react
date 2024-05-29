@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Card, ListGroup, Button } from "react-bootstrap";
 import { RecipeFilterContext } from "../../context/SearchProvider";
@@ -12,38 +12,40 @@ export default function RecipeCard() {
   return (
     <div>
       <RecipeResult />
-      {searchResult.map((el, index) => {
-        if (index === 10) return;
-        return (
-          <Card key={index} style={{ width: "18rem" }}>
-            <img
-              src={el.main_image}
-              onClick={() => navigate(`/${el.id}`)}
-            ></img>
-            <ListGroup className="list-group-flush">
-              <Card.Title>{el.name}</Card.Title>
-              <Card.Text onClick={() => navigate(`/${el.id}`)}>
-                {el.description}
-              </Card.Text>
-            </ListGroup>
-            <Card.Body className="text-align">
-              <Button
-                variant="primary"
-                onClick={() => {
-                  axios.get(
-                    `http://ec2-3-38-45-40.ap-northeast-2.compute.amazonaws.com:3000/api/food/like/${el.id}`
-                  );
-                }}
-              >
-                좋아요
-              </Button>
-              {el.like_count}
-              <br />
-              <p>조회수 : {el.view_count}</p>
-            </Card.Body>
-          </Card>
-        );
-      })}
+      <div className="food-list-grid">
+        {searchResult.map((el, index) => {
+          if (index === 10) return;
+          return (
+            <Card key={index} style={{ width: "18rem" }}>
+              <Card.Img
+                src={el.main_image}
+                onClick={() => navigate(`/${el.id}`)}
+              ></Card.Img>
+              <Card.Title onClick={() => navigate(`/${el.id}`)}>
+                {el.name}
+              </Card.Title>
+              <div className="like-view">
+                <button
+                  onClick={() => {
+                    axios.get(
+                      `http://ec2-3-38-45-40.ap-northeast-2.compute.amazonaws.com:3000/api/food/like/${el.id}`
+                    );
+                  }}
+                >
+                  Like
+                </button>
+                <Card.Body
+                  className="text-align"
+                  onClick={() => navigate(`/${el.id}`)}
+                >
+                  {el.like_count}
+                  <p>View {el.view_count}</p>
+                </Card.Body>
+              </div>
+            </Card>
+          );
+        })}
+      </div>
     </div>
   );
 }

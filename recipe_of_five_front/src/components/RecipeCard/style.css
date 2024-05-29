@@ -3,3 +3,13 @@
   justify-content: space-between;
   align-content: center;
 }
+
+.food-list-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+}
+
+.like-view {
+  display: flex;
+}
