@@ -42,6 +42,7 @@ export default function SearchProvider({ children }) {
             value={{
                 searchOptions,
                 setSearchOptions,
+                setSearchResult,
                 filterMethod,
                 setFilterMethod,
                 include,
