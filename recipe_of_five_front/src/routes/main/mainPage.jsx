@@ -12,7 +12,7 @@ import { RecipeFilterContext } from "../../context/SearchProvider";
 
 const Main = () => {
     const navigate = useNavigate();
-    const { isFirtst, setIsFirst } = useContext(RecipeFilterContext);
+    const { isFirst } = useContext(RecipeFilterContext);
 
     return (
         <div>
@@ -24,9 +24,7 @@ const Main = () => {
             <RecipeResult />
 
             {/* Ranking -> 검색시 display: none으로 바꾸기 */}
-            {/* {isFirtst ? <Ranking /> : <RecipeCard />} */}
-            <Ranking />
-            <RecipeCard />
+            {isFirst ? <Ranking /> : <RecipeCard />}
         </div>
     );
 };
