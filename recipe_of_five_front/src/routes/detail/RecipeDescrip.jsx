@@ -86,13 +86,13 @@ const RecipeDescrip = () => {
           <div className="Descrip-info">{recipe.description}</div>
           <div className="Descript-link">
             <span></span>
-            <span>30분 이내</span>
-            <span>공유 링크</span>
+            {/* <span>30분 이내</span> */}
+            <a href={`/${id}`}>공유</a>
           </div>
         </div>
 
         <div>
-          <h1>다른 레시피</h1>
+          <h3>다른 레시피</h3>
           <div className="another-recipe">
             {searchResult.map((el, index) => {
               if (String(el.id) !== String(id) && count < 3) {
@@ -119,7 +119,9 @@ const RecipeDescrip = () => {
         </div>
 
         <div className="view2">
-          <div>재료</div>
+          <div>
+            <h3>재료</h3>
+          </div>
           <hr className="hr" />
 
           {/* 여기다가 재료 하나씩 입력 */}
