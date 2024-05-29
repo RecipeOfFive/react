@@ -93,7 +93,7 @@ const RecipeDescrip = () => {
   // console.log(cooking);
   // console.log(selectedIndex);
 
-  return(
+  return (
     <div className="container">
       <div className="view1">
         <div className="Descrip-top">
@@ -102,7 +102,6 @@ const RecipeDescrip = () => {
         <div className="Descrip-down">
           <div className="Descrip-tit">{recipe.name}</div>
           <div className="Descrip-info">{recipe.description}</div>
-
           <div className="link-align">
             <div className="Descript-link1">
               <span>조리방법</span>
@@ -117,10 +116,6 @@ const RecipeDescrip = () => {
               <span>해쉬태그</span>
               <span>{recipe.hashtag}</span>{" "}
             </div>
-          <div className="Descript-link">
-            <span></span>
-            {/* <span>30분 이내</span> */}
-            <a href={`/${id}`}>공유</a>
           </div>
         </div>
 
@@ -200,19 +195,19 @@ const RecipeDescrip = () => {
             )}
           </div>
           {/* <ul className="no-bullets">
-            {cooking.map((step, index) => (
-              <li key={index}>
-                <div>{step.description.replace(/.$/, "")}</div>
-                <div>
-                  <img src={step.image} alt={`Step ${step.recipeOrder}`} />
-                </div>
-              </li>
-            ))}
-          </ul> */}
+          {cooking.map((step, index) => (
+            <li key={index}>
+              <div>{step.description.replace(/.$/, "")}</div>
+              <div>
+                <img src={step.image} alt={`Step ${step.recipeOrder}`} />
+              </div>
+            </li>
+          ))}
+        </ul> */}
         </div>
       </div>
     </div>
-  )
+  );
 };
 
 export default RecipeDescrip;
