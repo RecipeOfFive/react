@@ -15,7 +15,7 @@ const RecipeDescrip = () => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const { searchResult } = useContext(RecipeFilterContext);
   const navigate = useNavigate();
-  const URL = "http://ec2-3-38-45-40.ap-northeast-2.compute.amazonaws.com:3000";
+  const URL = "https://pda.recipeoffive.site";
 
   const fetchRecipe = async () => {
     try {
