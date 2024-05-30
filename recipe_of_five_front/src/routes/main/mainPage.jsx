@@ -23,7 +23,6 @@ const Main = () => {
             <FilterBtn />
 
             {isSearch && <Ingredients />}
-            {/* 임시로 계속 true */}
 
             <SendSearch />
             {/* right-side */}

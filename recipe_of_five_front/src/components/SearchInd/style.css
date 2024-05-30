@@ -1,147 +1,154 @@
+/* 포함, 제외 버튼 호버시 색상 변경 */
+.main-div-SearchInd-togglebtn:hover {
+    background-color: red !important; /* 원하는 색상으로 변경해주세용 */
+    border-color: red !important;
+    color: white !important;
+}
+
 .main-div-SearchInd {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  gap: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 30px;
 }
 /* SearchInd 컴포넌트 - 서비스 이름 */
 .main-div-SearchInd h1 {
-  margin-top: 30px;
-  font-size: 50px;
+    margin-top: 30px;
+    font-size: 50px;
 }
 
 .main-div-SearchInd h1 a {
-  text-decoration: none;
-  color: black;
+    text-decoration: none;
+    color: black;
 }
 
 /* SearchInd 컴포넌트 - 버튼 그룹 - 토글(포함/제외) */
 .main-div-SearchInd-buttongroup {
-  /* justify-content: left; Align buttons to the left */
-  align-items: left;
+    /* justify-content: left; Align buttons to the left */
+    align-items: left;
 }
 
 .btn-group {
-  display: inline-block;
-  text-align: center;
-  align-items: start;
+    display: inline-block;
+    text-align: center;
+    align-items: start;
 }
 
 /* SearchInd 컴포넌트 - 개별버튼 - 토글(포함/제외) */
 .custom-active {
-  background-color: #fea304 !important; /* 활성화된 버튼의 배경색 */
-  color: #ffffff !important; /* 활성화된 버튼의 글자색 */
-  border-color: #fea304 !important; /* 활성화된 버튼의 테두리색 */
+    background-color: #fea304 !important; /* 활성화된 버튼의 배경색 */
+    color: #ffffff !important; /* 활성화된 버튼의 글자색 */
+    border-color: #fea304 !important; /* 활성화된 버튼의 테두리색 */
 }
 .custom-active:active {
-  background-color: #cb8203 !important; /* 활성화된 버튼의 배경색 */
-  color: #ffffff !important; /* 활성화된 버튼의 글자색 */
-  border-color: #cb8203 !important; /* 활성화된 버튼의 테두리색 */
+    background-color: #cb8203 !important; /* 활성화된 버튼의 배경색 */
+    color: #ffffff !important; /* 활성화된 버튼의 글자색 */
+    border-color: #cb8203 !important; /* 활성화된 버튼의 테두리색 */
 }
 
 .custom-inactive {
-  background-color: #ffffff !important; /* 비활성화된 버튼의 배경색 */
-  color: #000000 !important; /* 비활성화된 버튼의 글자색 */
-  border-color: #000000 !important; /* 비활성화된 버튼의 테두리색 */
+    background-color: #ffffff !important; /* 비활성화된 버튼의 배경색 */
+    color: #000000 !important; /* 비활성화된 버튼의 글자색 */
+    border-color: #000000 !important; /* 비활성화된 버튼의 테두리색 */
 }
 .custom-inactive:active {
-  background-color: #cb8203 !important; /* 활성화된 버튼의 배경색 */
-  color: #ffffff !important; /* 활성화된 버튼의 글자색 */
-  border-color: #cb8203 !important; /* 활성화된 버튼의 테두리색 */
+    background-color: #cb8203 !important; /* 활성화된 버튼의 배경색 */
+    color: #ffffff !important; /* 활성화된 버튼의 글자색 */
+    border-color: #cb8203 !important; /* 활성화된 버튼의 테두리색 */
 }
 
 .searchInd-btn {
-  width: 450px;
-  display: flex;
-  justify-content: left;
+    width: 450px;
+    display: flex;
+    justify-content: left;
 }
 
 /* SearchInd 컴포넌트 - input 검색 필드 */
 .searchInd-input {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 }
 .mb-3 {
-  width: 450px;
+    width: 450px;
 }
 
 /* ingredient컴포넌트 - 포함/제외 */
 .ingredients-div {
-  display: flex;
-  justify-content: space-around;
-  height: 300px;
+    display: flex;
+    justify-content: space-around;
+    height: 300px;
 }
 
 /* ingredient컴포넌트 - 타이틀 */
 .ingredients-div h1 {
-  text-align: center;
+    text-align: center;
 }
 
 /* ingredient컴포넌트 - item필드 */
 .item-div {
-  /* display: grid;
+    /* display: grid;
     grid-template-columns: 1fr; */
-  display: flex;
-  min-width: 400px;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
+    display: flex;
+    min-width: 400px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 .item-div span {
-  margin: 10px;
-  border: none;
-  border-radius: 50px;
-  text-align: center;
-  background-color: #b8b8b8;
-  color: #ffffff;
-  padding: 0px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 50px;
+    text-align: center;
+    background-color: #b8b8b8;
+    color: #ffffff;
+    padding: 0px 20px;
 }
 
 /* 필터 : 가운데 정렬 */
 .filter-btn {
-  display: flex;
-  justify-content: center !important;
-  align-items: center !important;
+    display: flex;
+    justify-content: center !important;
+    align-items: center !important;
 }
 
 /* 필터 : 조리 type */
 .custom-active2 {
-  background-color: #7b7b7b !important; /* 활성화된 버튼의 배경색 */
-  color: #ffffff !important; /* 활성화된 버튼의 글자색 */
-  border-color: #7b7b7b !important; /* 활성화된 버튼의 테두리색 */
+    background-color: #7b7b7b !important; /* 활성화된 버튼의 배경색 */
+    color: #ffffff !important; /* 활성화된 버튼의 글자색 */
+    border-color: #7b7b7b !important; /* 활성화된 버튼의 테두리색 */
 }
 
 .custom-inactive2 {
-  background-color: #ffffff !important; /* 비활성화된 버튼의 배경색 */
-  color: #000000 !important; /* 비활성화된 버튼의 글자색 */
-  border-color: #000000 !important; /* 비활성화된 버튼의 테두리색 */
+    background-color: #ffffff !important; /* 비활성화된 버튼의 배경색 */
+    color: #000000 !important; /* 비활성화된 버튼의 글자색 */
+    border-color: #000000 !important; /* 비활성화된 버튼의 테두리색 */
 }
 
 /* 버튼 : 검색 */
 .search-btn-div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
 }
 
 .custom-search-button {
-  background-color: #fea304 !important;
-  color: #ffffff !important;
-  border-color: #fea304 !important;
+    background-color: #fea304 !important;
+    color: #ffffff !important;
+    border-color: #fea304 !important;
 }
 
 .custom-search-button:hover {
-  background-color: #e59304 !important;
-  color: #ffffff !important;
-  border-color: #e59304 !important;
+    background-color: #e59304 !important;
+    color: #ffffff !important;
+    border-color: #e59304 !important;
 }
 
 .custom-search-button:active {
-  background-color: #cb8203 !important;
-  color: #ffffff !important;
-  border-color: #cb8203 !important;
+    background-color: #cb8203 !important;
+    color: #ffffff !important;
+    border-color: #cb8203 !important;
 }
