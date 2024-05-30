@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
 import ToggleButton from "react-bootstrap/ToggleButton";
 import { RecipeFilterContext } from "../../context/SearchProvider";
+import "./style.css";
 
 export default function FilterBtn() {
   const { filterMethod, setFilterMethod } = useContext(RecipeFilterContext);

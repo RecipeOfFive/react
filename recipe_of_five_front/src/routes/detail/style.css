@@ -7,6 +7,11 @@
   gap: 30px;
 }
 
+.container h1 a {
+  text-decoration: none;
+  color: black;
+}
+
 .view1 {
   display: flex;
   flex-direction: column;
