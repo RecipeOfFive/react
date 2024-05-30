@@ -124,6 +124,67 @@
   border-radius: 10px; /* 이미지의 모서리를 둥글게 설정 (선택 사항) */
 }
 
+/* 성분 */
+/* style.css */
+/* 카드 스타일 */
+.card {
+  background-color: #fff;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+/* 제목 스타일 */
+.card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+/* 리스트 스타일 */
+.nutrient-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* 리스트 아이템 스타일 */
+.card li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+  color: #555;
+}
+
+/* 아이콘 스타일 */
+.card li::before {
+  display: inline-block;
+  width: 30px;
+  text-align: center;
+  margin-right: 10px;
+  color: #ff6f61;
+}
+
+/* 아이콘을 위한 클래스 */
+.icon-calorie::before {
+  content: "🔥";
+}
+.icon-carbohydrate::before {
+  content: "🍞";
+}
+.icon-protein::before {
+  content: "🍗";
+}
+.icon-fat::before {
+  content: "🥑";
+}
+.icon-sodium::before {
+  content: "🧂";
+}
+
 /* 조리 순서 */
 .cooking-desc-img-div {
   display: flex;

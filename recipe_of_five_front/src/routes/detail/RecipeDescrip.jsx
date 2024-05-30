@@ -147,7 +147,7 @@ const RecipeDescrip = () => {
         </div>
 
         <div className="view2">
-          <div>
+          <div className="card">
             <h3>재료</h3>
             <hr className="hr" />
             {/* 여기다가 재료 하나씩 입력 */}
@@ -158,15 +158,17 @@ const RecipeDescrip = () => {
             </ul>
           </div>
 
-          <div>
+          <div className="card">
             <h3>성분</h3>
             <hr className="hr" />
             <ul>
-              <li>열량 : {calorie.calorie}</li>
-              <li>탄수화물 : {calorie.carbohydrate}</li>
-              <li>단백질 : {calorie.protein}</li>
-              <li>지방 : {calorie.province}</li>
-              <li>나트륨 : {calorie.salt}</li>
+              <li className="icon-calorie">열량 : {calorie.calorie} kcal</li>
+              <li className="icon-carbohydrate">
+                탄수화물 : {calorie.carbohydrate} g
+              </li>
+              <li className="icon-protein">단백질 : {calorie.protein} g</li>
+              <li className="icon-fat">지방 : {calorie.province} g</li>
+              <li className="icon-sodium">나트륨 : {calorie.salt} mg</li>
             </ul>
           </div>
         </div>
