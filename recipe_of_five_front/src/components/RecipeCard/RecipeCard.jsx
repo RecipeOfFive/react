@@ -14,7 +14,7 @@ export default function RecipeCard() {
 
   function handleOrder() {
     if (searchOptions.order === "like_count") {
-      setCurrBtn("최신순");
+      setCurrBtn("조회순");
     } else {
       setCurrBtn("인기순");
     }
