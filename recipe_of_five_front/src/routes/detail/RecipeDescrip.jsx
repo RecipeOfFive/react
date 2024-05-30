@@ -4,6 +4,7 @@ import "./style.css";
 import React, { useState, useEffect, useContext } from "react";
 import { RecipeFilterContext } from "../../context/SearchProvider";
 import axios from "axios";
+import ScrollPage from "../Scroll/ScrollPage";
 
 const RecipeDescrip = () => {
   const { id } = useParams();
@@ -90,6 +91,7 @@ const RecipeDescrip = () => {
 
   return (
     <div className="container">
+      <ScrollPage />
       <div className="view1">
         <div className="Descrip-top">
           <h1>
@@ -146,7 +148,7 @@ const RecipeDescrip = () => {
                 return (
                   <Card
                     key={index}
-                    onClick={() => navigate(`/${el.id}`)}
+                    onClick={() => navigate(`/detail/${el.id}`)}
                     className="item-another-card"
                   >
                     <img
