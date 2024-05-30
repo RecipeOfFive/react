@@ -94,6 +94,7 @@ const RecipeDescrip = () => {
 
   return (
     <div className="container">
+      <h1>5조의 레시피</h1>
       <div className="view1">
         <div className="cooking-info">
           <div className="Descrip-top">
@@ -130,7 +131,7 @@ const RecipeDescrip = () => {
           </div>
         </div>
 
-        <div className="card">
+        <div className="div-card">
           <h3>다른 레시피</h3>
           <div className="another-recipe">
             {searchResult.map((el, index) => {
@@ -158,7 +159,7 @@ const RecipeDescrip = () => {
         </div>
 
         <div className="view2">
-          <div className="card">
+          <div className="div-card">
             <h3>재료</h3>
             <hr className="hr" />
             {/* 여기다가 재료 하나씩 입력 */}
@@ -169,7 +170,7 @@ const RecipeDescrip = () => {
             </ul>
           </div>
 
-          <div className="card">
+          <div className="div-card">
             <h3>성분</h3>
             <hr className="hr" />
             <ul>
