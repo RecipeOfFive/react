@@ -30,6 +30,11 @@ body {
   font-size: 50px;
 }
 
+.main-div-SearchInd h1 a {
+  text-decoration: none;
+  color: black;
+}
+
 /* SearchInd 컴포넌트 - 버튼 그룹 - 토글(포함/제외) */
 .main-div-SearchInd-buttongroup {
   /* justify-content: left; Align buttons to the left */

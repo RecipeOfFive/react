@@ -90,7 +90,9 @@ const RecipeDescrip = () => {
 
   return (
     <div className="container">
-      <h1>5조의 레시피</h1>
+      <h1>
+        <a href="./">5조의 레시피</a>
+      </h1>
       <div className="view1">
         <div className="Descrip-top">
           <div className="like-view">
