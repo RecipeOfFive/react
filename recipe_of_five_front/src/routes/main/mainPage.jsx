@@ -21,12 +21,13 @@ const Main = () => {
       {/* right-side */}
       <SearchInd />
       {/* <Ingredients /> */}
+
+      {isSearch && <Ingredients />}
+
       <div className="filterBtn-search">
         <FilterBtn />
         <SendSearch />
       </div>
-
-      {isSearch && <Ingredients />}
 
       {/* right-side */}
       {isFirst ? <Ranking /> : <RecipeCard />}
