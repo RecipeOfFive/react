@@ -10,7 +10,6 @@ export const AppContext = createContext();
 function App() {
   return (
     <>
-
       <SearchProvider>
         <RouterProvider router={mainRouter} />
       </SearchProvider>
