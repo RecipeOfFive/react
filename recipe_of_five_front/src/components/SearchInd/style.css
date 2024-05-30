@@ -130,6 +130,18 @@
   border-color: #000000 !important; /* 비활성화된 버튼의 테두리색 */
 }
 
+.custom-active3 {
+  background-color: #616161 !important; /* 활성화된 버튼의 배경색 */
+  color: #ffffff !important; /* 활성화된 버튼의 글자색 */
+  border-color: #616161 !important; /* 활성화된 버튼의 테두리색 */
+}
+
+.custom-inactive3 {
+  background-color: #ffffff !important; /* 비활성화된 버튼의 배경색 */
+  color: #000000 !important; /* 비활성화된 버튼의 글자색 */
+  border-color: #000000 !important; /* 비활성화된 버튼의 테두리색 */
+}
+
 /* 버튼 : 검색 */
 .search-btn-div {
   display: flex;
