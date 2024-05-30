@@ -123,7 +123,7 @@ const RecipeDescrip = () => {
           <h3>다른 레시피</h3>
           <div className="another-recipe">
             {searchResult.map((el, index) => {
-              if (String(el.id) !== String(id) && count < 3) {
+              if (String(el.id) !== String(id) && count < 5) {
                 count += 1;
                 return (
                   <Card
@@ -172,19 +172,6 @@ const RecipeDescrip = () => {
         </div>
 
         <div className="view3">
-          {/* <h3>조리순서</h3>
-          <div className="cooking-desc-img-div">
-            <div className="cooking-desc-div">
-              <ul className="no-bullets">
-                {cooking.map((step, index) => (
-                  <li className="recipe-order-desc"> 
-                    <div onClick={() => setSelectedIndex(index)}>
-                      {step.description.replace(/.$/, "")}
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </div> */}
           <h3>조리 순서</h3>
           <div className="cooking-desc-img-div">
             <div className="cooking-desc-div">
