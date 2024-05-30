@@ -8,15 +8,24 @@ import ScrollPage from "../Scroll/ScrollPage";
 
 const RecipeDescrip = () => {
   const { id } = useParams();
+
   const [recipe, setRecipe] = useState([]);
+
+  // 재료
   const [ingredient, setIngredient] = useState([]);
+
+  // 영양소
   const [calorie, setCalorie] = useState([]);
+
+  // 레시피
   const [cooking, setCooking] = useState([]);
+
   const [selectedIndex, setSelectedIndex] = useState(0);
   const { searchResult } = useContext(RecipeFilterContext);
   const navigate = useNavigate();
   const URL = "https://pda.recipeoffive.site";
 
+  // 음식 상세 내용 조회
   const fetchRecipe = async () => {
     try {
       const resp = await axios.get(`${URL}/api/food/${id}`);
@@ -27,6 +36,7 @@ const RecipeDescrip = () => {
     }
   };
 
+  // 레시피 재료 조회
   const fetchIngredient = async () => {
     try {
       const resp = await axios.get(`${URL}/api/food/ingredient/${id}`);
@@ -39,6 +49,7 @@ const RecipeDescrip = () => {
     }
   };
 
+  // 음식 영양소 조회
   const fetchNutrient = async () => {
     try {
       const resp = await axios.get(`${URL}/api/food/nutrient/${id}`);
@@ -48,18 +59,17 @@ const RecipeDescrip = () => {
     }
   };
 
-  const fetchCooking = async () => {
-    try {
-      const resp = await axios.get(`${URL}/api/recipe/${id}`);
-      setCooking(resp.data);
-    } catch (error) {
-      console.log("에러 발생4");
-    }
-  };
+  // const fetchCooking = async () => {
+  //   try {
+  //     const resp = await axios.get(`${URL}/api/recipe/${id}`);
+  //   } catch (error) {
+  //     console.log("에러 발생4");
+  //   }
+  // };
 
   const fetchItem = async () => {
     try {
-      const resp = await axios.post(`${URL}/api/recipe/${id}`);
+      const resp = await axios.get(`${URL}/api/recipe/${id}`);
       setCooking(resp.data);
     } catch (error) {
       console.log("에러 발생4");
@@ -79,7 +89,7 @@ const RecipeDescrip = () => {
     fetchRecipe();
     fetchIngredient();
     fetchNutrient();
-    fetchCooking();
+    // fetchCooking();
     fetchItem();
   }, [id]);
 
