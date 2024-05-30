@@ -14,7 +14,9 @@
 
 .item-card img {
   border-radius: 10px 10px 0 0;
-  width: 20px;
+    width: 20vw !important;
+    height: 20vw;
+
 }
 
 .food-list-grid {
