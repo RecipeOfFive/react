@@ -30,8 +30,10 @@ export default function RecipeCard() {
 
   return (
     <div>
-      <div>
-        <Button onClick={handleOrder}>{currBtn}</Button>
+      <div className="sort-div">
+        <Button onClick={handleOrder} className="sort-button">
+          {currBtn}
+        </Button>
       </div>
       <div className="food-list-grid">
         {searchResult.map((el, index) => {
