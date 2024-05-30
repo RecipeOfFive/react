@@ -90,28 +90,12 @@ const RecipeDescrip = () => {
 
   return (
     <div className="container">
-      <h1>
-        <img className="favicon" src="/favicon.png" alt="로고가 없습니다" />
-        <a href="./">5조의 레시피</a>
-      </h1>
       <div className="view1">
         <div className="Descrip-top">
-          <div className="nav-top">
-            <h1>
-              <a href="./">5조의 레시피</a>
-            </h1>
-            <div className="like-view">
-              <button
-                onClick={() => updateLike(recipe.like_count)}
-                className="like-button"
-              >
-                ❤️좋아요
-              </button>
-              <p>{recipe.like_count}</p>
-              <p>👀조회수 </p>
-              <p>{recipe.view_count}</p>
-            </div>
-          </div>
+          <h1>
+            <img className="favicon" src="/favicon.png" alt="로고가 없습니다" />
+            <a href="./">5조의 레시피</a>
+          </h1>
           <img
             className="first-img"
             src={recipe.main_image}
