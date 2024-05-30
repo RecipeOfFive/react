@@ -1,5 +1,16 @@
+.ingredient-main-div {
+  display: flex;
+  justify-content: center;
+}
+
+.ingredient-div {
+  width: 550px;
+}
+
 .include-exclude {
-    display: flex;
-    align-items: center;
-    gap:10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px;
+  flex-wrap: wrap;
 }
