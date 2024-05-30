@@ -15,15 +15,29 @@
 .Descrip-top {
   padding-bottom: 30px;
 }
-
+.first-img {
+  width: 100%;
+  height: 600px;
+  border-radius: 20px;
+}
+.Descrip-down {
+  padding-bottom: 30px;
+}
 .Descrip-tit {
   font-size: calc(1.375rem + 1.5vw);
   font-weight: bold;
   line-height: 1.3;
   letter-spacing: -0.05em;
-  padding-bottom: 30px;
 }
 
+.Descrip-info {
+  font-size: 16px;
+  color: #898989;
+  border-radius: 20px;
+  line-height: 1.6;
+  letter-spacing: -0.05em;
+  margin-bottom: 30px;
+}
 .link-align {
   display: flex;
   justify-content: space-around;
@@ -33,28 +47,6 @@
   display: flex;
   flex-direction: column;
   align-items: center; /* 수직 가운데 정렬 */
-}
-.Descrip-down {
-  padding-bottom: 30px;
-}
-.Descrip-info {
-  font-size: 16px;
-  line-height: 1.6;
-  letter-spacing: -0.05em;
-}
-
-.first-img {
-  width: 100%;
-  height: 600px;
-  border-radius: 20px;
-}
-
-.Descript-link {
-  display: flex;
-}
-.Descript-link a {
-  text-decoration: none;
-  /* color: ; */
 }
 
 .view2 div {
