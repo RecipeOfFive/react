@@ -96,30 +96,32 @@ const RecipeDescrip = () => {
   return (
     <div className="container">
       <div className="view1">
-        <div className="Descrip-top">
-          <img className="first-img" src={recipe.main_image} />
-        </div>
-        <div className="Descrip-down">
-          <div className="Descrip-tit">{recipe.name}</div>
-          <div className="Descrip-info">{recipe.description}</div>
-          <div className="link-align">
-            <div className="Descript-link1">
-              <span>조리방법</span>
-              <span>{recipe.type}</span>{" "}
-            </div>
-            <div className="Descript-link1">
-              <span>요리종류</span>
-              <span>{recipe.kind}</span>{" "}
-            </div>
+        <div className="cooking-info">
+          <div className="Descrip-top">
+            <img className="first-img" src={recipe.main_image} />
+          </div>
+          <div className="Descrip-down">
+            <div className="Descrip-tit">{recipe.name}</div>
+            <div className="Descrip-info">{recipe.description}</div>
+            <div className="link-align">
+              <div className="Descript-link1">
+                <span>조리방법</span>
+                <span>{recipe.type}</span>{" "}
+              </div>
+              <div className="Descript-link1">
+                <span>요리종류</span>
+                <span>{recipe.kind}</span>{" "}
+              </div>
 
-            <div className="Descript-link1">
-              <span>해쉬태그</span>
-              <span>{recipe.hashtag}</span>{" "}
+              <div className="Descript-link1">
+                <span>해쉬태그</span>
+                <span>{recipe.hashtag}</span>{" "}
+              </div>
             </div>
           </div>
         </div>
 
-        <div>
+        <div className="card">
           <h3>다른 레시피</h3>
           <div className="another-recipe">
             {searchResult.map((el, index) => {
