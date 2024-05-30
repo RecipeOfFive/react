@@ -11,7 +11,7 @@ const RecipeDescrip = () => {
   const [ingredient, setIngredient] = useState([]);
   const [calorie, setCalorie] = useState([]);
   const [cooking, setCooking] = useState([]);
-  const [selectedIndex, setSelectedIndex] = useState(1);
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
   const { searchResult } = useContext(RecipeFilterContext);
   const navigate = useNavigate();
@@ -149,34 +149,53 @@ const RecipeDescrip = () => {
         <div className="view2">
           <div>
             <h3>재료</h3>
+            <hr className="hr" />
+            {/* 여기다가 재료 하나씩 입력 */}
+            <ul>
+              {ingredient.map((item, index) => (
+                <li key={index}>{item}</li>
+              ))}
+            </ul>
           </div>
-          <hr className="hr" />
 
-          {/* 여기다가 재료 하나씩 입력 */}
-          <ul>
-            {ingredient.map((item, index) => (
-              <li key={index}>{item}</li>
-            ))}
-          </ul>
-
-          <div>성분</div>
-          <hr className="hr" />
-          <ul>
-            <li>열량 : {calorie.calorie}</li>
-            <li>탄수화물 : {calorie.carbohydrate}</li>
-            <li>단백질 : {calorie.protein}</li>
-            <li>지방 : {calorie.province}</li>
-            <li>나트륨 : {calorie.salt}</li>
-          </ul>
+          <div>
+            <h3>성분</h3>
+            <hr className="hr" />
+            <ul>
+              <li>열량 : {calorie.calorie}</li>
+              <li>탄수화물 : {calorie.carbohydrate}</li>
+              <li>단백질 : {calorie.protein}</li>
+              <li>지방 : {calorie.province}</li>
+              <li>나트륨 : {calorie.salt}</li>
+            </ul>
+          </div>
         </div>
 
         <div className="view3">
-          <h3>조리순서</h3>
+          {/* <h3>조리순서</h3>
           <div className="cooking-desc-img-div">
             <div className="cooking-desc-div">
               <ul className="no-bullets">
                 {cooking.map((step, index) => (
-                  <li>
+                  <li className="recipe-order-desc"> 
+                    <div onClick={() => setSelectedIndex(index)}>
+                      {step.description.replace(/.$/, "")}
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div> */}
+          <h3>조리 순서</h3>
+          <div className="cooking-desc-img-div">
+            <div className="cooking-desc-div">
+              <ul className="no-bullets">
+                {cooking.map((step, index) => (
+                  <li
+                    key={index} // 여기에 고유한 key 추가
+                    className={`recipe-order-desc ${
+                      selectedIndex === index ? "selected" : ""
+                    }`} // 조건부 클래스 추가
+                  >
                     <div onClick={() => setSelectedIndex(index)}>
                       {step.description.replace(/.$/, "")}
                     </div>

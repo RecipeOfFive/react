@@ -127,6 +127,7 @@
 /* 조리 순서 */
 .cooking-desc-img-div {
   display: flex;
+  gap: 30px;
 }
 
 .cooking-desc-div {
@@ -134,4 +135,19 @@
 }
 .cooking-img-div {
   width: 50%;
+}
+
+.no-bullets li {
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.recipe-order-desc {
+  background-color: #faf6f2;
+  font-weight: bold; /* 텍스트를 굵게 */
+}
+
+.recipe-order-desc.selected {
+  background-color: #fae1c6;
 }
