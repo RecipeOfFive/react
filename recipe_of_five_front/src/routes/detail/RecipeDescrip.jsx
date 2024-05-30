@@ -96,7 +96,7 @@ const RecipeDescrip = () => {
         <div className="Descrip-top">
           <h1>
             <img className="favicon" src="/favicon.png" alt="로고가 없습니다" />
-            <a href="./">5조의 레시피</a>
+            <a href="../../">5조의 레시피</a>
           </h1>
           <img
             className="first-img"
