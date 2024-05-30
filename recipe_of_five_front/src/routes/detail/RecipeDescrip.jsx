@@ -159,9 +159,13 @@ const RecipeDescrip = () => {
                   <Card
                     key={index}
                     onClick={() => navigate(`/${el.id}`)}
-                    className="item-card"
+                    className="item-another-card"
                   >
-                    <img src={el.main_image} alt={el.name} />
+                    <img
+                      src={el.main_image}
+                      alt={el.name}
+                      className="item-image2"
+                    />
                     <Card.Title className="item-title">{el.name}</Card.Title>
                     <Card.Body className="text-align">
                       <p>❤️좋아요 {el.like_count}</p>
