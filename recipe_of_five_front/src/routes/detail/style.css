@@ -1,21 +1,43 @@
 .container {
-  max-width: 1200px;
+  max-width: 1020px;
   margin: 30px auto;
   background-color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
+.view1 {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
 .Descrip-top {
   padding-bottom: 30px;
 }
-
+.first-img {
+  width: 100%;
+  height: 600px;
+  border-radius: 20px;
+}
+.Descrip-down {
+  padding-bottom: 30px;
+}
 .Descrip-tit {
   font-size: calc(1.375rem + 1.5vw);
   font-weight: bold;
   line-height: 1.3;
   letter-spacing: -0.05em;
-  padding-bottom: 30px;
 }
 
+.Descrip-info {
+  font-size: 16px;
+  color: #898989;
+  border-radius: 20px;
+  line-height: 1.6;
+  letter-spacing: -0.05em;
+  margin-bottom: 30px;
+}
 .link-align {
   display: flex;
   justify-content: space-around;
@@ -25,28 +47,6 @@
   display: flex;
   flex-direction: column;
   align-items: center; /* 수직 가운데 정렬 */
-}
-.Descrip-down {
-  padding-bottom: 30px;
-}
-.Descrip-info {
-  font-size: 16px;
-  line-height: 1.6;
-  letter-spacing: -0.05em;
-}
-
-.first-img {
-  width: 100%;
-  height: 600px;
-  border-radius: 20px;
-}
-
-.Descript-link {
-  display: flex;
-}
-.Descript-link a {
-  text-decoration: none;
-  /* color: ; */
 }
 
 .view2 div {
@@ -70,7 +70,7 @@
 /* 다른 레시피 */
 .another-recipe {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   width: 100%;
   gap: 30px;
   flex-wrap: nowrap;
@@ -124,9 +124,70 @@
   border-radius: 10px; /* 이미지의 모서리를 둥글게 설정 (선택 사항) */
 }
 
+/* 재료, 성분 */
+/* 카드 스타일 */
+.card {
+  background-color: #fff;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+/* 제목 스타일 */
+.card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+/* 리스트 스타일 */
+.nutrient-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* 리스트 아이템 스타일 */
+.card li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+  color: #555;
+}
+
+/* 아이콘 스타일 */
+.card li::before {
+  display: inline-block;
+  width: 30px;
+  text-align: center;
+  margin-right: 10px;
+  color: #ff6f61;
+}
+
+/* 아이콘을 위한 클래스 */
+.icon-calorie::before {
+  content: "🔥";
+}
+.icon-carbohydrate::before {
+  content: "🍞";
+}
+.icon-protein::before {
+  content: "🍗";
+}
+.icon-fat::before {
+  content: "🥑";
+}
+.icon-sodium::before {
+  content: "🧂";
+}
+
 /* 조리 순서 */
 .cooking-desc-img-div {
   display: flex;
+  gap: 30px;
 }
 
 .cooking-desc-div {
@@ -158,3 +219,19 @@
   padding: 5px;
   border-radius: 10px;  
 }
+
+.no-bullets li {
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.recipe-order-desc {
+  background-color: #faf6f2;
+  font-weight: bold; /* 텍스트를 굵게 */
+}
+
+.recipe-order-desc.selected {
+  background-color: #fae1c6;
+}
+

@@ -11,8 +11,7 @@ const RecipeDescrip = () => {
   const [ingredient, setIngredient] = useState([]);
   const [calorie, setCalorie] = useState([]);
   const [cooking, setCooking] = useState([]);
-  const [selectedIndex, setSelectedIndex] = useState(1);
-  const [like, setLike] = useState(0);
+  const [selectedIndex, setSelectedIndex] = useState(0);
   const { searchResult } = useContext(RecipeFilterContext);
   const navigate = useNavigate();
   const URL = "http://ec2-3-38-45-40.ap-northeast-2.compute.amazonaws.com:3000";
@@ -96,45 +95,46 @@ const RecipeDescrip = () => {
   return (
     <div className="container">
       <div className="view1">
-        <div className="Descrip-top">
-          <div className="like-view">
-            <button
-              onClick={() => updateLike(recipe.like_count)}
-              className="like-button"
-            >
-              ❤️좋아요
-            </button>
-            <p>{recipe.like_count}</p>
-            <p>👀조회수 </p>
-            <p>{recipe.view_count}</p>
+        <div className="cooking-info">
+          <div className="Descrip-top">
+            <div className="like-view">
+              <button
+                onClick={() => updateLike(recipe.like_count)}
+                className="like-button"
+              >
+                ❤️좋아요
+              </button>
+              <p>{recipe.like_count}</p>
+              <p>👀조회수 </p>
+              <p>{recipe.view_count}</p>
+            </div>
+            <img className="first-img" src={recipe.main_image} />
           </div>
-          <img className="first-img" src={recipe.main_image} />
-        </div>
-        <div className="Descrip-down">
-          <div className="Descrip-tit">{recipe.name}</div>
-          <div className="Descrip-info">{recipe.description}</div>
-          <div className="link-align">
-            <div className="Descript-link1">
-              <span>조리방법</span>
-              <span>{recipe.type}</span>{" "}
-            </div>
-            <div className="Descript-link1">
-              <span>요리종류</span>
-              <span>{recipe.kind}</span>{" "}
-            </div>
-
-            <div className="Descript-link1">
-              <span>해쉬태그</span>
-              <span>{recipe.hashtag}</span>{" "}
+          <div className="Descrip-down">
+            <div className="Descrip-tit">{recipe.name}</div>
+            <div className="Descrip-info">{recipe.description}</div>
+            <div className="link-align">
+              <div className="Descript-link1">
+                <span>조리방법</span>
+                <span>{recipe.type}</span>{" "}
+              </div>
+              <div className="Descript-link1">
+                <span>요리종류</span>
+                <span>{recipe.kind}</span>{" "}
+              </div>
+              <div className="Descript-link1">
+                <span>해쉬태그</span>
+                <span>{recipe.hashtag}</span>{" "}
+              </div>
             </div>
           </div>
         </div>
 
-        <div>
+        <div className="card">
           <h3>다른 레시피</h3>
           <div className="another-recipe">
             {searchResult.map((el, index) => {
-              if (String(el.id) !== String(id) && count < 3) {
+              if (String(el.id) !== String(id) && count < 5) {
                 count += 1;
                 return (
                   <Card
@@ -158,36 +158,44 @@ const RecipeDescrip = () => {
         </div>
 
         <div className="view2">
-          <div>
+          <div className="card">
             <h3>재료</h3>
+            <hr className="hr" />
+            {/* 여기다가 재료 하나씩 입력 */}
+            <ul>
+              {ingredient.map((item, index) => (
+                <li key={index}>{item}</li>
+              ))}
+            </ul>
           </div>
-          <hr className="hr" />
 
-          {/* 여기다가 재료 하나씩 입력 */}
-          <ul>
-            {ingredient.map((item, index) => (
-              <li key={index}>{item}</li>
-            ))}
-          </ul>
-
-          <div>성분</div>
-          <hr className="hr" />
-          <ul>
-            <li>열량 : {calorie.calorie}</li>
-            <li>탄수화물 : {calorie.carbohydrate}</li>
-            <li>단백질 : {calorie.protein}</li>
-            <li>지방 : {calorie.province}</li>
-            <li>나트륨 : {calorie.salt}</li>
-          </ul>
+          <div className="card">
+            <h3>성분</h3>
+            <hr className="hr" />
+            <ul>
+              <li className="icon-calorie">열량 : {calorie.calorie} kcal</li>
+              <li className="icon-carbohydrate">
+                탄수화물 : {calorie.carbohydrate} g
+              </li>
+              <li className="icon-protein">단백질 : {calorie.protein} g</li>
+              <li className="icon-fat">지방 : {calorie.province} g</li>
+              <li className="icon-sodium">나트륨 : {calorie.salt} mg</li>
+            </ul>
+          </div>
         </div>
 
         <div className="view3">
-          <h3>조리순서</h3>
+          <h3>조리 순서</h3>
           <div className="cooking-desc-img-div">
             <div className="cooking-desc-div">
               <ul className="no-bullets">
                 {cooking.map((step, index) => (
-                  <li>
+                  <li
+                    key={index} // 여기에 고유한 key 추가
+                    className={`recipe-order-desc ${
+                      selectedIndex === index ? "selected" : ""
+                    }`} // 조건부 클래스 추가
+                  >
                     <div onClick={() => setSelectedIndex(index)}>
                       {step.description.replace(/.$/, "")}
                     </div>
