@@ -133,6 +133,7 @@ const RecipeDescrip = () => {
 
         <div className="div-card">
           <h3>다른 레시피</h3>
+          <hr className="hr" />
           <div className="another-recipe">
             {searchResult.map((el, index) => {
               if (String(el.id) !== String(id) && count < 5) {
@@ -185,6 +186,7 @@ const RecipeDescrip = () => {
 
         <div className="view3">
           <h3>조리 순서</h3>
+          <hr className="hr" />
           <div className="cooking-desc-img-div">
             <div className="cooking-desc-div">
               <ul className="no-bullets">
