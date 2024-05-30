@@ -7,36 +7,36 @@ import { InputGroup, Form } from "react-bootstrap";
 import "./style.css";
 
 export default function SearchInd() {
-  const { include, exclude, setExclude, setInclude, setIsSearch } =
-    useContext(RecipeFilterContext);
+    const { include, exclude, setExclude, setInclude, setIsSearch } =
+        useContext(RecipeFilterContext);
 
-  const [input, setInput] = useState("");
-  const [radioValue, setRadioValue] = useState("1");
+    const [input, setInput] = useState("");
+    const [radioValue, setRadioValue] = useState("1");
 
-  const handleRadioChange = (value) => {
-    setRadioValue(value);
-    // 검색 상태 설정
-  };
+    const handleRadioChange = (value) => {
+        setRadioValue(value);
+        // 검색 상태 설정
+    };
 
-  const handleButtonClick = (isInclude) => {
-    setIsSearch(true);
-    if (input === "") {
-      alert("재료를 입력해주세요.");
-      return;
-    } else if (include.includes(input)) {
-      alert("이미 포함된 재료입니다.");
-      return;
-    } else if (exclude.includes(input)) {
-      alert("이미 제외된 재료입니다.");
-      return;
-    } else if (isInclude) {
-      setInclude((prev) => [...prev, input]);
-    } else {
-      setExclude((prev) => [...prev, input]);
-    }
+    const handleButtonClick = (isInclude) => {
+        setIsSearch(true);
+        if (input === "") {
+            alert("재료를 입력해주세요.");
+            return;
+        } else if (include.includes(input)) {
+            alert("이미 포함된 재료입니다.");
+            return;
+        } else if (exclude.includes(input)) {
+            alert("이미 제외된 재료입니다.");
+            return;
+        } else if (isInclude) {
+            setInclude((prev) => [...prev, input]);
+        } else {
+            setExclude((prev) => [...prev, input]);
+        }
 
-    setInput(""); // 입력 필드 초기화
-  };
+        setInput(""); // 입력 필드 초기화
+    };
 
   return (
     <div className="main-div-SearchInd">
@@ -91,4 +91,5 @@ export default function SearchInd() {
       </div>
     </div>
   );
+
 }
