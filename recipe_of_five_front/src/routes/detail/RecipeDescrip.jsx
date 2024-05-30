@@ -194,20 +194,6 @@ const RecipeDescrip = () => {
             </ul>
           </div>
         </div>
-
-        <div className="div-card">
-          <h3>성분</h3>
-          <hr className="hr" />
-          <ul>
-            <li className="icon-calorie">열량 : {calorie.calorie} kcal</li>
-            <li className="icon-carbohydrate">
-              탄수화물 : {calorie.carbohydrate} g
-            </li>
-            <li className="icon-protein">단백질 : {calorie.protein} g</li>
-            <li className="icon-fat">지방 : {calorie.province} g</li>
-            <li className="icon-sodium">나트륨 : {calorie.salt} mg</li>
-          </ul>
-        </div>
       </div>
 
       <div className="view3">
