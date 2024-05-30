@@ -10,13 +10,13 @@ export default function RecipeCard() {
     useContext(RecipeFilterContext);
   const navigate = useNavigate();
 
-  const [currBtn, setCurrBtn] = useState("좋아요");
+  const [currBtn, setCurrBtn] = useState("인기순");
 
   function handleOrder() {
     if (searchOptions.order === "like_count") {
-      setCurrBtn("조회수");
+      setCurrBtn("최신순");
     } else {
-      setCurrBtn("좋아요");
+      setCurrBtn("인기순");
     }
 
     setSearchOptions((prevOptions) => {
@@ -30,8 +30,10 @@ export default function RecipeCard() {
 
   return (
     <div>
-      <div>
-        <Button onClick={handleOrder}>{currBtn}</Button>
+      <div className="sort-div">
+        <Button onClick={handleOrder} className="sort-button">
+          {currBtn}
+        </Button>
       </div>
       <div className="food-list-grid">
         {searchResult.map((el, index) => {
