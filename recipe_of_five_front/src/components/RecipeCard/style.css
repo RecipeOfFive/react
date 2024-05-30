@@ -39,3 +39,8 @@
   color: #ffffff !important;
   border-color: #fea304 !important;
 }
+
+.no-content {
+  margin-top: 100px;
+  text-align: center;
+}
