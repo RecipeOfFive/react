@@ -135,3 +135,26 @@
 .cooking-img-div {
   width: 50%;
 }
+
+.like-view {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 10px;
+}
+
+.like-view p {
+  margin: 0px 0px 0px 0px; 
+  line-height: 120%;
+  color: black;
+}
+
+
+.like-button {
+  border: 0;
+  background-color: #fae1c6;
+  padding: 5px;
+  border-radius: 10px;  
+}

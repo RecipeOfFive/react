@@ -12,15 +12,14 @@ const RecipeDescrip = () => {
   const [calorie, setCalorie] = useState([]);
   const [cooking, setCooking] = useState([]);
   const [selectedIndex, setSelectedIndex] = useState(1);
-
+  const [like, setLike] = useState(0);
   const { searchResult } = useContext(RecipeFilterContext);
   const navigate = useNavigate();
+  const URL = "http://ec2-3-38-45-40.ap-northeast-2.compute.amazonaws.com:3000";
 
   const fetchRecipe = async () => {
     try {
-      const resp = await axios.get(
-        `http://ec2-3-38-45-40.ap-northeast-2.compute.amazonaws.com:3000/api/food/${id}`
-      );
+      const resp = await axios.get(`${URL}/api/food/${id}`);
       console.log(resp.data);
       setRecipe(resp.data);
     } catch (error) {
@@ -30,9 +29,7 @@ const RecipeDescrip = () => {
 
   const fetchIngredient = async () => {
     try {
-      const resp = await axios.get(
-        `http://ec2-3-38-45-40.ap-northeast-2.compute.amazonaws.com:3000/api/food/ingredient/${id}`
-      );
+      const resp = await axios.get(`${URL}/api/food/ingredient/${id}`);
 
       if (resp.data && resp.data["ingredient"]) {
         const ingredients = resp.data["ingredient"].split("\n");
@@ -45,9 +42,7 @@ const RecipeDescrip = () => {
 
   const fetchNutrient = async () => {
     try {
-      const resp = await axios.get(
-        `http://ec2-3-38-45-40.ap-northeast-2.compute.amazonaws.com:3000/api/food/nutrient/${id}`
-      );
+      const resp = await axios.get(`${URL}/api/food/nutrient/${id}`);
       setCalorie(resp.data);
     } catch (error) {
       console.log("에러 발생3");
@@ -56,9 +51,7 @@ const RecipeDescrip = () => {
 
   const fetchCooking = async () => {
     try {
-      const resp = await axios.get(
-        `http://ec2-3-38-45-40.ap-northeast-2.compute.amazonaws.com:3000/api/recipe/${id}`
-      );
+      const resp = await axios.get(`${URL}/api/recipe/${id}`);
       setCooking(resp.data);
     } catch (error) {
       console.log("에러 발생4");
@@ -67,12 +60,19 @@ const RecipeDescrip = () => {
 
   const fetchItem = async () => {
     try {
-      const resp = await axios.post(
-        `http://ec2-3-38-45-40.ap-northeast-2.compute.amazonaws.com:3000/api/recipe/${id}`
-      );
+      const resp = await axios.post(`${URL}/api/recipe/${id}`);
       setCooking(resp.data);
     } catch (error) {
       console.log("에러 발생4");
+    }
+  };
+
+  const updateLike = async (like) => {
+    try {
+      await axios.get(`${URL}/api/food/like/${id}`);
+      setRecipe({ ...recipe, like_count: like + 1 });
+    } catch (error) {
+      console.log("에러 발생5");
     }
   };
 
@@ -97,6 +97,17 @@ const RecipeDescrip = () => {
     <div className="container">
       <div className="view1">
         <div className="Descrip-top">
+          <div className="like-view">
+            <button
+              onClick={() => updateLike(recipe.like_count)}
+              className="like-button"
+            >
+              ❤️좋아요
+            </button>
+            <p>{recipe.like_count}</p>
+            <p>👀조회수 </p>
+            <p>{recipe.view_count}</p>
+          </div>
           <img className="first-img" src={recipe.main_image} />
         </div>
         <div className="Descrip-down">
