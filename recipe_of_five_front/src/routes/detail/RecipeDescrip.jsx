@@ -83,7 +83,7 @@ const RecipeDescrip = () => {
   }, [id]);
 
   const changeid = (id) => {
-    navigate(`/${id}`);
+    navigate(`/detail/${id}`);
   };
 
   let count = 0;
@@ -97,16 +97,21 @@ const RecipeDescrip = () => {
       </h1>
       <div className="view1">
         <div className="Descrip-top">
-          <div className="like-view">
-            <button
-              onClick={() => updateLike(recipe.like_count)}
-              className="like-button"
-            >
-              ❤️좋아요
-            </button>
-            <p>{recipe.like_count}</p>
-            <p>👀조회수 </p>
-            <p>{recipe.view_count}</p>
+          <div className="nav-top">
+            <h1>
+              <a href="./">5조의 레시피</a>
+            </h1>
+            <div className="like-view">
+              <button
+                onClick={() => updateLike(recipe.like_count)}
+                className="like-button"
+              >
+                ❤️좋아요
+              </button>
+              <p>{recipe.like_count}</p>
+              <p>👀조회수 </p>
+              <p>{recipe.view_count}</p>
+            </div>
           </div>
           <img
             className="first-img"
@@ -116,7 +121,20 @@ const RecipeDescrip = () => {
         </div>
         <div className="cooking-info section-card">
           <div className="Descrip-down">
-            <div className="Descrip-tit">{recipe.name}</div>
+            <div className="title-like-view-div">
+              <div className="Descrip-tit">{recipe.name}</div>
+              <div className="like-view">
+                <button
+                  onClick={() => updateLike(recipe.like_count)}
+                  className="like-button"
+                >
+                  ❤️좋아요
+                </button>
+                <p>{recipe.like_count}</p>
+                <p>👀조회수 </p>
+                <p>{recipe.view_count}</p>
+              </div>
+            </div>
             <div className="Descrip-info">{recipe.description}</div>
             <div className="link-align">
               <div className="Descript-link1">
@@ -146,9 +164,13 @@ const RecipeDescrip = () => {
                   <Card
                     key={index}
                     onClick={() => navigate(`/${el.id}`)}
-                    className="item-card"
+                    className="item-another-card"
                   >
-                    <img src={el.main_image} alt={el.name} />
+                    <img
+                      src={el.main_image}
+                      alt={el.name}
+                      className="item-image2"
+                    />
                     <Card.Title className="item-title">{el.name}</Card.Title>
                     <Card.Body className="text-align">
                       <p>❤️좋아요 {el.like_count}</p>
@@ -188,36 +210,50 @@ const RecipeDescrip = () => {
           </div>
         </div>
 
-        <div className="view3">
-          <h3>조리 순서</h3>
+        <div className="div-card">
+          <h3>성분</h3>
           <hr className="hr" />
-          <div className="cooking-desc-img-div">
-            <div className="cooking-desc-div">
-              <ul className="no-bullets">
-                {cooking.map((step, index) => (
-                  <li
-                    key={index}
-                    className={`recipe-order-desc ${
-                      selectedIndex === index ? "selected" : ""
-                    }`}
-                  >
-                    <div onClick={() => setSelectedIndex(index)}>
-                      {step.description.replace(/.$/, "")}
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            {cooking.length > 0 && (
-              <div className="cooking-img-div">
-                <img
-                  src={cooking[selectedIndex].image}
-                  alt={`Step ${cooking[selectedIndex].recipeOrder}`}
-                  className="full-width-image"
-                />
-              </div>
-            )}
+          <ul>
+            <li className="icon-calorie">열량 : {calorie.calorie} kcal</li>
+            <li className="icon-carbohydrate">
+              탄수화물 : {calorie.carbohydrate} g
+            </li>
+            <li className="icon-protein">단백질 : {calorie.protein} g</li>
+            <li className="icon-fat">지방 : {calorie.province} g</li>
+            <li className="icon-sodium">나트륨 : {calorie.salt} mg</li>
+          </ul>
+        </div>
+      </div>
+
+      <div className="view3">
+        <h3>조리 순서</h3>
+        <hr className="hr" />
+        <div className="cooking-desc-img-div">
+          <div className="cooking-desc-div">
+            <ul className="no-bullets">
+              {cooking.map((step, index) => (
+                <li
+                  key={index}
+                  className={`recipe-order-desc ${
+                    selectedIndex === index ? "selected" : ""
+                  }`}
+                >
+                  <div onClick={() => setSelectedIndex(index)}>
+                    {step.description.replace(/.$/, "")}
+                  </div>
+                </li>
+              ))}
+            </ul>
           </div>
+          {cooking.length > 0 && (
+            <div className="cooking-img-div">
+              <img
+                src={cooking[selectedIndex].image}
+                alt={`Step ${cooking[selectedIndex].recipeOrder}`}
+                className="full-width-image"
+              />
+            </div>
+          )}
         </div>
       </div>
     </div>

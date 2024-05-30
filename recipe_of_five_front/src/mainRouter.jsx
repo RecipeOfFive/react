@@ -5,14 +5,14 @@ import MainPage from "./routes/main/mainPage";
 import RecipeDescrip from "./routes/detail/RecipeDescrip";
 
 const Router = createBrowserRouter([
-  {
-    path: "/",
-    element: <MainPage />,
-  },
-  {
-    path: ":id",
-    element: <RecipeDescrip />,
-  },
+    {
+        path: "/",
+        element: <MainPage />,
+    },
+    {
+        path: "/detail/:id",
+        element: <RecipeDescrip />,
+    },
 ]);
 
 export default Router;

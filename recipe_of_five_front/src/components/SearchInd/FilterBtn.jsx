@@ -7,7 +7,7 @@ import "./style.css";
 export default function FilterBtn() {
   const { filterMethod, setFilterMethod } = useContext(RecipeFilterContext);
 
-  const options = ["끓이기", "삶기", "찌기", "굽기", "볶기", "튀기기"];
+  const options = ["끓이기", "찌기", "튀기기", "굽기", "볶기", "기타"];
 
   const handleChange = (val) => {
     if (val.includes("전체")) {
