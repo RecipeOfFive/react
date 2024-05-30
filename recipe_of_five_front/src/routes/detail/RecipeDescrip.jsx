@@ -83,7 +83,7 @@ const RecipeDescrip = () => {
   }, [id]);
 
   const changeid = (id) => {
-    navigate(`/${id}`);
+    navigate(`/detail/${id}`);
   };
 
   let count = 0;
@@ -209,40 +209,69 @@ const RecipeDescrip = () => {
           </div>
         </div>
 
-        <div className="view3">
-          <h3>조리 순서</h3>
-          <hr className="hr" />
-          <div className="cooking-desc-img-div">
-            <div className="cooking-desc-div">
-              <ul className="no-bullets">
-                {cooking.map((step, index) => (
-                  <li
-                    key={index}
-                    className={`recipe-order-desc ${
-                      selectedIndex === index ? "selected" : ""
-                    }`}
-                  >
-                    <div onClick={() => setSelectedIndex(index)}>
-                      {step.description.replace(/.$/, "")}
+                    <div className="div-card">
+                        <h3>성분</h3>
+                        <hr className="hr" />
+                        <ul>
+                            <li className="icon-calorie">
+                                열량 : {calorie.calorie} kcal
+                            </li>
+                            <li className="icon-carbohydrate">
+                                탄수화물 : {calorie.carbohydrate} g
+                            </li>
+                            <li className="icon-protein">
+                                단백질 : {calorie.protein} g
+                            </li>
+                            <li className="icon-fat">
+                                지방 : {calorie.province} g
+                            </li>
+                            <li className="icon-sodium">
+                                나트륨 : {calorie.salt} mg
+                            </li>
+                        </ul>
                     </div>
-                  </li>
-                ))}
-              </ul>
+                </div>
+
+                <div className="view3">
+                    <h3>조리 순서</h3>
+                    <hr className="hr" />
+                    <div className="cooking-desc-img-div">
+                        <div className="cooking-desc-div">
+                            <ul className="no-bullets">
+                                {cooking.map((step, index) => (
+                                    <li
+                                        key={index}
+                                        className={`recipe-order-desc ${
+                                            selectedIndex === index
+                                                ? "selected"
+                                                : ""
+                                        }`}
+                                    >
+                                        <div
+                                            onClick={() =>
+                                                setSelectedIndex(index)
+                                            }
+                                        >
+                                            {step.description.replace(/.$/, "")}
+                                        </div>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                        {cooking.length > 0 && (
+                            <div className="cooking-img-div">
+                                <img
+                                    src={cooking[selectedIndex].image}
+                                    alt={`Step ${cooking[selectedIndex].recipeOrder}`}
+                                    className="full-width-image"
+                                />
+                            </div>
+                        )}
+                    </div>
+                </div>
             </div>
-            {cooking.length > 0 && (
-              <div className="cooking-img-div">
-                <img
-                  src={cooking[selectedIndex].image}
-                  alt={`Step ${cooking[selectedIndex].recipeOrder}`}
-                  className="full-width-image"
-                />
-              </div>
-            )}
-          </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 };
 
 export default RecipeDescrip;
