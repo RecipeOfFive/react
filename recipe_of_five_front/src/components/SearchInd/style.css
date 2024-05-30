@@ -1,3 +1,16 @@
+.favicon {
+  width: 100px;
+  height: 100px;
+}
+
+/* 포함, 제외 버튼 호버시 색상 변경 */
+.main-div-SearchInd-togglebtn:hover {
+    background-color: red !important; /* 원하는 색상으로 변경해주세용 */
+    border-color: red !important;
+    color: white !important;
+
+}
+
 .main-div-SearchInd {
   display: flex;
   flex-direction: column;
