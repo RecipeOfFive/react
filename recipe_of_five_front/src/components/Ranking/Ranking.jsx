@@ -19,28 +19,24 @@ export default function Ranking() {
             border="warning"
             key={index}
             onClick={() => navigate(`/${recipe.id}`)}
+            className="item-card"
           >
             <Card.Body className="item-location">
-              <div className="item-content">
-                <Card.Subtitle className="item-title">
-                  {recipe.name}
-                </Card.Subtitle>
-                <Card.Text className="item-description">
-                  {recipe.description}
-                </Card.Text>
-                <div className="like-view-div">
-                  <span className="like-view">Like </span>
-                  <span className="like-view-count">{recipe.like_count} </span>
-                  <span className="like-view">View </span>
-                  <span className="like-view-count">{recipe.view_count} </span>
-                </div>
-              </div>
               <div>
                 <Card.Img
                   variant="top"
                   src={recipe.main_image}
                   className="item-image"
                 />
+              </div>
+              <Card.Subtitle className="item-title">
+                {recipe.name}
+              </Card.Subtitle>
+              <div className="like-view-div">
+                <span className="like-view">❤️좋아요 </span>
+                <span className="like-view-count">{recipe.like_count} </span>
+                <span className="like-view">👀조회수 </span>
+                <span className="like-view-count">{recipe.view_count} </span>
               </div>
             </Card.Body>
           </Card>
