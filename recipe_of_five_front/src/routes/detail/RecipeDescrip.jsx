@@ -90,21 +90,23 @@ const RecipeDescrip = () => {
 
   return (
     <div className="container">
-      <h1>
-        <a href="./">5조의 레시피</a>
-      </h1>
       <div className="view1">
         <div className="Descrip-top">
-          <div className="like-view">
-            <button
-              onClick={() => updateLike(recipe.like_count)}
-              className="like-button"
-            >
-              ❤️좋아요
-            </button>
-            <p>{recipe.like_count}</p>
-            <p>👀조회수 </p>
-            <p>{recipe.view_count}</p>
+          <div className="nav-top">
+            <h1>
+              <a href="./">5조의 레시피</a>
+            </h1>
+            <div className="like-view">
+              <button
+                onClick={() => updateLike(recipe.like_count)}
+                className="like-button"
+              >
+                ❤️좋아요
+              </button>
+              <p>{recipe.like_count}</p>
+              <p>👀조회수 </p>
+              <p>{recipe.view_count}</p>
+            </div>
           </div>
           <img
             className="first-img"
@@ -114,7 +116,20 @@ const RecipeDescrip = () => {
         </div>
         <div className="cooking-info section-card">
           <div className="Descrip-down">
-            <div className="Descrip-tit">{recipe.name}</div>
+            <div className="title-like-view-div">
+              <div className="Descrip-tit">{recipe.name}</div>
+              <div className="like-view">
+                <button
+                  onClick={() => updateLike(recipe.like_count)}
+                  className="like-button"
+                >
+                  ❤️좋아요
+                </button>
+                <p>{recipe.like_count}</p>
+                <p>👀조회수 </p>
+                <p>{recipe.view_count}</p>
+              </div>
+            </div>
             <div className="Descrip-info">{recipe.description}</div>
             <div className="link-align">
               <div className="Descript-link1">
