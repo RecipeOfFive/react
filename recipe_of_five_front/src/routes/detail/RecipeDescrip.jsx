@@ -90,10 +90,6 @@ const RecipeDescrip = () => {
 
   return (
     <div className="container">
-      <h1>
-        <img className="favicon" src="/favicon.png" alt="로고가 없습니다" />
-        <a href="./">5조의 레시피</a>
-      </h1>
       <div className="view1">
         <div className="Descrip-top">
           <h1>
