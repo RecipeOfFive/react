@@ -3,6 +3,7 @@ import { RecipeFilterContext } from "../../context/SearchProvider";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import ToggleButton from "react-bootstrap/ToggleButton";
 import { InputGroup, Form } from "react-bootstrap";
+// import logo from "/public/favicon.png";
 import "./style.css";
 
 export default function SearchInd() {
@@ -40,6 +41,7 @@ export default function SearchInd() {
   return (
     <div className="main-div-SearchInd">
       <h1>
+        <img className="favicon" src="/favicon.png" alt="로고가 없습니다" />
         <a href="./">5조의 레시피</a>
       </h1>
       <div className="searchInd-input">

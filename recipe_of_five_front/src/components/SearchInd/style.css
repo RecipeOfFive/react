@@ -1,3 +1,8 @@
+.favicon {
+  width: 100px;
+  height: 100px;
+}
+
 .main-div-SearchInd {
   display: flex;
   flex-direction: column;
