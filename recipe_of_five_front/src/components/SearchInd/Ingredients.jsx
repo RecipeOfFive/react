@@ -1,59 +1,57 @@
 import React, { useContext, useState, useEffect } from "react";
 import { RecipeFilterContext } from "../../context/SearchProvider";
 import { Button } from "react-bootstrap";
-import "./style.css";
+import "./ingredient-style.css";
 
 export default function SearchInd() {
-    const { exclude, setExclude, include, setInclude } =
-        useContext(RecipeFilterContext);
+  const { exclude, setExclude, include, setInclude } =
+    useContext(RecipeFilterContext);
 
-    return (
-        <div>
-            {include.length > 0 && (
-                <div style={{ display: "flex" }}>
-                    {include.map((item, idx) => (
-                        <Button
-                            key={idx}
-                            onClick={() => {
-                                setInclude((prev) =>
-                                    prev.filter((el) => el !== item)
-                                );
-                            }}
-                            style={{
-                                border: "2px solid black",
-                                height: "40px",
-                            }}
-                        >
-                            {item}
-                        </Button>
-                    ))}
-                    <p>는 포함된</p>
-                </div>
-            )}
-
-            <div>
-                {exclude.length > 0 && (
-                    <div style={{ display: "flex" }}>
-                        {exclude.map((item, idx) => (
-                            <Button
-                                key={idx}
-                                onClick={() => {
-                                    setExclude((prev) =>
-                                        prev.filter((el) => el !== item)
-                                    );
-                                }}
-                                style={{
-                                    border: "2px solid black",
-                                    height: "40px",
-                                }}
-                            >
-                                {item}
-                            </Button>
-                        ))}
-                        <p>는 제외된</p>
-                    </div>
-                )}
-            </div>
+  return (
+    <div>
+      {include.length > 0 && (
+        <div style={{ display: "flex" }} className="include-exclude">
+          {include.map((item, idx) => (
+            <Button
+              key={idx}
+              onClick={() => {
+                setInclude((prev) => prev.filter((el) => el !== item));
+              }}
+              style={{
+                backgroundColor: "#fea304",
+                color: "#ffffff",
+                borderColor: "#fea304",
+              }}
+            >
+              {item}
+            </Button>
+          ))}
+          <div>는 포함된</div>
         </div>
-    );
+      )}
+
+      <div>
+        {exclude.length > 0 && (
+          <div style={{ display: "flex" }} className="include-exclude">
+            {exclude.map((item, idx) => (
+              <Button
+                key={idx}
+                onClick={() => {
+                  setExclude((prev) => prev.filter((el) => el !== item));
+                }}
+                style={{
+                  backgroundColor: "#fea304",
+                  color: "#ffffff",
+                  borderColor: "#fea304",
+                }}
+              >
+                {item}
+              </Button>
+            ))}
+            <div>는 제외된</div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
 }
