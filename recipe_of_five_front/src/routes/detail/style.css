@@ -6,7 +6,10 @@
   flex-direction: column;
   gap: 30px;
 }
-
+.favicon {
+  width: 100px;
+  height: 100px;
+}
 .container h1 a {
   text-decoration: none;
   color: black;
