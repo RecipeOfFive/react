@@ -41,7 +41,7 @@ export default function RecipeCard() {
                     return (
                         <Card
                             key={index}
-                            onClick={() => navigate(`/${el.id}`)}
+                            onClick={() => navigate(`/detail/${el.id}`)}
                             className="item-card"
                         >
                             <img src={el.main_image}></img>
