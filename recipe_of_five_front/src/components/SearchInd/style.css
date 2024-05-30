@@ -171,3 +171,13 @@
   color: #ffffff !important;
   border-color: #cb8203 !important;
 }
+
+
+/* 필터버튼 Hover 상태에서의 스타일 */
+.custom-active2:hover,
+.custom-inactive2:hover,
+.custom-active3:hover,
+.custom-inactive3:hover {
+  background-color: lightslategray !important; 
+  color: white !important;
+}

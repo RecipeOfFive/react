@@ -3,6 +3,7 @@ import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
 import ToggleButton from "react-bootstrap/ToggleButton";
 import { RecipeFilterContext } from "../../context/SearchProvider";
 import "./style.css";
+import { useEffect } from "react";
 
 export default function FilterBtn() {
   const { filterMethod, setFilterMethod } = useContext(RecipeFilterContext);
@@ -19,10 +20,15 @@ export default function FilterBtn() {
     } else {
       setFilterMethod(val);
     }
-    //setSearchOptions(value);
   };
 
+  
+
   const isSelected = (option) => filterMethod.includes(option);
+
+  useEffect(() => {
+        setFilterMethod([...options]); // 전체 선택
+  }, []);
 
   return (
     <div className="filter-btn">
