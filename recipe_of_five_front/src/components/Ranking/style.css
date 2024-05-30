@@ -23,7 +23,7 @@
   display: flex;
   flex-direction: column;
   -webkit-box-shadow: 8px 8px 16px -2px rgba(178, 178, 178, 1);
-  -moz-box-shadow: 8px 8px 16px -2px rgba(178, 178, 178, 1);  
+  -moz-box-shadow: 8px 8px 16px -2px rgba(178, 178, 178, 1);
   box-shadow: 8px 8px 16px -2px rgba(178, 178, 178, 1);
 }
 
@@ -58,7 +58,7 @@
 
 .like-view {
   font-size: 1.2rem;
-  color: #BDBDBD;
+  color: #bdbdbd;
   white-space: pre-wrap;
 }
 
