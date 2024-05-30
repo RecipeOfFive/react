@@ -30,7 +30,6 @@ export default function RecipeCard() {
 
   return (
     <div>
-      <RecipeResult />
       <div>
         <Button onClick={handleOrder}>{currBtn}</Button>
       </div>

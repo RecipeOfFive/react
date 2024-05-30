@@ -1,5 +1,6 @@
 import Button from "react-bootstrap/Button";
 import FilterBtn from "./FilterBtn";
+import "./style.css";
 
 export default function FilterMethod() {
   /*

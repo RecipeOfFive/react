@@ -12,23 +12,24 @@ import { RecipeFilterContext } from "../../context/SearchProvider";
 import { Row, Col, Container } from "react-bootstrap";
 
 const Main = () => {
-  const navigate = useNavigate();
-  const { isFirst } = useContext(RecipeFilterContext);
+    const navigate = useNavigate();
+    const { isFirst, isSearch } = useContext(RecipeFilterContext);
 
-  return (
-    <div>
-      {/* right-side */}
+    return (
+        <div>
+            {/* right-side */}
+            <SearchInd />
+            {/* <Ingredients /> */}
+            <FilterBtn />
 
-      <SearchInd />
-      {/* <Ingredients /> */}
-      <FilterBtn />
-      <SendSearch />
+            {isSearch && <Ingredients />}
+            {/* 임시로 계속 true */}
 
-      {/* // right-side */}
-
-      {isFirst ? <Ranking /> : <RecipeCard />}
-    </div>
-  );
+            <SendSearch />
+            {/* right-side */}
+            {isFirst ? <Ranking /> : <RecipeCard />}
+        </div>
+    );
 };
 
 export default Main;

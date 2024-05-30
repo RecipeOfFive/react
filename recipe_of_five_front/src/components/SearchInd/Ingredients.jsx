@@ -1,5 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { RecipeFilterContext } from "../../context/SearchProvider";
+import "./style.css";
+
 export default function SearchInd() {
   const { exclude, setExclude, include, setInclude } =
     useContext(RecipeFilterContext);
@@ -31,7 +33,6 @@ export default function SearchInd() {
               onClick={() => {
                 setExclude((prev) => prev.filter((el) => el !== item));
               }}
-              //이 부분이 무한루프, 클릭하면 삭제하는 로직
             >
               {item}
             </span>
