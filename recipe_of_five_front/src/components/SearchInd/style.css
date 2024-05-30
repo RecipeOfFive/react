@@ -3,14 +3,6 @@
   height: 100px;
 }
 
-/* 포함, 제외 버튼 호버시 색상 변경 */
-.main-div-SearchInd-togglebtn:hover {
-    background-color: red !important; /* 원하는 색상으로 변경해주세용 */
-    border-color: red !important;
-    color: white !important;
-
-}
-
 .main-div-SearchInd {
   display: flex;
   flex-direction: column;
@@ -28,6 +20,11 @@
 .main-div-SearchInd h1 a {
   text-decoration: none;
   color: black;
+}
+
+.searchinput-btn-div {
+  display: flex;
+  justify-content: space-around;
 }
 
 /* SearchInd 컴포넌트 - 버튼 그룹 - 토글(포함/제외) */
@@ -66,7 +63,7 @@
 }
 
 .searchInd-btn {
-  width: 450px;
+  /* width: 450px; */
   display: flex;
   justify-content: left;
 }
@@ -133,12 +130,23 @@
   border-color: #000000 !important; /* 비활성화된 버튼의 테두리색 */
 }
 
+.custom-active3 {
+  background-color: #616161 !important; /* 활성화된 버튼의 배경색 */
+  color: #ffffff !important; /* 활성화된 버튼의 글자색 */
+  border-color: #616161 !important; /* 활성화된 버튼의 테두리색 */
+}
+
+.custom-inactive3 {
+  background-color: #ffffff !important; /* 비활성화된 버튼의 배경색 */
+  color: #000000 !important; /* 비활성화된 버튼의 글자색 */
+  border-color: #000000 !important; /* 비활성화된 버튼의 테두리색 */
+}
+
 /* 버튼 : 검색 */
 .search-btn-div {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 30px;
 }
 
 .custom-search-button {
