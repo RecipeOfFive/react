@@ -4,6 +4,7 @@ import "./style.css";
 import React, { useState, useEffect, useContext } from "react";
 import { RecipeFilterContext } from "../../context/SearchProvider";
 import axios from "axios";
+import ScrollPage from "../Scroll/ScrollPage";
 
 const RecipeDescrip = () => {
   const { id } = useParams();
@@ -90,11 +91,12 @@ const RecipeDescrip = () => {
 
   return (
     <div className="container">
+      <ScrollPage />
       <div className="view1">
         <div className="Descrip-top">
           <h1>
             <img className="favicon" src="/favicon.png" alt="로고가 없습니다" />
-            <a href="./">5조의 레시피</a>
+            <a href="../../">5조의 레시피</a>
           </h1>
           <img
             className="first-img"
@@ -146,7 +148,7 @@ const RecipeDescrip = () => {
                 return (
                   <Card
                     key={index}
-                    onClick={() => navigate(`/${el.id}`)}
+                    onClick={() => navigate(`/detail/${el.id}`)}
                     className="item-another-card"
                   >
                     <img
