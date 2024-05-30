@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { RecipeFilterContext } from "../../context/SearchProvider";
 import axios from "axios";
+import "./style.css";
 
 export default function SendSearch() {
   const {

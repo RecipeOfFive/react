@@ -3,6 +3,7 @@ import { RecipeFilterContext } from "../../context/SearchProvider";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import ToggleButton from "react-bootstrap/ToggleButton";
 import { InputGroup, Form } from "react-bootstrap";
+import "./style.css";
 
 export default function SearchInd() {
   const { include, exclude, setExclude, setInclude, setIsSearch } =
