@@ -12,6 +12,82 @@
   flex-direction: column;
   gap: 30px;
 }
+
+/* style.css */
+
+/* 공통 카드 스타일 */
+.section-card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+/* 요리 정보 카드 스타일 */
+.cooking-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cooking-info .Descrip-top {
+  width: 100%;
+  text-align: center;
+}
+
+.cooking-info .Descrip-top .first-img {
+  max-width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cooking-info .Descrip-down {
+  width: 100%;
+  text-align: left;
+}
+
+.cooking-info .Descrip-tit {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.cooking-info .Descrip-info {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.cooking-info .link-align {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.cooking-info .Descript-link1 {
+  flex: 1 1 30%;
+  background: #f9f9f9;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.cooking-info .Descript-link1 span:first-child {
+  font-weight: bold;
+  color: #333;
+}
+
+.cooking-info .Descript-link1 span:last-child {
+  display: block;
+  margin-top: 5px;
+  color: #777;
+}
+
 .Descrip-top {
   padding-bottom: 30px;
 }
@@ -19,9 +95,6 @@
   width: 100%;
   height: 600px;
   border-radius: 20px;
-}
-.Descrip-down {
-  padding-bottom: 30px;
 }
 .Descrip-tit {
   font-size: calc(1.375rem + 1.5vw);
@@ -213,17 +286,16 @@
 }
 
 .like-view p {
-  margin: 0px 0px 0px 0px; 
+  margin: 0px 0px 0px 0px;
   line-height: 120%;
   color: black;
 }
-
 
 .like-button {
   border: 0;
   background-color: #fae1c6;
   padding: 5px;
-  border-radius: 10px;  
+  border-radius: 10px;
 }
 
 .no-bullets li {
@@ -240,4 +312,3 @@
 .recipe-order-desc.selected {
   background-color: #fae1c6;
 }
-
