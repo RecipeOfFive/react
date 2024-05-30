@@ -103,10 +103,15 @@
 
 .Descrip-top {
   padding-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .first-img {
-  width: 100%;
-  height: 600px;
+  /* width: 100%; */
+  width: 30vw;
+  height: auto;
   border-radius: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
