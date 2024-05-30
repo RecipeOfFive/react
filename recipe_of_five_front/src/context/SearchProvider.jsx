@@ -23,8 +23,8 @@ export default function SearchProvider({ children }) {
   const [exclude, setExclude] = useState([]);
   const [searchResult, setSearchResult] = useState([]);
 
-  const filterRecipe = useCallback(() => {
-    return axios
+  const filterRecipe = useCallback(async () => {
+    return await axios
       .post("https://pda.recipeoffive.site/api/food/", searchOptions)
       .then((resp) => {
         setSearchResult(resp.data);
