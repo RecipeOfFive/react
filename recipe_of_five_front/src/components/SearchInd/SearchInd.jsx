@@ -1,153 +1,96 @@
-// import React, { useContext, useState, useEffect } from "react";
-// import { RecipeFilterContext } from "../../context/SearchProvider";
-// import ButtonGroup from "react-bootstrap/ButtonGroup";
-// import ToggleButton from "react-bootstrap/ToggleButton";
-// import { Button, InputGroup, Form } from "react-bootstrap";
-
-// export default function SearchInd() {
-//   const { include, exclude, setExclude, setInclude } =
-//     useContext(RecipeFilterContext);
-
-//   const [input, setInput] = useState("");
-//   const [radioValue, setRadioValue] = useState("1");
-//   const [isInclude, setIsInclude] = useState(true);
-//   const radios = [
-//     { name: "포함", value: "1" },
-//     { name: "제외", value: "2" },
-//   ];
-
-//   return (
-//     <div className="main-div-SearchInd">
-//       <h1> Recipe of Five</h1>
-//       <ButtonGroup>
-//         {radios.map((radio, idx) => (
-//           <ToggleButton
-//             className="main-div-SearchInd-togglebtn"
-//             key={idx}
-//             id={`radio-${idx}`}
-//             type="radio"
-//             variant={idx % 2 ? "outline-secondary" : "outline-secondary"}
-//             name="radio"
-//             value={radio.value}
-//             checked={radioValue === radio.value}
-//             onChange={(e) => {
-//               setRadioValue(e.currentTarget.value);
-//               setIsInclude(!isInclude);
-//             }}
-//           >
-//             {radio.name}
-//           </ToggleButton>
-//         ))}
-//       </ButtonGroup>
-//       <InputGroup className="mb-3">
-//         <Form.Control
-//           value={input}
-//           placeholder="검색할 재료를 입력하세요"
-//           aria-label="Recipient's username"
-//           aria-describedby="basic-addon2"
-//           onChange={(e) => setInput(e.target.value)}
-//         />
-//         {"   "}
-//         <Button
-//           variant="outline-secondary"
-//           id="button-addon2"
-//           onClick={() => {
-//             if (include.includes(input)) {
-//               alert("이미 포함된 재료입니다.");
-//               return;
-//             } else if (exclude.includes(input)) {
-//               alert("이미 제외된 재료입니다.");
-//               return;
-//             } else if (isInclude) {
-//               setInclude((prev) => [...prev, input]);
-//             } else {
-//               setExclude((prev) => [...prev, input]);
-//             }
-//             setInput("");
-//           }}
-//         >
-//           적용
-//         </Button>
-//       </InputGroup>
-//     </div>
-//   );
-// }
 import React, { useContext, useState } from "react";
 import { RecipeFilterContext } from "../../context/SearchProvider";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import ToggleButton from "react-bootstrap/ToggleButton";
-import { Button, InputGroup, Form } from "react-bootstrap";
+import { InputGroup, Form } from "react-bootstrap";
+// import logo from "/public/favicon.png";
+import "./style.css";
 
 export default function SearchInd() {
-  const { include, exclude, setExclude, setInclude } =
+  const { include, exclude, setExclude, setInclude, setIsSearch } =
     useContext(RecipeFilterContext);
 
   const [input, setInput] = useState("");
   const [radioValue, setRadioValue] = useState("1");
-  const [isInclude, setIsInclude] = useState(true);
-  const radios = [
-    { name: "포함", value: "1" },
-    { name: "제외", value: "2" },
-  ];
+
+  const handleRadioChange = (value) => {
+    setRadioValue(value);
+    // 검색 상태 설정
+  };
+
+  const handleButtonClick = (isInclude) => {
+    setIsSearch(true);
+    if (input === "") {
+      alert("재료를 입력해주세요.");
+      return;
+    } else if (include.includes(input)) {
+      alert("이미 포함된 재료입니다.");
+      return;
+    } else if (exclude.includes(input)) {
+      alert("이미 제외된 재료입니다.");
+      return;
+    } else if (isInclude) {
+      setInclude((prev) => [...prev, input]);
+    } else {
+      setExclude((prev) => [...prev, input]);
+    }
+
+    setInput(""); // 입력 필드 초기화
+  };
 
   return (
     <div className="main-div-SearchInd">
-      {/* <h1>Recipe of Five</h1> */}
-      <h1>5조의 레시피</h1>
-      <div className="searchInd-btn">
-        <ButtonGroup className="main-div-SearchInd-buttongroup">
-          {radios.map((radio, idx) => (
+      <h1>
+        <img className="favicon" src="/favicon.png" alt="로고가 없습니다" />
+        <a href="./">5조의 레시피</a>
+      </h1>
+
+      <div className="searchinput-btn-div">
+        <div className="searchInd-input">
+          <InputGroup className="mb-3">
+            <Form.Control
+              value={input}
+              placeholder="검색할 재료를 입력하세요"
+              aria-label="Recipient's username"
+              aria-describedby="basic-addon2"
+              onChange={(e) => setInput(e.target.value)}
+            />
+          </InputGroup>
+        </div>
+        <div className="searchInd-btn">
+          <ButtonGroup className="main-div-SearchInd-buttongroup">
             <ToggleButton
               className={`main-div-SearchInd-togglebtn ${
-                radioValue === radio.value ? "custom-active" : "custom-inactive"
+                radioValue === "1" ? "custom-active" : "custom-inactive"
               }`}
-              key={idx}
-              id={`radio-${idx}`}
+              id="radio-include"
               type="radio"
               variant="outline-secondary"
               name="radio"
-              value={radio.value}
-              checked={radioValue === radio.value}
-              onChange={(e) => {
-                setRadioValue(e.currentTarget.value);
-                setIsInclude(radio.value === "1");
-              }}
+              value="1"
+              checked={radioValue === "1"}
+              onChange={(e) => handleRadioChange(e.currentTarget.value)}
+              onClick={() => handleButtonClick(true)}
             >
-              {radio.name}
+              포함
             </ToggleButton>
-          ))}
-        </ButtonGroup>
-      </div>
-      <div className="searchInd-input">
-        <InputGroup className="mb-3">
-          <Form.Control
-            value={input}
-            placeholder="검색할 재료를 입력하세요"
-            aria-label="Recipient's username"
-            aria-describedby="basic-addon2"
-            onChange={(e) => setInput(e.target.value)}
-          />
-          <Button
-            variant="outline-secondary"
-            id="button-addon2"
-            onClick={() => {
-              if (include.includes(input)) {
-                alert("이미 포함된 재료입니다.");
-                return;
-              } else if (exclude.includes(input)) {
-                alert("이미 제외된 재료입니다.");
-                return;
-              } else if (isInclude) {
-                setInclude((prev) => [...prev, input]);
-              } else {
-                setExclude((prev) => [...prev, input]);
-              }
-              setInput("");
-            }}
-          >
-            적용
-          </Button>
-        </InputGroup>
+            <ToggleButton
+              className={`main-div-SearchInd-togglebtn ${
+                radioValue === "2" ? "custom-active" : "custom-inactive"
+              }`}
+              id="radio-exclude"
+              type="radio"
+              variant="outline-secondary"
+              name="radio"
+              value="2"
+              checked={radioValue === "2"}
+              onChange={(e) => handleRadioChange(e.currentTarget.value)}
+              onClick={() => handleButtonClick(false)}
+            >
+              제외
+            </ToggleButton>
+          </ButtonGroup>
+        </div>
       </div>
     </div>
   );

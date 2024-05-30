@@ -1,41 +1,57 @@
 import React, { useContext, useState, useEffect } from "react";
 import { RecipeFilterContext } from "../../context/SearchProvider";
+import { Button } from "react-bootstrap";
+import "./ingredient-style.css";
+
 export default function SearchInd() {
   const { exclude, setExclude, include, setInclude } =
     useContext(RecipeFilterContext);
 
   return (
-    <div className="ingredients-div" style={{ display: "flex" }}>
-      <div>
-        <h1>포함</h1>
-        <div className="item-div">
-          {include.map((item, idx) => (
-            <span
-              key={idx}
-              onClick={() => {
-                setInclude((prev) => prev.filter((el) => el !== item));
-              }}
-            >
-              {item}
-            </span>
-          ))}
-        </div>
-      </div>
+    <div className="ingredient-main-div">
+      <div className="ingredient-div">
+        {include.length > 0 && (
+          <div style={{ display: "flex" }} className="include-exclude">
+            {include.map((item, idx) => (
+              <Button
+                key={idx}
+                onClick={() => {
+                  setInclude((prev) => prev.filter((el) => el !== item));
+                }}
+                style={{
+                  backgroundColor: "#fea304",
+                  color: "#ffffff",
+                  borderColor: "#fea304",
+                }}
+              >
+                {item}
+              </Button>
+            ))}
+            <div>는 포함된</div>
+          </div>
+        )}
 
-      <div>
-        <h1>제외</h1>
-        <div className="item-div">
-          {exclude.map((item, idx) => (
-            <span
-              key={idx}
-              onClick={() => {
-                setExclude((prev) => prev.filter((el) => el !== item));
-              }}
-              //이 부분이 무한루프, 클릭하면 삭제하는 로직
-            >
-              {item}
-            </span>
-          ))}
+        <div>
+          {exclude.length > 0 && (
+            <div style={{ display: "flex" }} className="include-exclude">
+              {exclude.map((item, idx) => (
+                <Button
+                  key={idx}
+                  onClick={() => {
+                    setExclude((prev) => prev.filter((el) => el !== item));
+                  }}
+                  style={{
+                    backgroundColor: "#fea304",
+                    color: "#ffffff",
+                    borderColor: "#fea304",
+                  }}
+                >
+                  {item}
+                </Button>
+              ))}
+              <div>는 제외된</div>
+            </div>
+          )}
         </div>
       </div>
     </div>

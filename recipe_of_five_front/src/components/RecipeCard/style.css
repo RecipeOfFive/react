@@ -14,6 +14,8 @@
 
 .item-card img {
   border-radius: 10px 10px 0 0;
+  width: 20vw !important;
+  height: 20vw;
 }
 
 .food-list-grid {
@@ -24,4 +26,21 @@
 
 .item-title {
   margin: 5px 0 0 5px;
+}
+
+.sort-div {
+  display: flex;
+  justify-content: end;
+  padding-bottom: 10px;
+}
+
+.sort-button {
+  background-color: #fea304 !important;
+  color: #ffffff !important;
+  border-color: #fea304 !important;
+}
+
+.no-content {
+  margin-top: 100px;
+  text-align: center;
 }

@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { RecipeFilterContext } from "../../context/SearchProvider";
 import axios from "axios";
+import "./style.css";
 
 export default function SendSearch() {
   const {
@@ -31,7 +32,7 @@ export default function SendSearch() {
     axios
       .post(
         // 임시 url
-        "http://ec2-3-38-45-40.ap-northeast-2.compute.amazonaws.com:3000/api/food/",
+        "https://pda.recipeoffive.site/api/food/",
         searchOptions
       )
       .then((resp) => {
