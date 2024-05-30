@@ -7,17 +7,16 @@ import RecipeResult from "../RecipeResult/RecipeResult";
 
 export default function RecipeCard() {
   const { setSearchResult, searchResult, searchOptions, setSearchOptions } =
-
     useContext(RecipeFilterContext);
   const navigate = useNavigate();
 
-  const [currBtn, setCurrBtn] = useState("좋아요");
+  const [currBtn, setCurrBtn] = useState("인기순");
 
   function handleOrder() {
     if (searchOptions.order === "like_count") {
-      setCurrBtn("조회수");
+      setCurrBtn("최신순");
     } else {
-      setCurrBtn("좋아요");
+      setCurrBtn("인기순");
     }
 
     setSearchOptions((prevOptions) => {
