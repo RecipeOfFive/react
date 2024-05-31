@@ -32,10 +32,13 @@ export default function RecipeCard() {
     <div>
       {searchResult.length > 0 ? (
         <>
-          <div className="sort-div">
-            <Button onClick={handleOrder} className="sort-button">
-              {currBtn}
-            </Button>
+          <div className="title-sortbtn-div">
+            <h1>맛있는 레시피 리스트</h1>
+            <div className="sort-div">
+              <Button onClick={handleOrder} className="sort-button">
+                {currBtn}
+              </Button>
+            </div>
           </div>
           <div className="food-list-grid">
             {searchResult.slice(0, 10).map((el, index) => (

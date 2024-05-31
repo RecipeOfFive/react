@@ -12,7 +12,7 @@ export default function Ranking() {
   const navigate = useNavigate();
   return (
     <div className="ranking">
-      <h1 className="ranking-title"> 랭킹 </h1>
+      <h1 className="ranking-title"> 오늘의 레시피 랭킹 </h1>
       <div className="rank-list">
         {ranking.map((recipe, index) => (
           <Card
