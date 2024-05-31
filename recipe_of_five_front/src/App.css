@@ -16,3 +16,7 @@ body {
   background-color: #f1f1f2;
   font-family: "Freesentation-9Black";
 }
+
+.root {
+  max-width: 920px;
+}
