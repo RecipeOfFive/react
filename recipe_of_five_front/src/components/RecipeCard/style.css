@@ -27,7 +27,7 @@
 }
 
 .food-list-grid {
-  max-width: 920px;
+  max-width: 1020px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 30px;
