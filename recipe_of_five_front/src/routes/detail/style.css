@@ -188,8 +188,9 @@
 
 .item-image2 {
   border-radius: 10px 10px 0 0;
-  width: 10vw !important;
-  height: 10vw;
+  width: 100%;
+  /* width: 10vw !important; */
+  height: 12vw;
 }
 
 .item-title {
