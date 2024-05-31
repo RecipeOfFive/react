@@ -10,22 +10,26 @@ import Ranking from "../../components/Ranking/Ranking";
 import RecipeCard from "../../components/RecipeCard/RecipeCard";
 import { RecipeFilterContext } from "../../context/SearchProvider";
 import { Row, Col, Container } from "react-bootstrap";
+import "./style.css";
 
 const Main = () => {
   const navigate = useNavigate();
-  const { isFirst } = useContext(RecipeFilterContext);
+  const { isFirst, isSearch } = useContext(RecipeFilterContext);
 
   return (
     <div>
       {/* right-side */}
-
       <SearchInd />
       {/* <Ingredients /> */}
-      <FilterBtn />
-      <SendSearch />
 
-      {/* // right-side */}
+      {isSearch && <Ingredients />}
 
+      <div className="filterBtn-search">
+        <FilterBtn />
+        <SendSearch />
+      </div>
+
+      {/* right-side */}
       {isFirst ? <Ranking /> : <RecipeCard />}
     </div>
   );

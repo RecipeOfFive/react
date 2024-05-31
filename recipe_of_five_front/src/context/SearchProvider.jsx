@@ -15,18 +15,17 @@ export default function SearchProvider({ children }) {
   //초기 ranking
   const [ranking, setRanking] = useState([]);
 
+  const [isFirst, setIsFirst] = useState(true); // 최초 실행 여부
+  const [isSearch, setIsSearch] = useState(false); // 최초 검색 여부
+
   const [filterMethod, setFilterMethod] = useState([]);
   const [include, setInclude] = useState([]);
   const [exclude, setExclude] = useState([]);
-  const [isFirst, setIsFirst] = useState(true);
   const [searchResult, setSearchResult] = useState([]);
 
-  const filterRecipe = useCallback(() => {
-    return axios
-      .post(
-        "http://ec2-3-38-45-40.ap-northeast-2.compute.amazonaws.com:3000/api/food/",
-        searchOptions
-      )
+  const filterRecipe = useCallback(async () => {
+    return await axios
+      .post("https://pda.recipeoffive.site/api/food/", searchOptions)
       .then((resp) => {
         setSearchResult(resp.data);
       });
@@ -54,6 +53,8 @@ export default function SearchProvider({ children }) {
         filterRecipe,
         isFirst,
         setIsFirst,
+        isSearch,
+        setIsSearch,
       }}
     >
       {children}

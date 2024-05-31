@@ -4,18 +4,28 @@ import "./style.css";
 import React, { useState, useEffect, useContext } from "react";
 import { RecipeFilterContext } from "../../context/SearchProvider";
 import axios from "axios";
+import ScrollPage from "../Scroll/ScrollPage";
 
 const RecipeDescrip = () => {
   const { id } = useParams();
+
   const [recipe, setRecipe] = useState([]);
+
+  // 재료
   const [ingredient, setIngredient] = useState([]);
+
+  // 영양소
   const [calorie, setCalorie] = useState([]);
+
+  // 레시피
   const [cooking, setCooking] = useState([]);
+
   const [selectedIndex, setSelectedIndex] = useState(0);
   const { searchResult } = useContext(RecipeFilterContext);
   const navigate = useNavigate();
-  const URL = "http://ec2-3-38-45-40.ap-northeast-2.compute.amazonaws.com:3000";
+  const URL = "https://pda.recipeoffive.site";
 
+  // 음식 상세 내용 조회
   const fetchRecipe = async () => {
     try {
       const resp = await axios.get(`${URL}/api/food/${id}`);
@@ -26,6 +36,7 @@ const RecipeDescrip = () => {
     }
   };
 
+  // 레시피 재료 조회
   const fetchIngredient = async () => {
     try {
       const resp = await axios.get(`${URL}/api/food/ingredient/${id}`);
@@ -38,6 +49,7 @@ const RecipeDescrip = () => {
     }
   };
 
+  // 음식 영양소 조회
   const fetchNutrient = async () => {
     try {
       const resp = await axios.get(`${URL}/api/food/nutrient/${id}`);
@@ -47,18 +59,17 @@ const RecipeDescrip = () => {
     }
   };
 
-  const fetchCooking = async () => {
-    try {
-      const resp = await axios.get(`${URL}/api/recipe/${id}`);
-      setCooking(resp.data);
-    } catch (error) {
-      console.log("에러 발생4");
-    }
-  };
+  // const fetchCooking = async () => {
+  //   try {
+  //     const resp = await axios.get(`${URL}/api/recipe/${id}`);
+  //   } catch (error) {
+  //     console.log("에러 발생4");
+  //   }
+  // };
 
   const fetchItem = async () => {
     try {
-      const resp = await axios.post(`${URL}/api/recipe/${id}`);
+      const resp = await axios.get(`${URL}/api/recipe/${id}`);
       setCooking(resp.data);
     } catch (error) {
       console.log("에러 발생4");
@@ -78,32 +89,25 @@ const RecipeDescrip = () => {
     fetchRecipe();
     fetchIngredient();
     fetchNutrient();
-    fetchCooking();
+    // fetchCooking();
     fetchItem();
   }, [id]);
 
   const changeid = (id) => {
-    navigate(`/${id}`);
+    navigate(`/detail/${id}`);
   };
 
   let count = 0;
 
   return (
     <div className="container">
-      <h1>5조의 레시피</h1>
+      <ScrollPage />
       <div className="view1">
         <div className="Descrip-top">
-          <div className="like-view">
-            <button
-              onClick={() => updateLike(recipe.like_count)}
-              className="like-button"
-            >
-              ❤️좋아요
-            </button>
-            <p>{recipe.like_count}</p>
-            <p>👀조회수 </p>
-            <p>{recipe.view_count}</p>
-          </div>
+          <h1>
+            <img className="favicon" src="/favicon.png" alt="로고가 없습니다" />
+            <a href="../../">5조의 레시피</a>
+          </h1>
           <img
             className="first-img"
             src={recipe.main_image}
@@ -112,7 +116,20 @@ const RecipeDescrip = () => {
         </div>
         <div className="cooking-info section-card">
           <div className="Descrip-down">
-            <div className="Descrip-tit">{recipe.name}</div>
+            <div className="title-like-view-div">
+              <div className="Descrip-tit">{recipe.name}</div>
+              <div className="like-view">
+                <button
+                  onClick={() => updateLike(recipe.like_count)}
+                  className="like-button"
+                >
+                  ❤️좋아요
+                </button>
+                <p>{recipe.like_count}</p>
+                <p>👀조회수 </p>
+                <p>{recipe.view_count}</p>
+              </div>
+            </div>
             <div className="Descrip-info">{recipe.description}</div>
             <div className="link-align">
               <div className="Descript-link1">
@@ -141,10 +158,14 @@ const RecipeDescrip = () => {
                 return (
                   <Card
                     key={index}
-                    onClick={() => navigate(`/${el.id}`)}
-                    className="item-card"
+                    onClick={() => navigate(`/detail/${el.id}`)}
+                    className="item-another-card"
                   >
-                    <img src={el.main_image} alt={el.name} />
+                    <img
+                      src={el.main_image}
+                      alt={el.name}
+                      className="item-image2"
+                    />
                     <Card.Title className="item-title">{el.name}</Card.Title>
                     <Card.Body className="text-align">
                       <p>❤️좋아요 {el.like_count}</p>
@@ -183,37 +204,37 @@ const RecipeDescrip = () => {
             </ul>
           </div>
         </div>
+      </div>
 
-        <div className="view3">
-          <h3>조리 순서</h3>
-          <hr className="hr" />
-          <div className="cooking-desc-img-div">
-            <div className="cooking-desc-div">
-              <ul className="no-bullets">
-                {cooking.map((step, index) => (
-                  <li
-                    key={index}
-                    className={`recipe-order-desc ${
-                      selectedIndex === index ? "selected" : ""
-                    }`}
-                  >
-                    <div onClick={() => setSelectedIndex(index)}>
-                      {step.description.replace(/.$/, "")}
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            {cooking.length > 0 && (
-              <div className="cooking-img-div">
-                <img
-                  src={cooking[selectedIndex].image}
-                  alt={`Step ${cooking[selectedIndex].recipeOrder}`}
-                  className="full-width-image"
-                />
-              </div>
-            )}
+      <div className="view3">
+        <h3>조리 순서</h3>
+        <hr className="hr" />
+        <div className="cooking-desc-img-div">
+          <div className="cooking-desc-div">
+            <ul className="no-bullets">
+              {cooking.map((step, index) => (
+                <li
+                  key={index}
+                  className={`recipe-order-desc ${
+                    selectedIndex === index ? "selected" : ""
+                  }`}
+                >
+                  <div onClick={() => setSelectedIndex(index)}>
+                    {step.description.replace(/.$/, "")}
+                  </div>
+                </li>
+              ))}
+            </ul>
           </div>
+          {cooking.length > 0 && (
+            <div className="cooking-img-div">
+              <img
+                src={cooking[selectedIndex].image}
+                alt={`Step ${cooking[selectedIndex].recipeOrder}`}
+                className="full-width-image"
+              />
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -2,11 +2,13 @@ import React, { useContext, useState } from "react";
 import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
 import ToggleButton from "react-bootstrap/ToggleButton";
 import { RecipeFilterContext } from "../../context/SearchProvider";
+import "./style.css";
+import { useEffect } from "react";
 
 export default function FilterBtn() {
   const { filterMethod, setFilterMethod } = useContext(RecipeFilterContext);
 
-  const options = ["끓이기", "삶기", "찌기", "굽기", "볶기", "튀기기"];
+  const options = ["끓이는", "찌는", "튀기는", "굽는", "볶는", "기타"];
 
   const handleChange = (val) => {
     if (val.includes("전체")) {
@@ -18,10 +20,15 @@ export default function FilterBtn() {
     } else {
       setFilterMethod(val);
     }
-    //setSearchOptions(value);
   };
 
+  
+
   const isSelected = (option) => filterMethod.includes(option);
+
+  useEffect(() => {
+        setFilterMethod([...options]); // 전체 선택
+  }, []);
 
   return (
     <div className="filter-btn">
@@ -49,8 +56,8 @@ export default function FilterBtn() {
           value="전체"
           className={
             filterMethod.length === options.length
-              ? "custom-active2"
-              : "custom-inactive2"
+              ? "custom-active3"
+              : "custom-inactive3"
           }
         >
           ALL

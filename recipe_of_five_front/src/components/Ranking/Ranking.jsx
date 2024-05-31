@@ -12,32 +12,21 @@ export default function Ranking() {
   const navigate = useNavigate();
   return (
     <div className="ranking">
-      <h1 className="ranking-title"> 랭킹 </h1>
+      <h1 className="ranking-title"> 오늘의 레시피 랭킹 </h1>
       <div className="rank-list">
         {ranking.map((recipe, index) => (
           <Card
             border="warning"
             key={index}
-            onClick={() => navigate(`/${recipe.id}`)}
+            onClick={() => navigate(`/detail/${recipe.id}`)}
             className="item-card"
           >
-            <Card.Body className="item-location">
-              <div>
-                <Card.Img
-                  variant="top"
-                  src={recipe.main_image}
-                  className="item-image"
-                />
-              </div>
-              <Card.Subtitle className="item-title">
-                {recipe.name}
-              </Card.Subtitle>
-              <div className="like-view-div">
-                <span className="like-view">❤️좋아요 </span>
-                <span className="like-view-count">{recipe.like_count} </span>
-                <span className="like-view">👀조회수 </span>
-                <span className="like-view-count">{recipe.view_count} </span>
-              </div>
+            <img src={recipe.main_image}></img>
+            <Card.Title className="item-title">{recipe.name}</Card.Title>
+
+            <Card.Body className="text-align">
+              <p>❤️좋아요 {recipe.like_count}</p>
+              <p>👀조회수 {recipe.view_count}</p>
             </Card.Body>
           </Card>
         ))}

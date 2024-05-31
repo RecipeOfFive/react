@@ -7,17 +7,16 @@ import RecipeResult from "../RecipeResult/RecipeResult";
 
 export default function RecipeCard() {
   const { setSearchResult, searchResult, searchOptions, setSearchOptions } =
-
     useContext(RecipeFilterContext);
   const navigate = useNavigate();
 
-  const [currBtn, setCurrBtn] = useState("좋아요");
+  const [currBtn, setCurrBtn] = useState("인기순");
 
   function handleOrder() {
     if (searchOptions.order === "like_count") {
-      setCurrBtn("조회수");
+      setCurrBtn("조회순");
     } else {
-      setCurrBtn("좋아요");
+      setCurrBtn("인기순");
     }
 
     setSearchOptions((prevOptions) => {
@@ -31,31 +30,38 @@ export default function RecipeCard() {
 
   return (
     <div>
-      <RecipeResult />
-      <div>
-        <Button onClick={handleOrder}>{currBtn}</Button>
-      </div>
-      <div className="food-list-grid">
-        {searchResult.map((el, index) => {
-          if (index === 10) return;
-          return (
-            <Card
-              key={index}
-              onClick={() => navigate(`/${el.id}`)}
-              className="item-card"
-            >
-              <img src={el.main_image}></img>
+      {searchResult.length > 0 ? (
+        <>
+          <div className="title-sortbtn-div">
+            <h1>맛있는 레시피 리스트</h1>
+            <div className="sort-div">
+              <Button onClick={handleOrder} className="sort-button">
+                {currBtn}
+              </Button>
+            </div>
+          </div>
+          <div className="food-list-grid">
+            {searchResult.slice(0, 10).map((el, index) => (
+              <Card
+                key={index}
+                onClick={() => navigate(`/detail/${el.id}`)}
+                className="item-card"
+              >
+                <img src={el.main_image} alt={el.name}></img>
 
-              <Card.Title className="item-title">{el.name}</Card.Title>
+                <Card.Title className="item-title">{el.name}</Card.Title>
 
-              <Card.Body className="text-align">
-                <p>❤️좋아요 {el.like_count}</p>
-                <p>👀조회수 {el.view_count}</p>
-              </Card.Body>
-            </Card>
-          );
-        })}
-      </div>
+                <Card.Body className="text-align">
+                  <p>❤️좋아요 {el.like_count}</p>
+                  <p>👀조회수 {el.view_count}</p>
+                </Card.Body>
+              </Card>
+            ))}
+          </div>
+        </>
+      ) : (
+        <h1 className="no-content">죄송하지만 맛있는 레시피가 없어요!</h1>
+      )}
     </div>
   );
 }
