@@ -41,7 +41,7 @@
 
 |                             메인(랭킹) 페이지                           |                          메인(결과) 페이지                           |                          결과(상세) 페이지                           |
 | :-----------------------------------------------------------------: | :--------------------------------------------------------------: | :--------------------------------------------------------------: |
-| <img width="329" src="./recipe_of_five_front/image-for-readme/main-rank-page.png"  /> | <img width="329" src="./recipe_of_five_front/image-for-readme/main-result-page.png" /> | <img width="329" src="./recipe_of_five_front/image-for-readme/detail-page.png" /> |
+| <img width="329" src="../../recipe_of_five_front/image-for-readme/main-rank-page.png" /> | <img width="329" src="../../recipe_of_five_front/image-for-readme/main-result-page.png" /> | <img width="329" src="../../recipe_of_five_front/image-for-readme/detail-page.png" /> |
 
 
 ## Others
