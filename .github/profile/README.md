@@ -23,8 +23,7 @@
 
 ### Distribution
 
-![amazons3](https://img.shields.io/badge/amazon%20s3-569A31?style=for-the-badge&logo=amazons3&logoColor=white)
-![amazonaws](https://img.shields.io/badge/amazon%20CloudFront-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white)
+![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)
 ![amazonaws](https://img.shields.io/badge/amazon%20Certificate%20Manager-4053D6?style=for-the-badge&logo=amazonaws&logoColor=white)
 
 ### Communication
