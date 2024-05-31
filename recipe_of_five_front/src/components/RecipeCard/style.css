@@ -12,6 +12,13 @@
   border-radius: 10px;
 }
 
+.title-sortbtn-div h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  padding: 30px 0 0 0;
+}
+
 .item-card img {
   border-radius: 10px 10px 0 0;
   /* width: 20vw !important; */
